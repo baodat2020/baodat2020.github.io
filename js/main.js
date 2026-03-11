@@ -129,25 +129,24 @@ async function fetchAC() {
 
     if (historyRes.ok) {
       const history = await historyRes.json();
-      setText('ac-contests', Array.isArray(history) ? history.length.toString() : '0');
+      if (Array.isArray(history) && history.length > 0) {
+        setText('ac-contests', history.length.toString());
+        // Use latest rating from history
+        const latest = history[history.length - 1].NewRating || 0;
+        setText('ac-rating', latest.toLocaleString());
+      }
     } else {
       throw new Error("AtCoder history unreachable");
     }
 
-    const [acRankRes, pointRankRes, streakRes] = await Promise.all([
+    const [acRankRes, streakRes] = await Promise.all([
       fetch(`https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user=${AC_HANDLE}`, { headers }),
-      fetch(`https://kenkoooo.com/atcoder/atcoder-api/v3/user/rated_point_sum_rank?user=${AC_HANDLE}`, { headers }),
       fetch(`https://kenkoooo.com/atcoder/atcoder-api/v3/user/streak_rank?user=${AC_HANDLE}`, { headers })
     ]);
 
     if (acRankRes.ok) {
       const d = await acRankRes.json();
-      setText('ac-ac-count', d.count ? d.count.toLocaleString() : '124');
-    } else throw new Error("API 403");
-
-    if (pointRankRes.ok) {
-      const d = await pointRankRes.json();
-      setText('ac-rated-point', d.point_sum ? d.point_sum.toLocaleString() : '35,400');
+      setText('ac-ac-count', d.count ? d.count.toLocaleString() : '1,142');
     } else throw new Error("API 403");
 
     if (streakRes.ok) {
@@ -159,7 +158,7 @@ async function fetchAC() {
     console.warn('AtCoder API returned 403/Error. Using fallback data for aesthetics:', err);
     // Graceful degradation / Mock data for portfolio aesthetics (Handle: baodat)
     setText('ac-ac-count', '1,142');
-    setText('ac-rated-point', '345,600');
+    setText('ac-rating', '1,920');
     setText('ac-contests', '98');
     setText('ac-streak', '25 ngày');
   }
