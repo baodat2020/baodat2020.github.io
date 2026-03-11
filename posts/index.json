@@ -1,10 +1,18 @@
 [
   {
+    "slug": "dsu-rollback-tutorial",
+    "title": "Disjoint Set Union (DSU) với Rollback — Kỹ thuật quay lui thời gian",
+    "date": "2026-03-11",
+    "tag": "algo",
+    "excerpt": "Cùng tìm hiểu cách nâng cấp DSU cơ bản bằng kỹ thuật Rollback để giải quyết quyết các bài toán Dynamic Connectivity (Thêm/Xóa cạnh offline).",
+    "readTime": "15 phút đọc"
+  },
+  {
     "slug": "hello-world",
     "title": "Hello, World — khởi đầu hành trình CP của mình",
     "date": "2026-03-11",
     "tag": "life",
-    "excerpt": "Một bài mở đầu về hành trình Competitive Programming của mình — tại sao bắt đầu, con đường nào đã đi, và những điều mình mong muốn chia sẻ trong blog này.",
+    "excerpt": "Một bài mở đầu về hành trình Competitive Programming của mình — tại sao bắt đầu, con đường nào đã đi, và trải nghiệm ở PTNK.",
     "readTime": "4 phút đọc"
   },
   {
