@@ -158,8 +158,8 @@ async function fetchAC() {
     console.warn('AtCoder API returned 403/Error. Using fallback data for aesthetics:', err);
     // Graceful degradation / Mock data for portfolio aesthetics (Handle: baodat)
     setText('ac-ac-count', '1,142');
-    setText('ac-rating', '1,920');
-    setText('ac-contests', '98');
+    setText('ac-rating', '1,884');
+    setText('ac-contests', '15');
     setText('ac-streak', '25 ngày');
   }
 }
