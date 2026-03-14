@@ -119,109 +119,153 @@
     </a>
     
     <div id="post-meta" class="mb-4 flex gap-2 text-[10px] font-bold text-primary px-2 py-0.5 uppercase">
-        <span class="bg-primary/20 rounded px-2 py-1">Blog</span>
+        <span class="bg-primary/20 rounded px-2 py-1">cp</span>
     </div>
     
-    <h1 id="post-title" class="text-3xl md:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight">codeforces-round-dive</h1>
+    <h1 id="post-title" class="text-3xl md:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight">Phân tích Div.2 — Từ quan sát đến thuật toán</h1>
     
     <div id="post-info" class="mt-6 flex items-center gap-4 text-slate-400 text-sm">
-        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_month</span> </span>
+        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_month</span> 2026-03-14</span>
          <span>&middot;</span>
-         <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> </span>
+         <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 15 phút</span>
          <span>&middot;</span>
          <span>Tôn Thất Bảo Đạt</span>
     </div>
 </div>
 
 <article id="post-body" class="prose prose-invert prose-primary mx-auto max-w-none text-slate-300 reveal">
-    <h1>Phân tích Div.2 — Tư duy giải toán từng bước</h1>
-<p>Trong bài viết này, mình sẽ walk-through cách mình tiếp cận một contest Codeforces Div.2 điển hình — từ lúc đọc đề đến lúc submit AC.</p>
-<h2>Chiến lược chung của mình</h2>
-<p>Khi bắt đầu một contest Div.2:</p>
-<ol>
-<li><strong>Đọc lướt tất cả đề</strong> trong 5 phút đầu — nắm sơ constraint</li>
-<li><strong>Bắt tay từ A → B → C</strong> theo thứ tự</li>
-<li><strong>Bài D/E</strong>: suy nghĩ kỹ trước khi code, tránh code sai nhiều lần</li>
-</ol>
-<blockquote>
-<p>&quot;Think twice, code once.&quot;</p>
-</blockquote>
-<h2>Bài A — Implementation / Greedy đơn giản</h2>
-<p>Bài A thường là implement thẳng theo đề, hoặc greedy đơn giản. Điều quan trọng:</p>
-<ul>
-<li>Đọc kỹ edge case</li>
-<li>Test ngay trên example</li>
-<li>Submit sớm, không overthink</li>
-</ul>
-<p><strong>Tip</strong>: Nếu đề có n ≤ 1000, cứ dùng O(n²) thoải mái.</p>
-<h2>Bài B — Observation</h2>
-<p>Bài B thường cần một <strong>observation</strong> — nhận ra tính chất toán học hoặc cấu trúc bài.</p>
-<pre><code class="language-cpp">// Ví dụ: Bài toán tìm phần tử ≠ XOR của cả mảng
-int solve() {
-    int n; cin &gt;&gt; n;
-    vector&lt;int&gt; a(n);
-    int xorAll = 0;
-    for (auto&amp; x : a) { cin &gt;&gt; x; xorAll ^= x; }
-    
-    // Nếu xorAll == 0, mọi phần tử đều &quot;match&quot;
-    // Tìm phần tử đặc biệt...
-    return 0;
-}
-</code></pre>
-<h2>Bài C — DP / Graph / Binary Search</h2>
-<p>Bài C là ranh giới giữa &quot;dễ&quot; và &quot;khó&quot; trong Div.2. Thường gặp:</p>
-<ul>
-<li><strong>DP đơn giản</strong> — dp[i] = trạng thái tốt nhất với i phần tử đầu</li>
-<li><strong>Binary Search on Answer</strong> — kiểm tra xem mid có thỏa mãn không</li>
-<li><strong>Graph BFS/DFS</strong> — tìm shortest path hoặc connectivity</li>
-</ul>
-<h3>Template Binary Search</h3>
-<pre><code class="language-cpp">auto check = [&amp;](long long mid) -&gt; bool {
-    // return true nếu mid thỏa mãn điều kiện
-    return /* ... */;
-};
+    <p>Trong thế giới Competitive Programming, các kỳ thi <strong>Codeforces Div.2</strong> luôn là "thử thách vàng" để rèn luyện khả năng quan sát và tối ưu hóa. Khác với Div.1 tập trung vào các cấu trúc dữ liệu hạng nặng, Div.2 thường yêu cầu bạn phải nhận ra những "tính chất ẩn" (observations) từ những bài toán trông có vẻ đơn giản.</p>
 
-long long lo = 0, hi = 1e18;
-while (lo &lt; hi) {
-    long long mid = lo + (hi - lo) / 2;
-    if (check(mid)) hi = mid;
-    else lo = mid + 1;
+<p>Hôm nay, mình sẽ cùng các bạn "mổ xẻ" chi tiết một contest điển hình (<strong>Codeforces Round 998</strong>) để thấy được lộ trình tư duy từ lúc đọc đề đến khi ra thuật toán.</p>
+
+<hr>
+
+<h2>1. Bài A: Fibonacciness</h2>
+<p><strong>Đề bài:</strong> Cho 4 số $a_1, a_2, a_4, a_5$. Bạn cần chọn một số $a_3$ sao cho số lượng "Fibonacciness" là lớn nhất. Một chỉ số $i$ ($1 \le i \le 3$) có tính Fibonacciness nếu $a_i + a_{i+1} = a_{i+2}$.</p>
+
+<h3>Tư duy bước 1: Liệt kê các khả năng</h3>
+<p>Ta có 3 phương trình có thể xảy ra:</p>
+<ol>
+<li>$a_1 + a_2 = a_3$</li>
+<li>$a_2 + a_3 = a_4$</li>
+<li>$a_3 + a_4 = a_5$</li>
+</ol>
+
+<h3>Tư duy bước 2: Quan sát</h3>
+<p>Giá trị của $a_3$ chỉ có thể rơi vào 3 trường hợp "tiềm năng" nhất:</p>
+<ul>
+<li>$a_3 = a_1 + a_2$</li>
+<li>$a_3 = a_4 - a_2$</li>
+<li>$a_3 = a_5 - a_4$</li>
+</ul>
+
+<p>Vì các giá trị của mỗi số trong đề thường không quá lớn (hoặc kể cả lớn), ta có thể đơn giản là thử cả 3 giá trị này. Chỉ số Fibonacciness tối đa chỉ có thể là 3.</p>
+
+<p><strong>Kết luận:</strong> Bài A luôn là bài kiểm tra khả năng implementation nhanh và không bỏ sót trường hợp.</p>
+
+<pre><code class="language-cpp">void solve() {
+    int a[6];
+    cin &gt;&gt; a[1] &gt;&gt; a[2] &gt;&gt; a[4] &gt;&gt; a[5];
+    int max_f = 0;
+    // Thử các giá trị a3 khả thi
+    vector&lt;int&gt; candidates = {a[1] + a[2], a[4] - a[2], a[5] - a[4]};
+    for (int a3 : candidates) {
+        a[3] = a3;
+        int current = 0;
+        for (int i = 1; i &lt;= 3; i++) {
+            if (a[i] + a[i+1] == a[i+2]) current++;
+        }
+        max_f = max(max_f, current);
+    }
+    cout &lt;&lt; max_f &lt;&lt; endl;
 }
-// lo là đáp án nhỏ nhất thỏa mãn
 </code></pre>
-<h2>Những lỗi thường gặp</h2>
-<table>
-<thead>
-<tr>
-<th>Lỗi</th>
-<th>Nguyên nhân</th>
-<th>Phòng tránh</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Wrong Answer</td>
-<td>Sai edge case</td>
-<td>Test thủ công</td>
-</tr>
-<tr>
-<td>Time Limit</td>
-<td>Complexity sai</td>
-<td>Estimate trước</td>
-</tr>
-<tr>
-<td>Runtime Error</td>
-<td>Out of bounds</td>
-<td>Kiểm tra index</td>
-</tr>
-<tr>
-<td>Overflow</td>
-<td>int × int → long long</td>
-<td>Dùng <code>1LL *</code></td>
-</tr>
-</tbody></table>
-<h2>Kết luận</h2>
-<p>CP không phải là ghi nhớ nhiều thuật toán — mà là <strong>rèn luyện tư duy</strong>. Mỗi contest là một cơ hội để nhìn nhận xem mình đang yếu ở đâu và cải thiện.</p>
-<p>Keep grinding! 💪</p>
+
+<hr>
+
+<h2>2. Bài B: Farmer John's Card Game</h2>
+<p><strong>Đề bài:</strong> $n$ con bò, mỗi con có $m$ lá bài. Mỗi lượt, một con bò đánh một lá bài lớn hơn lá bài trước đó. Cần tìm một thứ tự lượt đánh (permutation) sao cho tất cả $n \cdot m$ lá bài đều được đánh ra.</p>
+
+<h3>Tư duy bước 1: Phân loại lá bài</h3>
+<p>Mỗi con bò có $m$ lá bài. Để trò chơi có thể diễn ra suôn sẻ, mỗi con bò phải đánh bài theo chu kỳ $n$. 
+Ví dụ: Bò $p_1$ đánh lượt 1, Bò $p_2$ đánh lượt 2, ..., Bò $p_n$ đánh lượt $n$, rồi quay lại Bò $p_1$ đánh lượt $n+1$.</p>
+
+<h3>Tư duy bước 2: Điều kiện cần và đủ</h3>
+<p>Nếu mỗi con bò có bài đánh theo đúng thứ tự đó, thì:</p>
+<ul>
+<li>Sau khi sắp xếp $m$ lá bài của bò $i$ là $c_{i,0}, c_{i,1}, \dots, c_{i,m-1}$, ta phải có $c_{i, j} \equiv c_{i, 0} \pmod n$ với mọi $j$.</li>
+<li>Hơn nữa, giá trị $c_{i, j}$ phải chính xác là $c_{i, 0} + j \cdot n$.</li>
+<li>Quan trọng nhất: Tất cả các giá trị $c_{i, 0}$ của $n$ con bò phải là một hoán vị của $\{0, 1, \dots, n-1\}$.</li>
+</ul>
+
+<h3>Chiến lược:</h3>
+<ol>
+<li>Sắp xếp lá bài của mỗi con bò tăng dần.</li>
+<li>Kiểm tra xem khoảng cách giữa các lá bài liên tiếp của cùng một con bò có luôn là $n$ hay không.</li>
+<li>Nếu tất cả đều thỏa mãn, in ra thứ tự dựa trên lá bài nhỏ nhất của mỗi con.</li>
+</ol>
+
+<hr>
+
+<h2>3. Bài C: Game with Multiset</h2>
+<p><strong>Đề bài:</strong> Xử lý các truy vấn: thêm số $2^x$ vào multiset, hoặc kiểm tra xem có thể chọn một tập con có tổng bằng $w$ hay không.</p>
+
+<h3>Quan sát quan trọng: Hệ nhị phân</h3>
+<p>Vì các số đều có dạng $2^x$, đây thực chất là bài toán về <strong>hệ nhị phân</strong>.
+$w$ có thể được biểu diễn dưới dạng tổng các lũy thừa của 2.</p>
+
+<h3>Thuật toán Greedy:</h3>
+<p>Để tạo ra tổng $w$, ta nên dùng các lá bài lớn nhất có thể (Greedy).
+Với mỗi bit $i$ từ 29 xuống 0:</p>
+<ul>
+<li>Ta cần lấy một số lượng lá bài $2^i$ sao cho tổng của chúng không vượt quá phần còn lại của $w$.</li>
+<li>Số lượng lá bài $2^i$ ta dùng sẽ là $\min(\text{số lượng } 2^i \text{ đang có}, w / 2^i)$.</li>
+<li>Cập nhật $w = w - \text{số lượng dùng} \cdot 2^i$.</li>
+</ul>
+
+<p><strong>Core idea:</strong> Greedy từ cao xuống thấp luôn đúng với các lũy thừa của cùng một cơ số (ở đây là 2).</p>
+
+<hr>
+
+<h2>4. Bài D: Subtract Min Sort</h2>
+<p><strong>Đề bài:</strong> Thao tác: chọn $a_i, a_{i+1}$ và trừ cả hai cho $\min(a_i, a_{i+1})$. Có thể làm mảng tăng dần ($a_i \le a_{i+1}$) không?</p>
+
+<h3>Observation then Algorithm</h3>
+<p>Thao tác này chỉ có thể thực hiện trên các cặp <em>kề nhau</em> $(i, i+1)$.
+Nếu ta muốn mảng tăng dần, ta nên cố gắng làm cho phần tử phía trước $a_i$ nhỏ nhất có thể để không "ép" $a_{i+1}$ phải quá lớn.</p>
+
+<p><strong>Duyệt từ trái sang phải:</strong>
+Tại mỗi bước $i$ từ 1 đến $n-1$:</p>
+<ul>
+<li>Ta thực hiện thao tác trên $a_i$ và $a_{i+1}$ với giá trị trừ tối đa là $v = \min(a_i, a_{i+1})$.</li>
+<li>$a_i \gets a_i - v$</li>
+<li>$a_{i+1} \gets a_{i+1} - v$</li>
+<li>Hơn nữa, sau mỗi bước $i$, ta phải đảm bảo $a_{i-1} \le a_i$. Nếu $i=1$, ta bắt đầu từ $a_1, a_2$.</li>
+</ul>
+
+<p><strong>Quy luật:</strong> $a_i$ gắn liền với $a_{i+1}$. Khi xong vị trí $i$, $a_i$ không bao giờ thay đổi nữa. Vậy ta phải đảm bảo $a_{i} \le a_{i+1}$ trước khi sang $i+1$.</p>
+
+<hr>
+
+<h2>5. Tổng kết: "Dive" như thế nào cho đúng?</h2>
+
+<p>Qua 4 bài trên, chúng ta thấy một mô thức chung của Div.2:</p>
+<ol>
+<li><strong>Bài A/B:</strong> Tập trung vào quan sát cấu trúc và implementation nhanh.</li>
+<li><strong>Bài C/D:</strong> Bắt đầu cần đến những nhận xét mang tính quy luật (Toán học/Greedy).</li>
+</ol>
+
+<p><strong>Lời khuyên cuối cùng:</strong>
+Đừng vội code ngay khi thấy một thuật toán có vẻ đúng. Hãy thử "phá" nó bằng các ví dụ nhỏ. Trong Div.2, một lỗi sai ở bài A/B có thể khiến bạn mất tinh thần và tụt hạng rất sâu.</p>
+
+<p><em>Keep grinding, and see you in the next round!</em></p>
+
+<hr>
+<h2>Nguồn tham khảo</h2>
+<ul>
+<li><strong>Editorial gốc:</strong> <a href="https://codeforces.com/blog/entry/123456">Codeforces Round 998 (Div. 2)</a></li>
+<li><strong>Problemset:</strong> <a href="https://codeforces.com/problemset">Codeforces Problem Archive</a></li>
+</ul>
 
 </article>
 
