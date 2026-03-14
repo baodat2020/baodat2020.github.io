@@ -221,8 +221,8 @@ async function fetchAC() {
     // Try Kenkoooo API for streak and AC count
     // Note: If Kenkoooo API fails, we just show N/A instead of hardcoding
     Promise.all([
-      fetch(`https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user=${AC_HANDLE}`, { headers }),
-      fetch(`https://kenkoooo.com/atcoder/atcoder-api/v3/user/streak_rank?user=${AC_HANDLE}`, { headers })
+      fetch(`https://api.codetabs.com/v1/proxy/?quest=https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user=${AC_HANDLE}`, { headers }),
+      fetch(`https://api.codetabs.com/v1/proxy/?quest=https://kenkoooo.com/atcoder/atcoder-api/v3/user/streak_rank?user=${AC_HANDLE}`, { headers })
     ]).then(async ([acRankRes, streakRes]) => {
       if (acRankRes.ok) {
         const d = await acRankRes.json();
