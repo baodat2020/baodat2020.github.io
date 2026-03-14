@@ -497,9 +497,59 @@ function formatDate(dateStr) {
   return d.toLocaleDateString('vi-VN', { day: '2-digit', month: 'long', year: 'numeric' });
 }
 
+
+// ── Smooth Scroll for Absolute Hash Links
+function initSmoothScroll() {
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (!href || !href.includes('#')) return;
+
+    // Resolve URL to check if it's pointing to the current page
+    const url = new URL(href, window.location.href);
+    const targetId = url.hash.slice(1);
+    
+    // Check if it's the current domain and path
+    if (url.origin === window.location.origin && 
+        (url.pathname === window.location.pathname || url.pathname === '/' || url.pathname === '/index.html')) {
+        
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          
+          // Add a small delay for mobile menu closing if needed
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Offset for sticky header
+            behavior: 'smooth'
+          });
+
+          // Update hash in URL without jump
+          history.pushState(null, null, `#${targetId}`);
+        }
+    }
+  });
+
+  // Handle initial hash on load with offset
+  if (window.location.hash) {
+      setTimeout(() => {
+          const target = document.getElementById(window.location.hash.slice(1));
+          if (target) {
+              window.scrollTo({
+                  top: target.offsetTop - 80,
+                  behavior: 'smooth'
+              });
+          }
+      }, 500);
+  }
+}
+
 // ── Init
 document.addEventListener('DOMContentLoaded', () => {
   fetchCF();
   fetchAC();
   renderBlogPreview();
+  initSmoothScroll();
 });
+

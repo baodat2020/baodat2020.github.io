@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Vibe Coding with Antigravity | baodat</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#0dccf2",
+                "background-light": "#f5f8f8",
+                "background-dark": "#101f22",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(16, 31, 34, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(13, 204, 242, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #0dccf2 0%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <!-- Navigation Bar -->
+        <header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
+            <div class="mx-auto flex max-w-[1200px] items-center justify-between">
+                <div class="flex items-center gap-8">
+                    <a href="https://baodat2020.github.io/index.html" class="flex items-center gap-3 text-primary">
+                        <span class="material-symbols-outlined text-3xl">terminal</span>
+                        <h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
+                    </a>
+                    
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html">Trang chủ</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html#about">Về tôi</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html#stats">Thành tích</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html#projects">Dự án</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/blog.html">Blog</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/documents.html">Tài liệu</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html#contact">Liên hệ</a>
+</nav>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://github.com/baodat2020" target="_blank">
+                        <i class="fa-brands fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="mx-auto max-w-[1200px] w-full px-4 md:px-20 lg:px-40 py-16">
+            <!-- Project Hero -->
+            <div class="mb-16">
+                <div class="flex items-center gap-2 text-primary font-mono text-sm mb-4">
+                    <span class="px-2 py-0.5 rounded bg-primary/10 border border-primary/20 uppercase tracking-widest">Featured Project</span>
+                    <span class="opacity-50">/</span>
+                    <span>March 2026</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black text-slate-100 tracking-tighter mb-8 leading-tight">
+                    Vibe Coding <br/>
+                    <span class="gradient-text">with Antigravity</span>
+                </h1>
+                <p class="text-slate-400 text-xl leading-relaxed max-w-3xl mb-8">
+                    Khám phá phong cách lập trình kỷ nguyên mới: Khi ý tưởng và cảm nhận (vibe) dẫn lối, AI Agent trở thành đôi tay hiện thực hóa mã nguồn.
+                </p>
+                
+                <div class="relative rounded-2xl overflow-hidden border border-primary/20 shadow-2xl">
+                    <img src="../assets/vibe-coding.png" alt="Vibe Coding Visualization" class="w-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent opacity-80"></div>
+                    <div class="absolute bottom-8 left-8">
+                        <div class="flex gap-4">
+                            <div class="glass px-4 py-2 rounded-lg text-sm font-bold text-primary border border-primary/30">AI Powered</div>
+                            <div class="glass px-4 py-2 rounded-lg text-sm font-bold text-slate-100 border border-white/10">Antigravity Framework</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                <!-- Sidebar -->
+                <div class="lg:col-span-4 space-y-12 order-2 lg:order-1">
+                    <div>
+                        <h4 class="text-slate-100 font-bold mb-4 uppercase tracking-widest text-xs">Phân vai</h4>
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-xl border border-primary/10 bg-primary/5">
+                                <span class="block text-primary font-bold text-sm mb-1 uppercase">Architect / User</span>
+                                <span class="block text-slate-100 font-medium">baodat</span>
+                            </div>
+                            <div class="p-4 rounded-xl border border-primary/10 bg-primary/5">
+                                <span class="block text-primary font-bold text-sm mb-1 uppercase">Builder / AI Agent</span>
+                                <span class="block text-slate-100 font-medium">Antigravity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-slate-100 font-bold mb-4 uppercase tracking-widest text-xs">Công nghệ sử dụng</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded bg-slate-800 text-slate-300 text-xs font-semibold">Tailwind CSS</span>
+                            <span class="px-3 py-1 rounded bg-slate-800 text-slate-300 text-xs font-semibold">Vanilla JS</span>
+                            <span class="px-3 py-1 rounded bg-slate-800 text-slate-300 text-xs font-semibold">Advanced Prompting</span>
+                            <span class="px-3 py-1 rounded bg-slate-800 text-slate-300 text-xs font-semibold">GitHub Pages</span>
+                        </div>
+                    </div>
+
+                    <div class="p-8 rounded-xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 shadow-lg">
+                        <h4 class="text-primary font-bold mb-4">Kết quả đạt được</h4>
+                        <ul class="space-y-4 text-sm text-slate-400">
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                <span>Portfolio tối ưu 100% chuẩn SEO và UI/UX cao cấp.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                <span>Hệ thống Menu đa trang đồng bộ hóa tự động.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                <span>Tốc độ xây dựng nhanh gấp 10 lần phương pháp truyền thống.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Main Narrative -->
+                <div class="lg:col-span-8 space-y-12 order-1 lg:order-2">
+                    <section>
+                        <h3 class="text-3xl font-bold text-slate-100 mb-6 font-display">Triết lý "Vibe Coding"</h3>
+                        <div class="prose prose-invert prose-slate max-w-none text-slate-400 space-y-4">
+                            <p>
+                                <strong>Vibe Coding</strong> không chỉ là việc gõ phím. Đó là quá trình mà người lập trình tập trung vào việc mô tả "cảm nhận", "mục tiêu" và "linh hồn" của ứng dụng, thay vì sa lầy vào những dòng mã boilerplate lặp đi lặp lại.
+                            </p>
+                            <p>
+                                Trong dự án xây dựng Portfolio này, tôi đã cùng <strong>Antigravity</strong> - một AI Agent thế hệ mới - thiết lập một quy trình làm việc cộng tác. Tôi đóng vai trò là kiến trúc sư, người định hình phong cách thẩm mỹ và luồng trải nghiệm, còn Antigravity là người thợ lành nghề, biến những yêu cầu trừu tượng thành những file HTML/CSS sắc sảo.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="text-3xl font-bold text-slate-100 mb-6 font-display">Hành trình xây dựng</h3>
+                        <div class="space-y-8">
+                            <div class="flex gap-6">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center text-primary font-bold bg-background-dark">1</div>
+                                    <div class="w-px h-full bg-primary/20 mt-2"></div>
+                                </div>
+                                <div class="pb-8">
+                                    <h4 class="text-xl font-bold text-slate-100 mb-3">Lên ý tưởng (The Vibe)</h4>
+                                    <p class="text-slate-400">Tôi muốn một giao diện tối (Dark Theme) nhưng phải toát lên sự hiện đại của tương lai. Màu xanh primary (#0dccf2) được chọn để làm điểm nhấn mang hơi hướng cyberpunk nhẹ nhàng nhưng vẫn thanh lịch của glassmorphism.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center text-primary font-bold bg-background-dark">2</div>
+                                    <div class="w-px h-full bg-primary/20 mt-2"></div>
+                                </div>
+                                <div class="pb-8">
+                                    <h4 class="text-xl font-bold text-slate-100 mb-3">Hiện thực hóa nền móng</h4>
+                                    <p class="text-slate-400">Sử dụng Tailwind CSS để xây dựng hệ thống design tokens. Antigravity đã giúp tôi tạo ra những thành phần (components) đầu tiên từ Grid, Navigation đến những hiệu ứng Hover tinh tế trên các Project Cards.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center text-primary font-bold bg-background-dark">3</div>
+                                    <div class="w-px h-full bg-primary/20 mt-2"></div>
+                                </div>
+                                <div class="pb-8">
+                                    <h4 class="text-xl font-bold text-slate-100 mb-3">Tối ưu và Đồng nhất</h4>
+                                    <p class="text-slate-400">Một trong những thách thức lớn nhất là đảm bảo menu và header luôn đồng nhất trên tất cả các trang. Tôi đã yêu cầu Antigravity viết các scripts để rà soát và chuẩn hóa link, Header tự động, giúp việc bảo trì trở nên vô cùng nhàn nhã.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="p-8 rounded-2xl bg-primary shadow-[0_0_30px_rgba(13,204,242,0.15)] text-background-dark">
+                        <h4 class="text-2xl font-black mb-4">"Building at the speed of thought."</h4>
+                        <p class="font-medium opacity-90">Kỷ nguyên Vibe Coding cho phép chúng ta tập trung vào sự sáng tạo. Antigravity không chỉ viết code, mà nó hiểu được tầm nhìn của tôi.</p>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-primary/10 bg-background-dark px-4 md:px-20 lg:px-40 py-12 mt-16">
+            <div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="flex flex-col items-center md:items-start gap-4">
+                    <div class="flex items-center gap-2 text-primary">
+                        <span class="material-symbols-outlined text-2xl">terminal</span>
+                        <span class="font-black text-xl tracking-tight">baodat</span>
+                    </div>
+                    <p class="text-slate-500 text-sm">© 2023 Tôn Thất Bảo Đạt. Designed with Antigravity.</p>
+                </div>
+                <div class="flex gap-6">
+                    <a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://github.com/baodat2020" target="_blank">
+                        <i class="fa-brands fa-github text-lg"></i>
+                        <span class="text-xs font-semibold">GitHub</span>
+                    </a>
+                    <a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://facebook.com/baodat" target="_blank">
+                        <i class="fa-brands fa-facebook text-lg"></i>
+                        <span class="text-xs font-semibold">Facebook</span>
+                    </a>
+                    <a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="mailto:baodat@example.com">
+                        <span class="material-symbols-outlined text-lg leading-none">mail</span>
+                        <span class="text-xs font-semibold">Email</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

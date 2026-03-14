@@ -48,12 +48,13 @@
             <h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
           </a>
           <nav class="hidden md:flex items-center gap-6">
-            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#about">Về tôi</a>
-            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#stats">Thành tích</a>
-            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#projects">Dự án</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html">Trang chủ</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#about">Về tôi</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#stats">Thành tích</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#projects">Dự án</a>
             <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="blog.html">Blog</a>
             <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="documents.html">Tài liệu</a>
-            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#contact">Liên hệ</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#contact">Liên hệ</a>
           </nav>
         </div>
         <div class="flex items-center gap-4">
@@ -223,42 +224,50 @@
           Dự án tiêu biểu
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="group p-6 rounded-xl border border-primary/20 bg-background-dark hover:border-primary/50 transition-all">
+          <a href="documents.html" class="group p-6 rounded-xl border border-primary/20 bg-background-dark hover:border-primary/50 transition-all shadow-lg hover:shadow-primary/5">
             <div class="flex justify-between items-start mb-4">
               <span class="material-symbols-outlined text-3xl text-primary">star</span>
-              <a href="https://github.com/baodat2020/DSA-Documents" target="_blank" class="text-slate-400 hover:text-primary transition-colors">
+              <div class="text-slate-400 group-hover:text-primary transition-colors">
                 <i class="fa-brands fa-github text-xl"></i>
-              </a>
+              </div>
             </div>
             <h4 class="text-xl font-bold text-slate-100 mb-2">DSA Documents</h4>
             <p class="text-slate-500 text-sm mb-4 leading-relaxed">Tổng hợp tài liệu Cấu trúc dữ liệu & Giải thuật Tiếng Việt nâng cao.</p>
-            <div class="flex gap-2">
-              <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Markdown</span>
-              <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Sharing</span>
+            <div class="flex items-center justify-between mt-auto">
+              <div class="flex gap-2">
+                <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Markdown</span>
+                <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Sharing</span>
+              </div>
+              <span class="px-3 py-1.5 bg-primary/20 text-primary text-xs font-bold rounded-lg flex items-center gap-1 group-hover:bg-primary group-hover:text-background-dark transition-all duration-300">
+                Xem chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </span>
             </div>
-          </div>
-          <div class="group relative flex flex-col overflow-hidden rounded-xl border border-primary/20 bg-background-dark hover:border-primary/50 transition-all shadow-lg hover:shadow-primary/5">
+          </a>
+          <a href="posts/vibe-coding.html" class="group relative flex flex-col overflow-hidden rounded-xl border border-primary/20 bg-background-dark hover:border-primary/50 transition-all shadow-lg hover:shadow-primary/5">
             <div class="h-48 w-full overflow-hidden">
               <img src="assets/vibe-coding.png" alt="Vibe Coding Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             </div>
             <div class="p-6">
               <div class="flex justify-between items-start mb-4">
                 <span class="material-symbols-outlined text-3xl text-primary">psychology</span>
-                <div class="flex gap-2">
-                  <a href="https://github.com/baodat2020" target="_blank" class="text-slate-400 hover:text-primary transition-colors">
-                    <i class="fa-brands fa-github text-xl"></i>
-                  </a>
+                <div class="text-slate-400 group-hover:text-primary transition-colors">
+                  <i class="fa-brands fa-github text-xl"></i>
                 </div>
               </div>
               <h4 class="text-xl font-bold text-slate-100 mb-2">Vibe Coding with Antigravity</h4>
               <p class="text-slate-400 text-sm mb-4 leading-relaxed line-clamp-3">Nghiên cứu kỷ nguyên "Vibe Coding" - sử dụng AI Agent để hiện thực hóa ý tưởng từ cảm nhận (vibe) sang mã nguồn thực tế. Xây dựng và tối ưu Portfolio cá nhân một cách đột phá.</p>
-              <div class="flex flex-wrap gap-2 mt-auto">
-                <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase tracking-wider">AI Agent</span>
-                <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase tracking-wider">Antigravity</span>
-                <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase tracking-wider">Modern Web</span>
+              <div class="flex items-center justify-between mt-6">
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase tracking-wider">AI Agent</span>
+                  <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase tracking-wider">Antigravity</span>
+                  <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase tracking-wider">Modern Web</span>
+                </div>
+                <span class="px-3 py-1.5 bg-primary/20 text-primary text-xs font-bold rounded-lg flex items-center gap-1 group-hover:bg-primary group-hover:text-background-dark transition-all duration-300">
+                  Xem chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </span>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </section>
       <!-- Blog Section -->
