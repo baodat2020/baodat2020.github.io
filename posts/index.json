@@ -32,7 +32,8 @@
     "date": "2026-03-11",
     "tag": "life",
     "excerpt": "Một bài mở đầu về hành trình Competitive Programming của mình — tại sao bắt đầu, con đường nào đã đi, và trải nghiệm ở PTNK.",
-    "readTime": "4 phút đọc"
+    "readTime": "4 phút đọc",
+    "image": "assets/thumbnail_hello.png"
   },
   {
     "slug": "codeforces-round-dive",
@@ -40,7 +41,8 @@
     "date": "2026-03-10",
     "tag": "cp",
     "excerpt": "Mình sẽ walk-through một số bài toán Codeforces Div.2 điển hình: cách tiếp cận, những lần sai và bài học rút ra.",
-    "readTime": "8 phút đọc"
+    "readTime": "8 phút đọc",
+    "image": "assets/thumbnail_cf.png"
   },
   {
     "slug": "segment-tree-guide",
@@ -48,6 +50,7 @@
     "date": "2026-03-08",
     "tag": "algo",
     "excerpt": "Hướng dẫn chi tiết về Segment Tree — cấu trúc dữ liệu nền tảng cho rất nhiều bài toán range query trong CP.",
-    "readTime": "12 phút đọc"
+    "readTime": "12 phút đọc",
+    "image": "assets/thumbnail_segment_basic.png"
   }
 ]
