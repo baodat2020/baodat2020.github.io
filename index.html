@@ -1,241 +1,285 @@
 <!DOCTYPE html>
-<html class="dark" lang="vi"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>baodat | Portfolio</title>
-<meta name="description" content="Portfolio của Tôn Thất Bảo Đạt — Học sinh PTNK, Competitive Programmer trên Codeforces và AtCoder." />
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js" defer></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "primary": "#0dccf2",
-              "background-light": "#f5f8f8",
-              "background-dark": "#101f22",
-            },
-            fontFamily: {
-              "display": ["Inter", "sans-serif"]
-            },
-            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+<html class="dark" lang="vi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>baodat | Portfolio</title>
+  <meta name="description"
+    content="Portfolio của Tôn Thất Bảo Đạt — Học sinh PTNK, Competitive Programmer trên Codeforces và AtCoder." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js" defer></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0dccf2",
+            "background-light": "#f5f8f8",
+            "background-dark": "#101f22",
           },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
         },
-      }
-    </script>
+      },
+    }
+  </script>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
-<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-<!-- Navigation Bar -->
-<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
-<div class="mx-auto flex max-w-[1200px] items-center justify-between">
-<div class="flex items-center gap-8">
-<a href="index.html" class="flex items-center gap-3 text-primary">
-<span class="material-symbols-outlined text-3xl">terminal</span>
-<h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
-</a>
-<nav class="hidden md:flex items-center gap-6">
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#about">Về tôi</a>
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#stats">Thành tích</a>
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#blog">Blog</a>
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#contact">Liên hệ</a>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<div class="hidden sm:flex items-center bg-primary/10 border border-primary/20 rounded-lg px-3 py-1.5">
-<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
-<input class="bg-transparent border-none focus:ring-0 p-0 text-sm text-slate-100 placeholder:text-slate-500 w-32 lg:w-48" placeholder="Tìm kiếm bài viết..."/>
-</div>
-<div class="flex gap-2">
-<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://github.com/baodat2020" target="_blank" rel="noopener">
-<span class="material-symbols-outlined text-xl leading-none">code</span>
-</a>
-<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener">
-<span class="material-symbols-outlined text-xl leading-none">public</span>
-</a>
-</div>
-</div>
-</div>
-</header>
-<main class="mx-auto flex max-w-[1200px] flex-1 flex-col px-4 md:px-20 lg:px-40 py-10 gap-16">
-<!-- Hero Section -->
-<section id="hero" class="relative overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-8 md:p-12">
-<div class="absolute top-0 right-0 -z-10 h-64 w-64 translate-x-1/4 -translate-y-1/4 rounded-full bg-primary/10 blur-3xl"></div>
-<div class="flex flex-col md:flex-row items-center gap-8">
-<div class="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-primary/30 p-1">
-<img class="w-full h-full rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Chân dung Tôn Thất Bảo Đạt" src="assets/avatar.jpg" alt="Avatar"/>
-</div>
-<div class="flex-1 text-center md:text-left">
-<div class="mb-2 flex flex-col md:flex-row md:items-baseline gap-2 justify-center md:justify-start">
-<h1 class="text-4xl md:text-5xl font-black text-slate-100 tracking-tighter">Tôn Thất Bảo Đạt</h1>
-<span class="text-primary font-mono text-lg">@baodat</span>
-</div>
-<p class="text-slate-400 text-lg leading-relaxed max-w-2xl mb-8">
-                            Đam mê Lập trình thi đấu, Đồ thị, Quy hoạch động và Cấu trúc dữ liệu. Hiện đang là học sinh tại PTNK - ĐHQG HCM. Luôn tìm kiếm những bài toán hóc búa để thử thách bản thân.
-                        </p>
-<div class="flex flex-wrap gap-4 justify-center md:justify-start">
-<a href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener" class="bg-primary text-background-dark font-bold px-6 py-3 rounded-lg flex items-center gap-2 hover:opacity-90 transition-all shadow-lg shadow-primary/20">
-<span class="material-symbols-outlined">analytics</span>
-                                Codeforces
-                            </a>
-<a href="https://atcoder.jp/users/baodat" target="_blank" rel="noopener" class="bg-primary/10 text-primary border border-primary/30 font-bold px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-primary/20 transition-all">
-<span class="material-symbols-outlined">data_object</span>
-                                AtCoder
-                            </a>
-</div>
-</div>
-</div>
-</section>
-<!-- About Section -->
-<section id="about" class="grid grid-cols-1 lg:grid-cols-3 gap-10 reveal">
-<div class="lg:col-span-2">
-<h3 class="text-2xl font-bold text-slate-100 mb-6 flex items-center gap-3">
-<span class="material-symbols-outlined text-primary">person</span>
-                        Về tôi
-                    </h3>
-<div class="space-y-4 text-slate-400 text-base leading-relaxed">
-<p>Xin chào! Mình là Đạt. Hành trình đến với lập trình của mình bắt đầu từ những năm cấp 2, và nó nhanh chóng trở thành niềm đam mê lớn nhất. Mình đặc biệt yêu thích mảng thuật toán và cấu trúc dữ liệu vì sự logic và tính tối ưu tuyệt đối của nó.</p>
-<p>Tại PTNK, mình dành phần lớn thời gian để luyện tập trên các nền tảng OJ, tham gia các kỳ thi học sinh giỏi và chia sẻ kiến thức với cộng đồng thông qua blog cá nhân. Mục tiêu của mình là trở thành một Grandmaster trên Codeforces và góp mặt trong các kỳ thi quốc tế.</p>
-</div>
-</div>
-<div class="bg-primary/5 border border-primary/10 p-6 rounded-xl">
-<h4 class="font-bold text-slate-100 mb-4 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-sm">school</span>
-                        Học vấn
-                    </h4>
-<ul class="space-y-6">
-<li class="border-l-2 border-primary/30 pl-4 py-1 relative">
-<div class="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-2"></div>
-<div class="flex items-start gap-4">
-<img src="assets/ptnk.jpg" alt="PTNK Logo" class="w-12 h-12 rounded-lg object-cover border border-primary/20 bg-background-dark/50 p-1" onerror="this.style.display='none'"/>
-<div>
-<div class="text-sm text-primary font-semibold">2025 - Hiện tại</div>
-<a href="https://ptnk.edu.vn/" target="_blank" rel="noopener" class="text-slate-200 font-bold hover:text-primary transition-colors text-lg">Trường Phổ thông Năng khiếu - ĐHQG TP.HCM</a>
-<div class="text-sm text-slate-500 mt-1">Lớp chuyên Tin</div>
-</div>
-</div>
-</li>
-<li class="border-l-2 border-primary/30 pl-4 py-1 relative">
-<div class="absolute w-3 h-3 bg-primary/30 rounded-full -left-[7px] top-2"></div>
-<div class="flex items-start gap-4">
-<img src="assets/thcs.jpg" alt="THCS Tôn Thất Tùng Logo" class="w-12 h-12 rounded-lg object-cover border border-primary/20 bg-background-dark/50 p-1" onerror="this.style.display='none'"/>
-<div>
-<div class="text-sm text-primary/70 font-semibold">2020 - 2025</div>
-<a href="https://thcstonthattungtanphu.hcm.edu.vn/homegd2" target="_blank" rel="noopener" class="text-slate-300 font-bold hover:text-primary transition-colors">Trung học Cơ sở Tôn Thất Tùng</a>
-<div class="text-sm text-slate-500 mt-1">Quận Tân Phú, TP Hồ Chí Minh</div>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</section>
-<!-- Stats Section -->
-<section id="stats" class="reveal">
-<h3 class="text-2xl font-bold text-slate-100 mb-8 flex items-center gap-3">
-<span class="material-symbols-outlined text-primary">monitoring</span>
-                    Chỉ số Lập trình thi đấu
-                </h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- Codeforces Card -->
-<div class="group relative p-6 rounded-xl border border-primary/20 bg-background-dark overflow-hidden hover:border-primary/50 transition-all">
-<div class="flex justify-between items-start mb-4">
-<div>
-<h4 class="text-xl font-bold text-slate-100">Codeforces</h4>
-<p class="text-primary text-sm font-mono">baodat</p>
-</div>
-<span id="cf-rank" class="px-3 py-1 bg-orange-500/10 text-orange-500 text-xs font-bold rounded-full uppercase tracking-wider border border-orange-500/20">Loading</span>
-</div>
-<div class="flex items-end gap-1 mb-6">
-<span id="cf-rating" class="text-4xl font-black text-slate-100">...</span>
-<span class="text-slate-500 text-sm mb-1 pb-1">max. <span id="cf-max-rating">...</span></span>
-</div>
-<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-<div class="h-full bg-orange-500 w-[72%] shadow-[0_0_10px_rgba(249,115,22,0.5)]"></div>
-</div>
-</div>
-<!-- AtCoder Card -->
-<div class="group relative p-6 rounded-xl border border-primary/20 bg-background-dark overflow-hidden hover:border-primary/50 transition-all">
-<div class="flex justify-between items-start mb-4">
-<div>
-<h4 class="text-xl font-bold text-slate-100">AtCoder</h4>
-<p class="text-primary text-sm font-mono">baodat</p>
-</div>
-<span class="px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full uppercase tracking-wider border border-blue-500/20">Blue</span>
-</div>
-<div class="flex items-end gap-1 mb-6">
-<span id="ac-rating" class="text-4xl font-black text-slate-100">...</span>
-<span class="text-slate-500 text-sm mb-1 pb-1">max. 1912</span>
-</div>
-<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-<div class="h-full bg-blue-500 w-[65%] shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
-</div>
-</div>
-</div>
-</section>
-<!-- Chart Section -->
-<section class="reveal">
-<div class="p-8 rounded-xl border border-primary/20 bg-primary/5">
-<div class="flex items-center justify-between mb-8">
-<h4 class="font-bold text-slate-100">Lịch sử Rating</h4>
-<div class="flex gap-4">
-<span class="flex items-center gap-2 text-xs text-slate-400">
-<span class="w-3 h-3 rounded-full bg-primary"></span> Codeforces
-                            </span>
-</div>
-</div>
-<div class="relative w-full h-64 flex items-end justify-between gap-1 px-2" style="position: relative;">
-<canvas id="ratingChart"></canvas>
-</div>
-</div>
-</section>
-<!-- Blog Section -->
-<section id="blog" class="reveal">
-<div class="flex items-center justify-between mb-8">
-<h3 class="text-2xl font-bold text-slate-100 flex items-center gap-3">
-<span class="material-symbols-outlined text-primary">article</span>
-                        Bài viết mới nhất
-                    </h3>
-<a class="text-primary hover:underline text-sm font-medium" href="blog.html">Tất cả bài viết</a>
-</div>
-<div id="blog-preview-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- JS will render posts here -->
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer id="contact" class="border-t border-primary/10 bg-background-dark px-4 md:px-20 lg:px-40 py-12">
-<div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-8">
-<div class="flex flex-col items-center md:items-start gap-4">
-<div class="flex items-center gap-2 text-primary">
-<span class="material-symbols-outlined">terminal</span>
-<span class="font-black text-xl tracking-tight">baodat</span>
-</div>
-<p class="text-slate-500 text-sm">© 2026 Tôn Thất Bảo Đạt. Designed for competitive programmers.</p>
-</div>
-<div class="flex gap-6">
-<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://github.com/baodat2020" target="_blank" rel="noopener">
-<span class="material-symbols-outlined text-lg">description</span>
-<span class="text-xs font-semibold">GitHub</span>
-</a>
-<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://www.facebook.com/greyparrotvn" target="_blank" rel="noopener">
-<span class="material-symbols-outlined text-lg">social_leaderboard</span>
-<span class="text-xs font-semibold">Facebook</span>
-</a>
-<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="#">
-<span class="material-symbols-outlined text-lg">mail</span>
-<span class="text-xs font-semibold">Email</span>
-</a>
-</div>
-</div>
-</footer>
-<!-- Back to Top -->
-<a href="#hero" class="fixed bottom-6 right-6 p-3 rounded-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition-all opacity-0 translate-y-4 z-50 pointer-events-none" id="backToTop" aria-label="Back to top">
-<span class="material-symbols-outlined">expand_less</span>
-</a>
-</div>
-<script src="js/main.js"></script>
-</body></html>
+
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <!-- Navigation Bar -->
+    <header
+      class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
+      <div class="mx-auto flex max-w-[1200px] items-center justify-between">
+        <div class="flex items-center gap-8">
+          <a href="index.html" class="flex items-center gap-3 text-primary">
+            <span class="material-symbols-outlined text-3xl">terminal</span>
+            <h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
+          </a>
+          <nav class="hidden md:flex items-center gap-6">
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#about">Về tôi</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#stats">Thành
+              tích</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#blog">Blog</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#contact">Liên
+              hệ</a>
+          </nav>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="hidden sm:flex items-center bg-primary/10 border border-primary/20 rounded-lg px-3 py-1.5">
+            <span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+            <input
+              class="bg-transparent border-none focus:ring-0 p-0 text-sm text-slate-100 placeholder:text-slate-500 w-32 lg:w-48"
+              placeholder="Tìm kiếm bài viết..." />
+          </div>
+          <div class="flex gap-2">
+            <a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all"
+              href="https://github.com/baodat2020" target="_blank" rel="noopener">
+              <span class="material-symbols-outlined text-xl leading-none">code</span>
+            </a>
+            <a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all"
+              href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener">
+              <span class="material-symbols-outlined text-xl leading-none">public</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="mx-auto flex max-w-[1200px] flex-1 flex-col px-4 md:px-20 lg:px-40 py-10 gap-16">
+      <!-- Hero Section -->
+      <section id="hero"
+        class="relative overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-8 md:p-12">
+        <div
+          class="absolute top-0 right-0 -z-10 h-64 w-64 translate-x-1/4 -translate-y-1/4 rounded-full bg-primary/10 blur-3xl">
+        </div>
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-primary/30 p-1">
+            <img class="w-full h-full rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              data-alt="Chân dung Tôn Thất Bảo Đạt" src="assets/avatar.jpg" alt="Avatar" />
+          </div>
+          <div class="flex-1 text-center md:text-left">
+            <div class="mb-2 flex flex-col md:flex-row md:items-baseline gap-2 justify-center md:justify-start">
+              <h1 class="text-4xl md:text-5xl font-black text-slate-100 tracking-tighter">Tôn Thất Bảo Đạt</h1>
+              <span class="text-primary font-mono text-lg">@baodat</span>
+            </div>
+            <p class="text-slate-400 text-lg leading-relaxed max-w-2xl mb-8">
+              Đam mê Lập trình thi đấu, Đồ thị, Quy hoạch động và Cấu trúc dữ liệu. Hiện đang là học sinh tại PTNK -
+              ĐHQG HCM. Luôn tìm kiếm những bài toán hóc búa để thử thách bản thân.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+              <a href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener"
+                class="bg-primary text-background-dark font-bold px-6 py-3 rounded-lg flex items-center gap-2 hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+                <span class="material-symbols-outlined">analytics</span>
+                Codeforces
+              </a>
+              <a href="https://atcoder.jp/users/baodat" target="_blank" rel="noopener"
+                class="bg-primary/10 text-primary border border-primary/30 font-bold px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-primary/20 transition-all">
+                <span class="material-symbols-outlined">data_object</span>
+                AtCoder
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- About Section -->
+      <section id="about" class="grid grid-cols-1 lg:grid-cols-3 gap-10 reveal">
+        <div class="lg:col-span-2">
+          <h3 class="text-2xl font-bold text-slate-100 mb-6 flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary">person</span>
+            Về tôi
+          </h3>
+          <div class="space-y-4 text-slate-400 text-base leading-relaxed">
+            <p>Xin chào! Mình là Đạt. Hành trình đến với lập trình của mình bắt đầu từ những năm cấp 2, và nó nhanh
+              chóng trở thành niềm đam mê lớn nhất. Mình đặc biệt yêu thích mảng thuật toán và cấu trúc dữ liệu vì sự
+              logic và tính tối ưu tuyệt đối của nó.</p>
+            <p>Tại PTNK, mình dành phần lớn thời gian để luyện tập trên các nền tảng OJ, tham gia các kỳ thi học sinh
+              giỏi và chia sẻ kiến thức với cộng đồng thông qua blog cá nhân. Mục tiêu của mình là trở thành một
+              Grandmaster trên Codeforces và góp mặt trong các kỳ thi quốc tế.</p>
+          </div>
+        </div>
+        <div class="bg-primary/5 border border-primary/10 p-6 rounded-xl">
+          <h4 class="font-bold text-slate-100 mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-sm">school</span>
+            Học vấn
+          </h4>
+          <ul class="space-y-6">
+            <li class="border-l-2 border-primary/30 pl-4 py-1 relative">
+              <div class="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-2"></div>
+              <div class="flex items-start gap-4">
+                <img src="assets/ptnk.jpg" alt="PTNK Logo"
+                  class="w-12 h-12 rounded-lg object-cover border border-primary/20 bg-background-dark/50 p-1"
+                  onerror="this.style.display='none'" />
+                <div>
+                  <div class="text-sm text-primary font-semibold">2025 - Hiện tại</div>
+                  <a href="https://ptnk.edu.vn/" target="_blank" rel="noopener"
+                    class="text-slate-200 font-bold hover:text-primary transition-colors text-lg">Trường Phổ thông Năng
+                    khiếu - ĐHQG TP.HCM</a>
+                  <div class="text-sm text-slate-500 mt-1">Lớp chuyên Tin</div>
+                </div>
+              </div>
+            </li>
+            <li class="border-l-2 border-primary/30 pl-4 py-1 relative">
+              <div class="absolute w-3 h-3 bg-primary/30 rounded-full -left-[7px] top-2"></div>
+              <div class="flex items-start gap-4">
+                <img src="assets/thcs.jpg" alt="THCS Tôn Thất Tùng Logo"
+                  class="w-12 h-12 rounded-lg object-cover border border-primary/20 bg-background-dark/50 p-1"
+                  onerror="this.style.display='none'" />
+                <div>
+                  <div class="text-sm text-primary/70 font-semibold">2021 - 2025</div>
+                  <a href="https://thcstonthattungtanphu.hcm.edu.vn/homegd2" target="_blank" rel="noopener"
+                    class="text-slate-300 font-bold hover:text-primary transition-colors">Trung học Cơ sở Tôn Thất
+                    Tùng</a>
+                  <div class="text-sm text-slate-500 mt-1">Quận Tân Phú, TP Hồ Chí Minh</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!-- Stats Section -->
+      <section id="stats" class="reveal">
+        <h3 class="text-2xl font-bold text-slate-100 mb-8 flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary">monitoring</span>
+          Chỉ số Lập trình thi đấu
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Codeforces Card -->
+          <div
+            class="group relative p-6 rounded-xl border border-primary/20 bg-background-dark overflow-hidden hover:border-primary/50 transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h4 class="text-xl font-bold text-slate-100">Codeforces</h4>
+                <p class="text-primary text-sm font-mono">baodat</p>
+              </div>
+              <span id="cf-rank"
+                class="px-3 py-1 bg-orange-500/10 text-orange-500 text-xs font-bold rounded-full uppercase tracking-wider border border-orange-500/20">Loading</span>
+            </div>
+            <div class="flex items-end gap-1 mb-6">
+              <span id="cf-rating" class="text-4xl font-black text-slate-100">...</span>
+              <span class="text-slate-500 text-sm mb-1 pb-1">max. <span id="cf-max-rating">...</span></span>
+            </div>
+            <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+              <div class="h-full bg-orange-500 w-[72%] shadow-[0_0_10px_rgba(249,115,22,0.5)]"></div>
+            </div>
+          </div>
+          <!-- AtCoder Card -->
+          <div
+            class="group relative p-6 rounded-xl border border-primary/20 bg-background-dark overflow-hidden hover:border-primary/50 transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h4 class="text-xl font-bold text-slate-100">AtCoder</h4>
+                <p class="text-primary text-sm font-mono">baodat</p>
+              </div>
+              <span
+                class="px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full uppercase tracking-wider border border-blue-500/20">Blue</span>
+            </div>
+            <div class="flex items-end gap-1 mb-6">
+              <span id="ac-rating" class="text-4xl font-black text-slate-100">...</span>
+              <span class="text-slate-500 text-sm mb-1 pb-1">max. 1912</span>
+            </div>
+            <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+              <div class="h-full bg-blue-500 w-[65%] shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Chart Section -->
+      <section class="reveal">
+        <div class="p-8 rounded-xl border border-primary/20 bg-primary/5">
+          <div class="flex items-center justify-between mb-8">
+            <h4 class="font-bold text-slate-100">Lịch sử Rating</h4>
+            <div class="flex gap-4">
+              <span class="flex items-center gap-2 text-xs text-slate-400">
+                <span class="w-3 h-3 rounded-full bg-primary"></span> Codeforces
+              </span>
+            </div>
+          </div>
+          <div class="relative w-full h-64 flex items-end justify-between gap-1 px-2" style="position: relative;">
+            <canvas id="ratingChart"></canvas>
+          </div>
+        </div>
+      </section>
+      <!-- Blog Section -->
+      <section id="blog" class="reveal">
+        <div class="flex items-center justify-between mb-8">
+          <h3 class="text-2xl font-bold text-slate-100 flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary">article</span>
+            Bài viết mới nhất
+          </h3>
+          <a class="text-primary hover:underline text-sm font-medium" href="blog.html">Tất cả bài viết</a>
+        </div>
+        <div id="blog-preview-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- JS will render posts here -->
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer id="contact" class="border-t border-primary/10 bg-background-dark px-4 md:px-20 lg:px-40 py-12">
+      <div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="flex flex-col items-center md:items-start gap-4">
+          <div class="flex items-center gap-2 text-primary">
+            <span class="material-symbols-outlined">terminal</span>
+            <span class="font-black text-xl tracking-tight">baodat</span>
+          </div>
+          <p class="text-slate-500 text-sm">© 2026 Tôn Thất Bảo Đạt. Designed for competitive programmers.</p>
+        </div>
+        <div class="flex gap-6">
+          <a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2"
+            href="https://github.com/baodat2020" target="_blank" rel="noopener">
+            <span class="material-symbols-outlined text-lg">description</span>
+            <span class="text-xs font-semibold">GitHub</span>
+          </a>
+          <a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2"
+            href="https://www.facebook.com/greyparrotvn" target="_blank" rel="noopener">
+            <span class="material-symbols-outlined text-lg">social_leaderboard</span>
+            <span class="text-xs font-semibold">Facebook</span>
+          </a>
+          <a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="#">
+            <span class="material-symbols-outlined text-lg">mail</span>
+            <span class="text-xs font-semibold">Email</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- Back to Top -->
+    <a href="#hero"
+      class="fixed bottom-6 right-6 p-3 rounded-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition-all opacity-0 translate-y-4 z-50 pointer-events-none"
+      id="backToTop" aria-label="Back to top">
+      <span class="material-symbols-outlined">expand_less</span>
+    </a>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
