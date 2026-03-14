@@ -1,309 +1,224 @@
 <!DOCTYPE html>
-<html lang="vi">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tôn Thất Bảo Đạt — Competitive Programmer</title>
-  <meta name="description"
-    content="Portfolio của Tôn Thất Bảo Đạt — Học sinh PTNK, Competitive Programmer trên Codeforces và AtCoder." />
-  <link rel="stylesheet" href="css/style.css" />
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js" defer></script>
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>baodat | Portfolio</title>
+<meta name="description" content="Portfolio của Tôn Thất Bảo Đạt — Học sinh PTNK, Competitive Programmer trên Codeforces và AtCoder." />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js" defer></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0dccf2",
+              "background-light": "#f5f8f8",
+              "background-dark": "#101f22",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
 </head>
-
-<body>
-
-  <!-- Background Orbs -->
-  <div class="bg-gradient-orb orb-1"></div>
-  <div class="bg-gradient-orb orb-2"></div>
-  <div class="bg-gradient-orb orb-3"></div>
-
-  <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <a href="index.html" class="nav-logo">baodat.dev</a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#stats">CP Stats</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="blog.html" class="btn-primary" style="padding:8px 20px;font-size:0.85rem;">All Posts</a></li>
-    </ul>
-    <div class="nav-hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
-      <span></span><span></span><span></span>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Competitive Programmer
-      </div>
-      <h1 class="hero-name">
-        Tôn Thất Bảo Đạt<br />
-        <span class="gradient-text">baodat</span>
-      </h1>
-      <div class="hero-school">
-        <i class="fa-solid fa-graduation-cap"></i>
-        <span>Học sinh</span>
-        <span class="school-tag">PTNK – ĐHQG HCM</span>
-      </div>
-      <p class="hero-desc">
-        Đam mê giải toán thuật toán, yêu thích Competitive Programming. Đang chinh phục
-        các cuộc thi trên <strong>Codeforces</strong> và <strong>AtCoder</strong>.
-      </p>
-      <div class="hero-actions">
-        <a href="#stats" class="btn-primary">
-          <i class="fa-solid fa-chart-line"></i>
-          Xem CP Stats
-        </a>
-        <a href="blog.html" class="btn-secondary">
-          <i class="fa-solid fa-pen-nib"></i>
-          Đọc Blog
-        </a>
-      </div>
-      <div class="hero-social">
-        <a href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener" class="social-link"
-          title="Codeforces">
-          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.85rem;">CF</span>
-        </a>
-        <a href="https://atcoder.jp/users/baodat" target="_blank" rel="noopener" class="social-link" title="AtCoder">
-          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.85rem;">AC</span>
-        </a>
-        <a href="https://www.facebook.com/greyparrotvn" target="_blank" rel="noopener" class="social-link"
-          title="Facebook">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="https://github.com/baodat2020" target="_blank" rel="noopener" class="social-link" title="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
-      </div>
-    </div>
-
-    <div class="hero-avatar">
-      <img src="assets/avatar.jpg" alt="Tôn Thất Bảo Đạt avatar" id="hero-avatar-img" />
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <div class="section-header reveal">
-      <span class="section-tag">About Me</span>
-      <h2 class="section-title">Xin chào, mình là <span class="gradient-text">Bảo Đạt</span> 👋</h2>
-      <p class="section-subtitle">Học sinh chuyên Tin tại PTNK, đang khám phá thế giới thuật toán.</p>
-    </div>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>
-          Mình là <strong>Tôn Thất Bảo Đạt</strong>, một học sinh đam mê Competitive Programming.
-          Hành trình CP của mình bắt đầu từ khi mình bắt đầu tiếp cận các bài toán thuật toán
-          và ngay lập tức bị cuốn vào sự thú vị của việc tối ưu hóa giải pháp.
-        </p>
-        <p>
-          Trong CP, mình thích nhất những bài <strong>Graph</strong>, <strong>DP</strong>,
-          và các bài toán <strong>Data Structures</strong>. Mỗi bài AC là một cảm giác
-          khó tả — vừa hài lòng, vừa muốn chinh phục bài khó hơn.
-        </p>
-        <p>
-          Blog này là nơi mình chia sẻ kiến thức, editorial các contest, và những câu chuyện
-          trên con đường học thuật toán. Hy vọng sẽ hữu ích cho bạn!
-        </p>
-      </div>
-      <div class="about-highlights reveal">
-        <div class="glass-card highlight-item">
-          <div class="highlight-image">
-            <img src="./assets/thcs.jpg?v=2" alt="THCS Tôn Thất Tùng">
-          </div>
-          <div>
-            <div class="highlight-label">TRUNG HỌC CƠ SỞ</div>
-            <div class="highlight-value"><a href="https://thcstonthattungtanphu.hcm.edu.vn/homegd2" target="_blank"
-                rel="noopener">THCS Tôn Thất Tùng – Quận Tân Phú</a></div>
-          </div>
-        </div>
-        <div class="glass-card highlight-item">
-          <div class="highlight-image">
-            <img src="./assets/ptnk.jpg?v=2" alt="Phổ thông Năng khiếu – ĐHQG HCM">
-          </div>
-          <div>
-            <div class="highlight-label">TRUNG HỌC PHỔ THÔNG</div>
-            <div class="highlight-value"><a href="https://ptnk.edu.vn/" target="_blank" rel="noopener">Phổ thông Năng
-                khiếu – ĐHQG HCM</a></div>
-          </div>
-        </div>
-        <div class="glass-card highlight-item">
-          <span class="highlight-icon">🏆</span>
-          <div>
-            <div class="highlight-label">Codeforces Handle</div>
-            <div class="highlight-value" style="font-family:'Fira Code',monospace;">baodat</div>
-          </div>
-        </div>
-        <div class="glass-card highlight-item">
-          <span class="highlight-icon">🎯</span>
-          <div>
-            <div class="highlight-label">AtCoder Handle</div>
-            <div class="highlight-value" style="font-family:'Fira Code',monospace;">baodat</div>
-          </div>
-        </div>
-        <div class="glass-card highlight-item">
-          <span class="highlight-icon">💻</span>
-          <div>
-            <div class="highlight-label">Ngôn ngữ yêu thích</div>
-            <div class="highlight-value">C++17</div>
-          </div>
-        </div>
-        <div class="glass-card highlight-item">
-          <span class="highlight-icon">📍</span>
-          <div>
-            <div class="highlight-label">Vị trí</div>
-            <div class="highlight-value">TP. Hồ Chí Minh, Việt Nam</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CP Stats -->
-  <section id="stats">
-    <div class="section-header reveal">
-      <span class="section-tag">CP Stats</span>
-      <h2 class="section-title">Thống kê <span class="gradient-text">Competitive Programming</span></h2>
-      <p class="section-subtitle">Dữ liệu được tổng hợp trực tiếp từ Codeforces và AtCoder.</p>
-    </div>
-    <div class="stats-grid reveal">
-      <!-- Codeforces Card -->
-      <div class="glass-card stat-card cf" id="cf-card">
-        <div class="stat-card-header">
-          <div class="stat-platform-icon">CF</div>
-          <div>
-            <div class="stat-platform-name">Codeforces</div>
-            <div class="stat-platform-handle">@baodat</div>
-          </div>
-          <a href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener" class="stat-platform-link">
-            Xem Profile <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i>
-          </a>
-        </div>
-        <div class="stat-rows">
-          <div class="stat-item">
-            <div class="stat-label">Rating</div>
-            <div class="stat-value loading" id="cf-rating">Loading</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">Max Rating</div>
-            <div class="stat-value loading" id="cf-max-rating">Loading</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">Rank</div>
-            <div class="stat-value" id="cf-rank" style="font-size:1rem;">—</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">Contests</div>
-            <div class="stat-value loading" id="cf-contests">Loading</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- AtCoder Card -->
-      <div class="glass-card stat-card ac" id="ac-card">
-        <div class="stat-card-header">
-          <div class="stat-platform-icon">AC</div>
-          <div>
-            <div class="stat-platform-name">AtCoder</div>
-            <div class="stat-platform-handle">@baodat</div>
-          </div>
-          <a href="https://atcoder.jp/users/baodat" target="_blank" rel="noopener" class="stat-platform-link">
-            Xem Profile <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i>
-          </a>
-        </div>
-        <div class="stat-rows">
-          <div class="stat-item">
-            <div class="stat-label">AC Count</div>
-            <div class="stat-value loading" id="ac-ac-count">Loading</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">Rating</div>
-            <div class="stat-value loading" id="ac-rating">Loading</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">Contests</div>
-            <div class="stat-value loading" id="ac-contests">Loading</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">Longest Streak</div>
-            <div class="stat-value loading" id="ac-streak">Loading</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rating Chart -->
-  <section id="chart">
-    <div class="section-header reveal">
-      <span class="section-tag">Rating History</span>
-      <h2 class="section-title">Hành trình <span class="gradient-text">Rating</span></h2>
-    </div>
-    <div class="glass-card chart-container reveal">
-      <div class="chart-tabs">
-        <button class="chart-tab active" id="tab-cf" onclick="switchChart('cf')">Codeforces</button>
-      </div>
-      <div class="chart-wrapper">
-        <canvas id="ratingChart"></canvas>
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog -->
-  <section id="blog">
-    <div class="section-header reveal">
-      <span class="section-tag">Blog</span>
-      <h2 class="section-title">Bài viết <span class="gradient-text">mới nhất</span></h2>
-      <p class="section-subtitle">Editorial, thuật toán, và câu chuyện CP.</p>
-    </div>
-    <div class="blog-grid" id="blog-preview-grid">
-      <!-- JS will render posts here -->
-    </div>
-    <div style="text-align:center;" class="reveal">
-      <a href="blog.html" class="btn-secondary">
-        <i class="fa-solid fa-newspaper"></i>
-        Xem tất cả bài viết
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-inner">
-      <span class="footer-logo">baodat.dev</span>
-      <p class="footer-text">Tôn Thất Bảo Đạt · Học sinh PTNK – ĐHQG HCM</p>
-      <div class="footer-social">
-        <a href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener" class="social-link"
-          title="Codeforces">
-          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.8rem;">CF</span>
-        </a>
-        <a href="https://atcoder.jp/users/baodat" target="_blank" rel="noopener" class="social-link" title="AtCoder">
-          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.8rem;">AC</span>
-        </a>
-        <a href="https://www.facebook.com/greyparrotvn" target="_blank" rel="noopener" class="social-link"
-          title="Facebook">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="https://github.com/baodat2020" target="_blank" rel="noopener" class="social-link" title="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
-      </div>
-      <p class="footer-copy">© 2026 Tôn Thất Bảo Đạt. Built with ❤️</p>
-    </div>
-  </footer>
-
-  <!-- Back to Top -->
-  <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
-    <i class="fa-solid fa-chevron-up"></i>
-  </a>
-
-  <script src="js/main.js"></script>
-</body>
-
-</html>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
+<div class="mx-auto flex max-w-[1200px] items-center justify-between">
+<div class="flex items-center gap-8">
+<a href="index.html" class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+<h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#about">Về tôi</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#stats">Thành tích</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#blog">Blog</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#contact">Liên hệ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-primary/10 border border-primary/20 rounded-lg px-3 py-1.5">
+<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-sm text-slate-100 placeholder:text-slate-500 w-32 lg:w-48" placeholder="Tìm kiếm bài viết..."/>
+</div>
+<div class="flex gap-2">
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://github.com/baodat2020" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-xl leading-none">code</span>
+</a>
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-xl leading-none">public</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto flex max-w-[1200px] flex-1 flex-col px-4 md:px-20 lg:px-40 py-10 gap-16">
+<!-- Hero Section -->
+<section id="hero" class="relative overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-8 md:p-12">
+<div class="absolute top-0 right-0 -z-10 h-64 w-64 translate-x-1/4 -translate-y-1/4 rounded-full bg-primary/10 blur-3xl"></div>
+<div class="flex flex-col md:flex-row items-center gap-8">
+<div class="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-primary/30 p-1">
+<img class="w-full h-full rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Chân dung Tôn Thất Bảo Đạt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcwOOOjaXlishsyOhNkrvUxraUD7Mxo3r15jLbrABQZEoCuC86UJqEDnhxnzkT-EFxiNRw9jtQ0X2uBAQXiGcc9lqaSp9IqhKOxEMNL1het03nzb5U_7d04sbyYdmjRrKciKf7wt-kwFUCp-49DI2cqGW2awnM6Pk5dwnIlyGMFMpWQ1d5CpY8wtpOobJfKeA6Sac_ti5eW5ftNlpTx3bRN29krlDNIn-oEWdOqEee0acjUgW4ZU81z6h2WDC-S6lohr97ocpvZg" alt="Avatar"/>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="mb-2 flex flex-col md:flex-row md:items-baseline gap-2 justify-center md:justify-start">
+<h1 class="text-4xl md:text-5xl font-black text-slate-100 tracking-tighter">Tôn Thất Bảo Đạt</h1>
+<span class="text-primary font-mono text-lg">@baodat</span>
+</div>
+<p class="text-slate-400 text-lg leading-relaxed max-w-2xl mb-8">
+                            Đam mê Lập trình thi đấu, Đồ thị, Quy hoạch động và Cấu trúc dữ liệu. Hiện đang là học sinh tại PTNK - ĐHQG HCM. Luôn tìm kiếm những bài toán hóc búa để thử thách bản thân.
+                        </p>
+<div class="flex flex-wrap gap-4 justify-center md:justify-start">
+<a href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener" class="bg-primary text-background-dark font-bold px-6 py-3 rounded-lg flex items-center gap-2 hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">analytics</span>
+                                Codeforces
+                            </a>
+<a href="https://atcoder.jp/users/baodat" target="_blank" rel="noopener" class="bg-primary/10 text-primary border border-primary/30 font-bold px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">data_object</span>
+                                AtCoder
+                            </a>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section id="about" class="grid grid-cols-1 lg:grid-cols-3 gap-10 reveal">
+<div class="lg:col-span-2">
+<h3 class="text-2xl font-bold text-slate-100 mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">person</span>
+                        Về tôi
+                    </h3>
+<div class="space-y-4 text-slate-400 text-base leading-relaxed">
+<p>Xin chào! Mình là Đạt. Hành trình đến với lập trình của mình bắt đầu từ những năm cấp 2, và nó nhanh chóng trở thành niềm đam mê lớn nhất. Mình đặc biệt yêu thích mảng thuật toán và cấu trúc dữ liệu vì sự logic và tính tối ưu tuyệt đối của nó.</p>
+<p>Tại PTNK, mình dành phần lớn thời gian để luyện tập trên các nền tảng OJ, tham gia các kỳ thi học sinh giỏi và chia sẻ kiến thức với cộng đồng thông qua blog cá nhân. Mục tiêu của mình là trở thành một Grandmaster trên Codeforces và góp mặt trong các kỳ thi quốc tế.</p>
+</div>
+</div>
+<div class="bg-primary/5 border border-primary/10 p-6 rounded-xl">
+<h4 class="font-bold text-slate-100 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">school</span>
+                        Học vấn
+                    </h4>
+<ul class="space-y-4">
+<li class="border-l-2 border-primary/30 pl-4 py-1">
+<div class="text-sm text-primary font-semibold">2022 - Hiện tại</div>
+<div class="text-slate-200 font-medium">Lớp chuyên Tin</div>
+<div class="text-xs text-slate-500">Trường Phổ thông Năng khiếu - ĐHQG TP.HCM</div>
+</li>
+</ul>
+</div>
+</section>
+<!-- Stats Section -->
+<section id="stats" class="reveal">
+<h3 class="text-2xl font-bold text-slate-100 mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+                    Chỉ số Lập trình thi đấu
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Codeforces Card -->
+<div class="group relative p-6 rounded-xl border border-primary/20 bg-background-dark overflow-hidden hover:border-primary/50 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="text-xl font-bold text-slate-100">Codeforces</h4>
+<p class="text-primary text-sm font-mono">baodat</p>
+</div>
+<span id="cf-rank" class="px-3 py-1 bg-orange-500/10 text-orange-500 text-xs font-bold rounded-full uppercase tracking-wider border border-orange-500/20">Loading</span>
+</div>
+<div class="flex items-end gap-1 mb-6">
+<span id="cf-rating" class="text-4xl font-black text-slate-100">...</span>
+<span class="text-slate-500 text-sm mb-1 pb-1">max. <span id="cf-max-rating">...</span></span>
+</div>
+<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 w-[72%] shadow-[0_0_10px_rgba(249,115,22,0.5)]"></div>
+</div>
+</div>
+<!-- AtCoder Card -->
+<div class="group relative p-6 rounded-xl border border-primary/20 bg-background-dark overflow-hidden hover:border-primary/50 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="text-xl font-bold text-slate-100">AtCoder</h4>
+<p class="text-primary text-sm font-mono">baodat</p>
+</div>
+<span class="px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full uppercase tracking-wider border border-blue-500/20">Blue</span>
+</div>
+<div class="flex items-end gap-1 mb-6">
+<span id="ac-rating" class="text-4xl font-black text-slate-100">...</span>
+<span class="text-slate-500 text-sm mb-1 pb-1">max. 1912</span>
+</div>
+<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-blue-500 w-[65%] shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Chart Section -->
+<section class="reveal">
+<div class="p-8 rounded-xl border border-primary/20 bg-primary/5">
+<div class="flex items-center justify-between mb-8">
+<h4 class="font-bold text-slate-100">Lịch sử Rating</h4>
+<div class="flex gap-4">
+<span class="flex items-center gap-2 text-xs text-slate-400">
+<span class="w-3 h-3 rounded-full bg-primary"></span> Codeforces
+                            </span>
+</div>
+</div>
+<div class="relative w-full h-64 flex items-end justify-between gap-1 px-2" style="position: relative;">
+<canvas id="ratingChart"></canvas>
+</div>
+</div>
+</section>
+<!-- Blog Section -->
+<section id="blog" class="reveal">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold text-slate-100 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">article</span>
+                        Bài viết mới nhất
+                    </h3>
+<a class="text-primary hover:underline text-sm font-medium" href="blog.html">Tất cả bài viết</a>
+</div>
+<div id="blog-preview-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- JS will render posts here -->
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer id="contact" class="border-t border-primary/10 bg-background-dark px-4 md:px-20 lg:px-40 py-12">
+<div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-black text-xl tracking-tight">baodat</span>
+</div>
+<p class="text-slate-500 text-sm">© 2026 Tôn Thất Bảo Đạt. Designed for competitive programmers.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://github.com/baodat2020" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-lg">description</span>
+<span class="text-xs font-semibold">GitHub</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://www.facebook.com/greyparrotvn" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-lg">social_leaderboard</span>
+<span class="text-xs font-semibold">Facebook</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg">mail</span>
+<span class="text-xs font-semibold">Email</span>
+</a>
+</div>
+</div>
+</footer>
+<!-- Back to Top -->
+<a href="#hero" class="fixed bottom-6 right-6 p-3 rounded-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition-all opacity-0 translate-y-4 z-50 pointer-events-none" id="backToTop" aria-label="Back to top">
+<span class="material-symbols-outlined">expand_less</span>
+</a>
+</div>
+<script src="js/main.js"></script>
+</body></html>

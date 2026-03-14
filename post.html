@@ -1,88 +1,151 @@
 <!DOCTYPE html>
-<html lang="vi">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Post — Tôn Thất Bảo Đạt Blog</title>
-    <meta name="description" content="Blog của Tôn Thất Bảo Đạt" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <!-- Marked.js for Markdown rendering -->
-    <script src="https://cdn.jsdelivr.net/npm/marked@11.2.0/marked.min.js" defer></script>
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Post — baodat | Portfolio</title>
+<meta name="description" content="Blog của Tôn Thất Bảo Đạt" />
+<!-- Include typography plugin for markdown parsing -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/marked@11.2.0/marked.min.js" defer></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0dccf2",
+              "background-light": "#f5f8f8",
+              "background-dark": "#101f22",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            typography: (theme) => ({
+              DEFAULT: {
+                css: {
+                  '--tw-prose-body': theme('colors.slate[400]'),
+                  '--tw-prose-headings': theme('colors.slate[100]'),
+                  '--tw-prose-lead': theme('colors.slate[300]'),
+                  '--tw-prose-links': theme('colors.primary'),
+                  '--tw-prose-bold': theme('colors.slate[100]'),
+                  '--tw-prose-counters': theme('colors.slate[400]'),
+                  '--tw-prose-bullets': theme('colors.slate[400]'),
+                  '--tw-prose-hr': theme('colors.primary / 0.2'),
+                  '--tw-prose-quotes': theme('colors.slate[100]'),
+                  '--tw-prose-quote-borders': theme('colors.primary'),
+                  '--tw-prose-captions': theme('colors.slate[400]'),
+                  '--tw-prose-code': theme('colors.primary'),
+                  '--tw-prose-pre-code': theme('colors.slate[200]'),
+                  '--tw-prose-pre-bg': theme('colors.background-dark'),
+                  '--tw-prose-th-borders': theme('colors.primary / 0.2'),
+                  '--tw-prose-td-borders': theme('colors.primary / 0.1'),
+                  'code::before': { content: '""' },
+                  'code::after': { content: '""' },
+                  a: { textDecoration: 'none', '&:hover': { textDecoration: 'underline' } },
+                },
+              },
+            }),
+          },
+        },
+      }
+    </script>
 </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
+<div class="mx-auto flex max-w-[1200px] items-center justify-between">
+<div class="flex items-center gap-8">
+<a href="index.html" class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+<h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#about">Về tôi</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#stats">Thành tích</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="blog.html">Blog</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#contact">Liên hệ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-primary/10 border border-primary/20 rounded-lg px-3 py-1.5">
+<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-sm text-slate-100 placeholder:text-slate-500 w-32 lg:w-48" placeholder="Tìm kiếm bài viết..."/>
+</div>
+<div class="flex gap-2">
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://github.com/baodat2020" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-xl leading-none">code</span>
+</a>
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-xl leading-none">public</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto flex max-w-[800px] w-full flex-1 flex-col px-4 md:px-8 py-10">
 
-<body>
-
-    <div class="bg-gradient-orb orb-1"></div>
-    <div class="bg-gradient-orb orb-2"></div>
-
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
-        <a href="index.html" class="nav-logo">baodat.dev</a>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#stats">CP Stats</a></li>
-            <li><a href="blog.html">Blog</a></li>
-        </ul>
-        <div class="nav-hamburger" id="hamburger" role="button" tabindex="0" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </div>
-    </nav>
-
-    <div class="post-hero">
-        <a href="blog.html"
-            style="display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);text-decoration:none;font-size:0.88rem;margin-bottom:2rem;transition:var(--transition);"
-            onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">
-            <i class="fa-solid fa-arrow-left"></i> Tất cả bài viết
-        </a>
-        <div id="post-meta" style="margin-bottom:1rem;"></div>
-        <h1 id="post-title" class="section-title" style="text-align:left;font-size:clamp(1.6rem,4vw,2.4rem);"></h1>
-        <div id="post-info"
-            style="margin-top:1rem;display:flex;align-items:center;gap:1rem;color:var(--text-muted);font-size:0.85rem;">
-        </div>
-    </div>
-
-    <article class="post-body" id="post-body">
-        <!-- Markdown content rendered here -->
-    </article>
-
-    <div style="max-width:780px;margin:0 auto 80px;padding:0 5%;">
-        <a href="blog.html" class="btn-secondary">
-            <i class="fa-solid fa-arrow-left"></i> Quay lại Blog
-        </a>
-    </div>
-
-    <footer>
-        <div class="footer-inner">
-            <span class="footer-logo">baodat.dev</span>
-            <p class="footer-text">Tôn Thất Bảo Đạt · Học sinh PTNK – ĐHQG HCM</p>
-            <div class="footer-social">
-                <a href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener" class="social-link"
-                    title="Codeforces">
-                    <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.8rem;">CF</span>
-                </a>
-                <a href="https://atcoder.jp/users/baodat" target="_blank" rel="noopener" class="social-link"
-                    title="AtCoder">
-                    <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.8rem;">AC</span>
-                </a>
-                <a href="https://www.facebook.com/greyparrotvn" target="_blank" rel="noopener" class="social-link"
-                    title="Facebook">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-                <a href="https://github.com/baodat2020" target="_blank" rel="noopener" class="social-link"
-                    title="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-            </div>
-            <p class="footer-copy">© 2026 Tôn Thất Bảo Đạt. Built with ❤️</p>
-        </div>
-    </footer>
-
-    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fa-solid fa-chevron-up"></i>
+<div class="post-hero mb-12 border-b border-primary/10 pb-8 reveal">
+    <a href="blog.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-primary text-sm font-medium mb-8 transition-colors">
+        <i class="fa-solid fa-arrow-left"></i> Tất cả bài viết
     </a>
+    
+    <div id="post-meta" class="mb-4 flex gap-2 text-[10px] font-bold text-primary px-2 py-0.5 uppercase">
+        <!-- JS fills tag span here -->
+    </div>
+    
+    <h1 id="post-title" class="text-3xl md:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight"></h1>
+    
+    <div id="post-info" class="mt-6 flex items-center gap-4 text-slate-400 text-sm">
+        <!-- JS fills info here -->
+    </div>
+</div>
 
-    <script src="js/blog.js"></script>
-</body>
+<article id="post-body" class="prose prose-invert prose-primary mx-auto max-w-none text-slate-300 reveal">
+    <!-- Markdown content rendered here -->
+</article>
 
-</html>
+<div class="mt-16 pt-8 border-t border-primary/10">
+    <a href="blog.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border border-primary/30 rounded-lg hover:bg-primary/20 transition-all font-bold">
+        <i class="fa-solid fa-arrow-left"></i> Quay lại Blog
+    </a>
+</div>
+
+</main>
+<!-- Footer -->
+<footer id="contact" class="border-t border-primary/10 bg-background-dark px-4 md:px-20 lg:px-40 py-12 mt-auto">
+<div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-black text-xl tracking-tight">baodat</span>
+</div>
+<p class="text-slate-500 text-sm">© 2026 Tôn Thất Bảo Đạt. Designed for competitive programmers.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://github.com/baodat2020" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-lg">description</span>
+<span class="text-xs font-semibold">GitHub</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://www.facebook.com/greyparrotvn" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-lg">social_leaderboard</span>
+<span class="text-xs font-semibold">Facebook</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg">mail</span>
+<span class="text-xs font-semibold">Email</span>
+</a>
+</div>
+</div>
+</footer>
+<!-- Back to Top -->
+<a href="#" class="fixed bottom-6 right-6 p-3 rounded-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition-all opacity-0 translate-y-4 z-50 pointer-events-none" id="backToTop" aria-label="Back to top">
+<span class="material-symbols-outlined">expand_less</span>
+</a>
+</div>
+<script src="js/blog.js"></script>
+</body></html>

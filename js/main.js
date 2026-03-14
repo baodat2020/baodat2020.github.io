@@ -21,19 +21,17 @@ const CF_RANK_COLORS = {
   'legendary grandmaster': '#ff0000',
 };
 
-// ── Navbar hamburger
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-if (hamburger) {
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-  hamburger.addEventListener('keydown', e => { if (e.key === 'Enter') navLinks.classList.toggle('open'); });
-}
-
 // ── Back to Top
 const backToTop = document.getElementById('backToTop');
 if (backToTop) {
   window.addEventListener('scroll', () => {
-    backToTop.classList.toggle('visible', window.scrollY > 400);
+    if (window.scrollY > 400) {
+      backToTop.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      backToTop.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+    } else {
+      backToTop.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+      backToTop.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+    }
   });
 }
 
@@ -41,13 +39,17 @@ if (backToTop) {
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+      entry.target.classList.remove('opacity-0', 'translate-y-8');
+      entry.target.classList.add('opacity-100', 'translate-y-0');
       revealObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal').forEach(el => {
+  el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out');
+  revealObserver.observe(el);
+});
 
 // ── Helpers
 function setText(id, val) {
@@ -188,8 +190,8 @@ function renderCFChart(history) {
   const ratings = history.map(r => r.newRating);
 
   const gradient = canvas.getContext('2d').createLinearGradient(0, 0, 0, 300);
-  gradient.addColorStop(0, 'rgba(0, 229, 255, 0.3)');
-  gradient.addColorStop(1, 'rgba(0, 229, 255, 0)');
+  gradient.addColorStop(0, 'rgba(13, 204, 242, 0.3)');
+  gradient.addColorStop(1, 'rgba(13, 204, 242, 0)');
 
   const pointColors = ratings.map(r => getRatingZoneColor(r));
 
@@ -202,7 +204,7 @@ function renderCFChart(history) {
       datasets: [{
         label: 'Rating',
         data: ratings,
-        borderColor: '#00e5ff',
+        borderColor: '#0dccf2',
         backgroundColor: gradient,
         borderWidth: 2.5,
         fill: true,
@@ -221,10 +223,10 @@ function renderCFChart(history) {
       plugins: {
         legend: { display: false },
         tooltip: {
-          backgroundColor: 'rgba(5, 8, 16, 0.95)',
-          borderColor: 'rgba(0, 229, 255, 0.3)',
+          backgroundColor: 'rgba(16, 31, 34, 0.95)',
+          borderColor: 'rgba(13, 204, 242, 0.3)',
           borderWidth: 1,
-          titleColor: '#f0f4f8',
+          titleColor: '#f1f5f9',
           bodyColor: '#94a3b8',
           padding: 12,
           callbacks: {
@@ -286,17 +288,29 @@ async function renderBlogPreview() {
 
 function buildBlogCard(post) {
   const tagLabels = { cp: 'CP', algo: 'Algorithm', life: 'Life' };
+  const tag = tagLabels[post.tag] || post.tag;
   return `
-    <a href="post.html?slug=${post.slug}" class="glass-card blog-card reveal">
-      <div class="blog-card-meta">
-        <span class="blog-tag ${post.tag}">${tagLabels[post.tag] || post.tag}</span>
-        <span class="blog-date">${formatDate(post.date)}</span>
+    <a href="post.html?slug=${post.slug}" class="flex flex-col rounded-xl border border-primary/10 bg-background-dark/50 hover:border-primary/30 transition-all overflow-hidden group reveal opacity-0 translate-y-8 duration-700 ease-out">
+      <div class="h-40 overflow-hidden relative">
+        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgoOw05aHhyUPbWwErgZqov6E0Jj24fMZ9FSmlYgku1kDc3uV1l488zLRdIU1pSEsi9CCcZ0F60_2gpgPMM61kMXd1XX0Oi5sNSTnjflli8eJ3bLu1MpIQB7pbFk5yR3YDMRfhUNaF1NCh10ePGkLkKFot0zE2Ba8T2vorkZOEoWpfgnsQRcdQNHXjsG3xIO5OI-mDCeZU2BMfmMVoff4NBzXMF22Kvi8wD1Unuyym5df-2WRNXm9MPTy_EiWvb6_AmzpKB5ndaw" alt=""/>
+        <div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent opacity-60"></div>
       </div>
-      <h3 class="blog-card-title">${post.title}</h3>
-      <p class="blog-card-excerpt">${post.excerpt}</p>
-      <div class="blog-card-footer">
-        <span class="read-time"><i class="fa-regular fa-clock" style="margin-right:4px;"></i>${post.readTime}</span>
-        <span class="read-more">Đọc tiếp <i class="fa-solid fa-arrow-right"></i></span>
+      <div class="p-5 flex-1 flex flex-col">
+        <div class="flex gap-2 mb-3">
+          <span class="text-[10px] font-bold text-primary px-2 py-0.5 rounded bg-primary/10 border border-primary/20 uppercase">${tag}</span>
+        </div>
+        <h5 class="text-slate-100 font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors">${post.title}</h5>
+        <p class="text-slate-400 text-sm mb-6 flex-1 line-clamp-3">${post.excerpt}</p>
+        <div class="flex items-center justify-between text-[11px] text-slate-500 border-t border-primary/10 pt-4">
+          <span class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-xs">calendar_today</span>
+            ${formatDate(post.date)}
+          </span>
+          <span class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-xs">schedule</span>
+            ${post.readTime}
+          </span>
+        </div>
       </div>
     </a>`;
 }
