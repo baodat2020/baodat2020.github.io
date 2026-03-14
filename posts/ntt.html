@@ -81,56 +81,10 @@
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
 <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
 <!-- Navigation Bar -->
-<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
-<div class="mx-auto flex max-w-[1200px] items-center justify-between">
-<div class="flex items-center gap-8">
-<a href="https://baodat2020.github.io/index.html" class="flex items-center gap-3 text-primary">
-<span class="material-symbols-outlined text-3xl">terminal</span>
-<h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
-</a>
-
-
-
-<nav class="hidden md:flex items-center gap-6">
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html">Trang chủ</a>
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html#about">Về tôi</a>
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html#stats">Thành tích</a>
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html#projects">Dự án</a>
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/blog.html">Blog</a>
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/documents.html">Tài liệu</a>
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html#contact">Liên hệ</a>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<div class="hidden sm:flex items-center bg-primary/10 border border-primary/20 rounded-lg px-3 py-1.5">
-<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
-<input class="bg-transparent border-none focus:ring-0 p-0 text-sm text-slate-100 placeholder:text-slate-500 w-32 lg:w-48" placeholder="Tìm kiếm bài viết..."/>
-</div>
-<div class="flex gap-2">
-<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://github.com/baodat2020" target="_blank" rel="noopener">
-<span class="material-symbols-outlined text-xl leading-none">code</span>
-</a>
-<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener">
-<span class="material-symbols-outlined text-xl leading-none">public</span>
-</a>
-          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all">
-            <span class="material-symbols-outlined text-xl leading-none" id="mobile-menu-icon" aria-label="Menu">menu</span>
-          </button>
-</div>
-</div>
-</div>
-</header>
+<div id="layout-header"></div>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bottom-0 z-40 bg-background-dark/95 backdrop-blur-xl flex-col items-center justify-start pt-10 gap-6 overflow-y-auto pb-10">
-      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../index.html">Trang chủ</a>
-      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../index.html#about">Về tôi</a>
-      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../index.html#stats">Thành tích</a>
-      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../index.html#projects">Dự án</a>
-      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../blog.html">Blog</a>
-      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../documents.html">Tài liệu</a>
-      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../index.html#contact">Liên hệ</a>
-    </div>
+    <div id="layout-mobile-menu"></div>
 <main class="mx-auto flex max-w-[800px] w-full flex-1 flex-col px-4 md:px-8 py-10">
 
 <div class="post-hero mb-12 border-b border-primary/10 pb-8 reveal">
@@ -250,31 +204,7 @@ void ntt(vector&lt;long long&gt;&amp; a, bool invert) {
 
 </main>
 <!-- Footer -->
-<footer id="contact" class="border-t border-primary/10 bg-background-dark px-4 md:px-20 lg:px-40 py-12 mt-auto">
-<div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-8">
-<div class="flex flex-col items-center md:items-start gap-4">
-<div class="flex items-center gap-2 text-primary">
-<span class="material-symbols-outlined">terminal</span>
-<span class="font-black text-xl tracking-tight">baodat</span>
-</div>
-<p class="text-slate-500 text-sm">© 2026 Tôn Thất Bảo Đạt. Designed for competitive programmers.</p>
-</div>
-<div class="flex gap-6">
-<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://github.com/baodat2020" target="_blank" rel="noopener">
-<span class="material-symbols-outlined text-lg">description</span>
-<span class="text-xs font-semibold">GitHub</span>
-</a>
-<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://www.facebook.com/greyparrotvn" target="_blank" rel="noopener">
-<span class="material-symbols-outlined text-lg">social_leaderboard</span>
-<span class="text-xs font-semibold">Facebook</span>
-</a>
-<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="#">
-<span class="material-symbols-outlined text-lg">mail</span>
-<span class="text-xs font-semibold">Email</span>
-</a>
-</div>
-</div>
-</footer>
+<div id="layout-footer"></div>
 <!-- Back to Top -->
 <a href="#" class="fixed bottom-6 right-6 p-3 rounded-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition-all opacity-0 translate-y-4 z-50 pointer-events-none" id="backToTop" aria-label="Back to top">
 <span class="material-symbols-outlined">expand_less</span>
@@ -282,5 +212,6 @@ void ntt(vector&lt;long long&gt;&amp; a, bool invert) {
 </div>
 
 
-  <script src="../js/mobileMenu.js"></script>
+  
+  <script src="../js/layout.js"></script>
 </body></html>
