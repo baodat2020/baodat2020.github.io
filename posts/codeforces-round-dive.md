@@ -111,7 +111,67 @@ Tại mỗi bước $i$ từ 1 đến $n-1$:
 
 ---
 
-## 5. Tổng kết: "Dive" như thế nào cho đúng?
+## 5. Bài E: Graph Composition
+**Đề bài:** Cho hai đồ thị $G$ và $F$ có cùng $n$ đỉnh. Bạn cần thực hiện số thao tác tối thiểu (thêm/xóa cạnh trên $G$) để số lượng thành phần liên thông của $G$ giống như $F$, và đặc biệt: hai đỉnh $u, v$ liên thông trong $G$ khi và chỉ khi chúng liên thông trong $F$.
+
+### Tư duy bước 1: Phân tích điều kiện
+Đây là một bài toán về **DSU** (Disjoint Set Union).
+Điều kiện quan trọng: Nếu $u, v$ thuộc cùng một thành phần liên thông (CC) trong $G$, chúng **bắt buộc** phải thuộc cùng một CC trong $F$.
+Nếu $u, v$ có cạnh trong $G$ nhưng thuộc hai CC *khác nhau* trong $F$, ta **phải** xóa cạnh đó.
+
+### Thuật toán:
+1. Xây dựng DSU cho đồ thị $F$ để biết đỉnh nào thuộc CC nào.
+2. Với mỗi cạnh $(u, v)$ trong đồ thị $G$:
+   - Nếu $find_F(u) \neq find_F(v)$, ta phải xóa cạnh này (tăng biến count).
+   - Ngược lại, ta thêm cạnh này vào DSU của $G$ (để quản lý các CC "hợp lệ" của $G$).
+3. Sau khi lọc các cạnh hợp lệ, $G$ sẽ có một số CC.
+4. Cuối cùng, ta cần thêm các cạnh vào $G$ để gộp các CC cho đến khi cấu trúc CC của $G$ khớp hoàn toàn với $F$. Số cạnh cần thêm chính là (số CC của $G$ - số CC của $F$).
+
+---
+
+## 6. Bài F: Multiplicative Arrays
+**Đề bài:** Đếm số lượng mảng $a$ độ dài $k$ sao cho $1 \le a_i \le n$ và tích $\prod a_i \le n$. (Kết quả modulo).
+
+### Tư duy: DP kết hợp Combinatorics
+Đây là bài toán về **Phân rã thừa số** và **Stars and Bars**.
+Tích các số $\le n$ có nghĩa là chúng ta đang phân phối các thừa số nguyên tố. Tuy nhiên, thay vì phân tích từng số, ta có thể dùng DP.
+Số lượng các số khác 1 trong mảng là khá nhỏ (vì tích không quá $n$, tối đa $\log_2(n)$ số).
+
+### Chiến lược:
+1. Tính số cách tạo ra một tích $X$ bằng $m$ số *lớn hơn 1*. Gọi là $dp[X][m]$.
+2. Với mỗi $X \le n$, ta chọn ra $m$ vị trí trong mảng $k$ phần tử để đặt m số này vào. Số cách chọn là $\binom{k}{m}$.
+3. Các vị trí còn lại trong mảng mặc định là số 1.
+4. Tổng hợp lại cho mọi $X$ và mọi $m$.
+
+---
+
+## 7. Bí kíp để "Full" Div. 2: Phá bỏ ranh giới
+
+Để giải quyết trọn vẹn (Full) một contest Div. 2, bạn cần nhiều hơn là chỉ kiến thức thuật toán. Đó là sự kết hợp giữa **Tốc độ**, **Độ chính xác** và **Tâm lý**.
+
+### 1. Giai đoạn "Speedrun" (A - C)
+- **Mục tiêu:** Xong trong vòng 30-45 phút.
+- **Tại sao?** Thời gian còn lại (1h30m) sẽ được dành trọn cho D, E và F. Nếu bạn kẹt ở bài C quá lâu, áp lực tâm lý sẽ khiến bạn khó tư duy sâu cho các bài sau.
+- **Luyện tập:** Làm thật nhiều bài Tag `1200-1500` trên Codeforces để hình thành phản xạ.
+
+### 2. Giai đoạn "Solidify" (D)
+- **Mục tiêu:** AC trong tối đa 2 lần submit.
+- **Common Trap:** Bài D thường là ranh giới của việc dùng thuật toán sai (Greedy sai hoặc DP thiếu trạng thái). Hãy dành 5-10 phút để chứng minh hoặc tìm counter-example trước khi code.
+
+### 3. Giai đoạn "Breakthrough" (E - F)
+Đây là nơi phân loại giữa Expert và Candidate Master/Master.
+- **Kiến thức cần có:**
+  - **DP Optimization:** CHT, Divide & Conquer, Bitmask.
+  - **Graph:** Centroid Decomposition, Heavy-Light Decomposition.
+  - **Math:** Nghịch đảo modulo, Tổ hợp nâng cao, Sàng nguyên tố biến tấu.
+- **Tư duy:** Đừng sợ đề bài dài. Hãy bóc tách đề bài thành các sub-problems nhỏ hơn. Thông thường, bài E là sự kết hợp của một tính chất quan sát được và một cấu trúc dữ liệu cơ bản.
+
+### 4. Đừng ngại "Upsolve"
+Hầu hết các Master không trở nên giỏi bằng cách chỉ thi contest. Họ giỏi bằng cách **Upsolve bài E/F** ngay sau khi contest kết thúc. Nếu bạn giải được A-D, hãy ép mình phải hiểu và code lại bài E trong ngày hôm sau.
+
+---
+
+## Tổng kết: "Dive" như thế nào cho đúng?
 
 Qua 4 bài trên, chúng ta thấy một mô thức chung của Div.2:
 1. **Bài A/B:** Tập trung vào quan sát cấu trúc và implementation nhanh.

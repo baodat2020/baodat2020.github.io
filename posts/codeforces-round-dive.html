@@ -247,7 +247,63 @@ Tại mỗi bước $i$ từ 1 đến $n-1$:</p>
 
 <hr>
 
-<h2>5. Tổng kết: "Dive" như thế nào cho đúng?</h2>
+<h2>5. Bài E: Graph Composition</h2>
+<p><strong>Đề bài:</strong> Cho hai đồ thị $G$ và $F$ có cùng $n$ đỉnh. Bạn cần thực hiện số thao tác tối thiểu (thêm/xóa cạnh trên $G$) để cấu trúc liên thông của $G$ khớp hoàn toàn với $F$.</p>
+
+<h3>Tư duy: Phân tích điều kiện</h3>
+<p>Đây là một bài toán về <strong>DSU</strong> (Disjoint Set Union). Điều kiện cốt lõi: Hai đỉnh liên thông trong $G$ <i>chỉ khi</i> chúng liên thông trong $F$. Nếu $u, v$ có cạnh trong $G$ nhưng thuộc hai thành phần liên thông (CC) khác nhau trong $F$, ta <strong>bắt buộc</strong> phải xóa cạnh đó.</p>
+
+<h3>Thuật toán:</h3>
+<ol>
+<li>Xây dựng DSU cho đồ thị $F$ để xác định các CC.</li>
+<li>Duyệt qua các cạnh $(u, v)$ của $G$. Nếu $u, v$ không cùng CC trong $F$, xóa cạnh đó (tăng biến đếm).</li>
+<li>Sau khi lọc, dùng DSU để quản lý CC của $G$. Số cạnh cần thêm để "khớp" với $F$ là <code>(số CC của G - số CC của F)</code>.</li>
+</ol>
+
+<hr>
+
+<h2>6. Bài F: Multiplicative Arrays</h2>
+<p><strong>Đề bài:</strong> Đếm số lượng mảng $a$ độ dài $k$ sao cho $1 \le a_i \le n$ và tích các phần tử không vượt quá $n$.</p>
+
+<h3>Tư duy: DP kết hợp Tổ hợp</h3>
+<p>Bài toán này sử dụng <strong>Stars and Bars</strong> và <strong>DP phân rã</strong>. Vì tích không quá $n$, số lượng các số khác 1 trong mảng rất nhỏ (tối đa $\approx 15-20$ số).</p>
+
+<h3>Chiến lược:</h3>
+<ol>
+<li>Dùng DP để tính số cách tạo ra tích $X \le n$ bằng $m$ số lớn hơn 1.</li>
+<li>Với mỗi cấu hình $(X, m)$, chọn $m$ vị trí trong mảng $k$ phần tử: $\binom{k}{m}$.</li>
+<li>Các vị trí còn lại lấp đầy bằng số 1. Tổng hợp kết quả bằng cách quét qua mọi $X$ và $m$.</li>
+</ol>
+
+<hr>
+
+<h2>7. Bí kíp để "Full" Div. 2: Phá bỏ ranh giới</h2>
+
+<p>Để giải quyết trọn vẹn (Full) một contest Div. 2, bạn cần sự kết hợp giữa <strong>Tốc độ</strong>, <strong>Độ chính xác</strong> và <strong>Tâm lý</strong>.</p>
+
+<h3>1. Giai đoạn "Speedrun" (A - C)</h3>
+<ul>
+<li><strong>Mục tiêu:</strong> Hoàn thành trong 30-45 phút để dành 1h30m còn lại cho các bài khó.</li>
+<li><strong>Luyện tập:</strong> Rèn luyện phản xạ với các bài Tag <code>1200-1500</code>.</li>
+</ul>
+
+<h3>2. Giai đoạn "Solidify" (D)</h3>
+<ul>
+<li><strong>Mục tiêu:</strong> AC ngay lần đầu. Bài D thường là ranh giới của việc dùng thuật toán sai. Hãy dành 5-10 phút để chứng minh Greedy hoặc DP trước khi code.</li>
+</ul>
+
+<h3>3. Giai đoạn "Breakthrough" (E - F)</h3>
+<ul>
+<li><strong>Kiến thức cần có:</strong> DP Optimization (CHT, Li-Chao), Advanced Graph (Centroid, HLD), và Tổ hợp nâng cao.</li>
+<li><strong>Tư duy:</strong> Đừng sợ đề dài. Hãy bóc tách đề thành các bài toán nhỏ. Thông thường bài E là sự kết hợp của một quan sát thông minh và một cấu trúc dữ liệu cơ bản.</li>
+</ul>
+
+<h3>4. Đừng ngại "Upsolve"</h3>
+<p>Thành công không đến từ việc chỉ thi contest. Hãy <strong>Upsolve bài E/F</strong> ngay ngày hôm sau nếu bạn chưa làm được trong giờ thi.</p>
+
+<hr>
+
+<h2>Tổng kết: "Dive" như thế nào cho đúng?</h2>
 
 <p>Qua 4 bài trên, chúng ta thấy một mô thức chung của Div.2:</p>
 <ol>
