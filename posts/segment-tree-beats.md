@@ -2,67 +2,76 @@
 title: "Kỹ thuật Segment Tree Beats"
 date: "2024-03-12"
 excerpt: "Segment Tree Beats (Nhịp đập Cây Phân Đoạn) là kỹ thuật giải quyết các phép biến đổi range chmin/chmax..."
-readTime: "12 phút"
+readTime: "20 phút"
 tag: "algo"
+image: "assets/thumbnail_segment.png"
 ---
 
 # Kỹ thuật Segment Tree Beats
 
-Segment Tree Beats (được đặt tên bởi *jiry_2*, đôi khi được gọi là Ji-Driver Tree ở OI Wiki) là một kỹ thuật mở rộng của Cây phân đoạn (Segment Tree), cho phép chúng ta thực thi các truy vấn thay đổi dãy số rất mạnh mà Segment Tree cơ bản (có Lazy Propagation thông thường) không thể giải quyết được. Điển hình như các dạng truy vấn **Range `chmin`** và **Range `chmax`**.
+**Segment Tree Beats** (được thế giới CP biết đến qua *jiry_2*, đôi khi được gọi là **Ji-Driver Tree**) là một sự mở rộng kinh ngạc của Cây phân đoạn (Segment Tree). Nó được thiết kế để xử lý các truy vấn biến đổi đặc biệt khó nhằn mà một Segment Tree thông thường với Lazy Propagation có thể phải "bó tay", cụ thể là truy vấn thay đổi kiểu **Range `chmin`** và **Range `chmax`**.
 
-## Bài toán cơ bản
+## 1. Bài toán: Khi Lazy Propagation sụp đổ
 
-Cho mảng $a$ gồm $N$ phần tử, hỗ trợ hai cập nhật/truy vấn:
-1. `Update(L, R, x)`: Với mọi $i \in [L, R]$, lấy $a_i = \min(a_i, x)$ (gọi tắt là **chmin**).
-2. `Query(L, R)`: Tính tổng các $a_i$ với $i \in [L, R]$.
+Một bài toán điển hình kích hoạt Segment Tree Beats:
+Cho một mảng $A$ gồm $N$ phần tử. Cần hỗ trợ 2 loại truy vấn:
+1. `Update(L, R, x)`: Với mọi $i \in [L, R]$, lấy $A_i = \min(A_i, x)$ (gọi tắt là **chmin**).
+2. `Query(L, R)`: Tính tổng các $A_i$ với $i \in [L, R]$.
 
-Nếu chúng ta chỉ duy trì tổng (sum), thao tác `chmin` dường như không thể chạy với Lazy Propagation, vì nếu có nhiều giá trị khác nhau trong khoảng $[L, R]$, ta không biết bao nhiêu giá trị thực sự thay đổi và thay đổi đi bao nhiêu. Đằng sau bài toán $\min(x, \cdot)$ này, Segment Tree Beats đưa ra một góc nhìn mới về độ phức tạp.
+Bình thường khi cộng một đoạn `(add(L, R, x))`, tổng đoạn đó tăng thêm `x * (R - L + 1)`. 
+Nhưng với truy vấn `chmin`, nếu ta đang quản lý một nút và biết tổng của nó, ta **chẳng thể biết được** phần tử nào bên trong đang lớn hơn $x$ và lớn hơn bao nhiêu để có thể trừ đi tổng số hợp lý. Các phần tử bị tác động ngẫu nhiên khiến Lazy Tree hoàn toàn không áp dụng được!
 
-## Ý tưởng cốt lõi
+## 2. Kỹ thuật "Khám phá"
 
-Thay vì chỉ lưu `sum` trên một nút của Segment Tree, chúng ta lưu:
+Ji-Driver đề xuất việc lưu trữ sâu hơn trạng thái của từng đoạn trên Segment Tree. Tại một nút quản lý đoạn, ta lưu lại:
 - `sum`: Tổng các phần tử.
-- `max_val`: Giá trị lớn nhất trong đoạn.
-- `max_cnt`: Số lần xuất hiện của giá trị lớn nhất.
-- `second_max`: Giá trị lớn **thứ hai** trong đoạn (lớn nhất tiếp theo, nhưng thực sự nhỏ hơn `max_val`).
+- `max_val`: Giá trị LỚN NHẤT trong đoạn.
+- `max_cnt`: Số phần tử nhận giá trị `max_val` trong đoạn.
+- `second_max`: Giá trị LỚN THỨ HAI trong đoạn (lớn nhất nghiêm ngặt tiếp theo, tức là $\max \{ A_i \mid A_i < \text{max\_val} \}$ ).
 
-Khi xử lý truy vấn thay đổi mảng $a_i \gets \min(a_i, x)$ trên một node ứng với đoạn $[L, R]$, hàm đệ quy của ta sẽ dựa trên 3 tình huống (dựa vào [USACO Guide](https://usaco.guide/adv/segment-tree-beats?lang=cpp)):
+Khi xử lý truy vấn $A_i \gets \min(A_i, x)$ trên một node, hàm đệ quy của ta sẽ điều phối qua 3 tình huống cốt lõi sau:
 
-1. **Break condition (Trường hợp dừng):**
-   Nếu `max_val <= x`, không có giá trị nào trong đoạn này bị thay đổi. Lập tức **return**.
+### Tình huống 1: Break Condition (Dừng Khám Phá)
+Nếu giá trị lớn nhất trong đoạn đã nhỏ hơn hoặc bằng $x$ (`max_val <= x`).
+*Xử lý:* Đoạn này chẳng có thần dân nào bị ảnh hưởng bởi lời nguyền $\min(A, x)$ cả. Ta `return` ngay lập tức!
 
-2. **Tag condition (Trường hợp đánh dấu):**
-   Nếu `second_max < x < max_val`, lúc này **chỉ có** những phần tử mang giá trị `max_val` mới bị ảnh hưởng bởi $x$. Tất cả những phần tử mang giá trị lớn nhất đó sẽ biến thành $x$.
-   Lúc này ta cập nhật `sum -= (max_val - x) * max_cnt`, và đánh dấu `lazy` tag cho con, thay đổi `max_val = x`. Sau đó dừng đệ quy.
+### Tình huống 2: Tag Condition (Đánh Dấu Lười Biếng)
+Nếu giá trị lớn thứ 2 nằm dưới ngưỡng $x$, còn giá trị lớn nhất thì chọc thủng $x$ ($second\_max < x < max\_val$).
+*Xử lý:* Lúc này, **chỉ có duy nhất** nhóm các phần tử đang giữ vị trí quán quân `max_val` mới bị ép xuống $x$. Những phần tử còn lại hoàn toàn an toàn. 
+Vì đã biết có đúng `max_cnt` phần tử thủ lĩnh đang mang giá rẻ `max_val`, ta hoàn toàn tính ra được lượng thâm hụt:
+$$ sum = sum - (max\_val - x) \cdot max\_cnt $$
+Ta cập nhật `max_val = x`, tag `lazy` xuống và `return` (không đi sâu thêm).
 
-3. **Explore condition (Trường hợp tiếp tục duyệt sâu):**
-   Nếu `x <= second_max`, lúc này không chỉ `max_val` mà cả `second_max` (và có thể nhiều hơn) cũng bị biến thành $x$. Cấu trúc bên dưới bị phá vỡ phức tạp. Ta **không** áp dụng Lazy tag ngay mà gọi đệ quy tiếp tục chui xuống hai cây con trái phải.
-
-## Mã giả C++ (cập nhật `chmin`)
+### Tình huống 3: Explore Condition (Chia ra Trị)
+Tình huống tồi tệ nhất ($x \le second\_max$).
+Lúc này cả bọn quán quân, á quân, và không biết bao nhiêu phần tử khác cũng bị ép xuống $x$. Ta không thể đoán được.
+*Xử lý:* **Đẩy đệ quy (Exploration) xuống 2 cây con**!
 
 ```cpp
 void modify(int node, int l, int r, int ql, int qr, int x) {
-    if (l > qr || r < ql || tree[node].max_val <= x) {
-        return; // Break condition
+    if (l > qr || r < ql || tree[node].max_val <= x) return; // Break 
+    if (ql <= l && r <= qr && tree[node].second_max < x) {    // Tag
+        apply(node, x); return;
     }
-
-    if (ql <= l && r <= qr && tree[node].second_max < x) {
-        // Tag condition
-        apply(node, x);
-        return;
-    }
-
-    // Explore condition (push down và đệ quy)
-    push_down(node, l, r);
-    int mid = (l + r) >> 1;
-    modify(node << 1, l, mid, ql, qr, x);
-    modify(node << 1 | 1, mid + 1, r, ql, qr, x);
-    pull_up(node); // Cập nhật lại max_val, max_cnt, second_max, sum
+    // Explore
+    push_down(node);
+    int mid = (l + r) / 2;
+    modify(node * 2, l, mid, ql, qr, x);
+    modify(node * 2 + 1, mid + 1, r, ql, qr, x);
+    pull_up(node);
 }
 ```
 
-## Độ phức tạp
+## 3. Chứng minh thời gian O(N log^2 N)
 
-Toán học đằng sau kỹ thuật này, hay phương pháp thế năng (Potential Method) và amortized analysis chứng minh rằng số lượng "trường hợp duyệt sâu" là không quá nhiều. Độ phức tạp khấu hao cho mỗi thao tác là $\mathcal{O}(\log N)$. 
+Việc "Tình huống 3" đẩy đệ quy xuống các lá trông như có thể thoái hóa về độ phức tạp $\mathcal{O}(N)$ cho mỗi truy vấn nếu đồ thị cấu trúc phức tạp, nhưng nhờ vào **phép phân tích khấu hao (Amortized Analysis)** qua Phương pháp Thế năng, nhà toán học đã chứng minh thuật toán này có cận trên cực kỳ an toàn. 
 
-Kỹ thuật Segment Tree Beats có thể mở rộng với các truy vấn `chmax`, cập nhật `add(x)` hay tính lịch sử (historical information). Đây là một tool mạnh mẽ đem lại nhiều kinh nghiệm cho người tham gia code thi đấu.
+Đơn giản hóa: Hãy coi mỗi lần một "giá trị riêng biệt" bị ép lún bằng với một giá trị khác (hai loại số trập làm một), số lượng các "loại số" sẽ giảm đi. Mỗi nút tốn cost khám phá khi và chỉ khi số lượng distinct values tại nút đó giảm. Vì số loại chỉ tăng qua các nhát cắt Interval của Truy vấn Segment Tree $\mathcal{O}(\log N)$, tổng thời gian "Explore" trên toàn bảng trong $Q$ truy vấn bị chặn chặt ở mốc $\mathcal{O}((N + Q) \log N)$ đối với update thuần chay, hoặc $\mathcal{O}((N+Q) \log^2 N)$ với thêm tính năng `add`.
+
+## 4. Tài nguyên luyện tập
+
+Thuật toán mạnh mẽ này đã có vô số tài liệu luyện tập và bài toán tuyệt hay trên mạng:
+- [Codeforces Blog 57319: Segment tree beats guide](https://codeforces.com/blog/entry/57319) – Tài liệu được coi là ngọn cờ đầu trong làng ST Beats.
+- **HDU 5306 Gorge's Array:** Bài toán kinh điển nhất của Segment Tree Beats, yêu cầu đúng chuẩn chẩn query Range chmin, Sum, Max. 
+- **Codeforces 438D - The Child and Sequence:** Dùng kỹ thuật Range Modulo (biến thể khá giống ST Beat, modulo chia đôi thay vì thao tác trên max_val). 
+- **Codeforces 1290E - Cartesian Tree:** Một bài Hard Level 3000+ Div 1 áp dụng ST Beats để quản lý Parent trên Cartesian Tree. Nó cho thấy sức mạnh của ji_driver. [Tham khảo trên Codeforces](https://codeforces.com/problemset/problem/1290/E). Mời các bạn thử sức!
