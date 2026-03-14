@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Liên hệ | baodat</title>
+  <meta name="description" content="Kết nối với Tôn Thất Bảo Đạt qua email hoặc các mạng xã hội." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0dccf2",
+            "background-light": "#f5f8f8",
+            "background-dark": "#101f22",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <link rel="icon" type="image/jpeg" href="assets/avatar.jpg" />
+  <style>
+    .contact-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .contact-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -15px rgba(13, 204, 242, 0.2);
+    }
+    .glass-input {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(13, 204, 242, 0.1);
+      transition: all 0.3s ease;
+    }
+    .glass-input:focus {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: #0dccf2;
+      box-shadow: 0 0 0 4px rgba(13, 204, 242, 0.1);
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30 min-h-screen flex flex-col">
+  <div id="layout-header"></div>
+  <div id="layout-mobile-menu"></div>
+
+  <main class="flex-1 flex flex-col items-center justify-center py-20 px-4 md:px-20">
+    <div class="max-w-[1000px] w-full">
+      <!-- Header -->
+      <div class="text-center mb-16">
+          <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tighter">
+            Let's <span class="text-primary italic">Connect</span>.
+          </h1>
+          <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Bạn có câu hỏi, ý tưởng dự án hoặc chỉ muốn chào hỏi? Đừng ngần ngại liên hệ với mình qua các kênh dưới đây.
+          </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+        <!-- Contact Methods (Left) -->
+        <div class="lg:col-span-2 space-y-6">
+          <a href="mailto:baodat2020@gmail.com" class="contact-card flex items-center gap-5 p-6 rounded-2xl bg-white/5 border border-white/10 group">
+            <div class="w-14 h-14 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-3xl transition-transform group-hover:scale-110">
+              <span class="material-symbols-outlined text-4xl">mail</span>
+            </div>
+            <div>
+              <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">Email</p>
+              <p class="text-lg font-bold group-hover:text-primary transition-colors">baodat2020@gmail.com</p>
+            </div>
+          </a>
+
+          <a href="https://github.com/baodat2020" target="_blank" class="contact-card flex items-center gap-5 p-6 rounded-2xl bg-white/5 border border-white/10 group">
+            <div class="w-14 h-14 rounded-xl bg-slate-500/10 text-slate-300 flex items-center justify-center text-3xl transition-transform group-hover:scale-110">
+              <i class="fa-brands fa-github text-4xl"></i>
+            </div>
+            <div>
+              <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">GitHub</p>
+              <p class="text-lg font-bold group-hover:text-primary transition-colors">github.com/baodat2020</p>
+            </div>
+          </a>
+
+          <a href="https://www.facebook.com/greyparrotvn" target="_blank" class="contact-card flex items-center gap-5 p-6 rounded-2xl bg-white/5 border border-white/10 group">
+            <div class="w-14 h-14 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-3xl transition-transform group-hover:scale-110">
+              <i class="fa-brands fa-facebook text-4xl"></i>
+            </div>
+            <div>
+              <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">Facebook</p>
+              <p class="text-lg font-bold group-hover:text-primary transition-colors">Grey Parrot</p>
+            </div>
+          </a>
+
+           <a href="https://codeforces.com/profile/baodat" target="_blank" class="contact-card flex items-center gap-5 p-6 rounded-2xl bg-white/5 border border-white/10 group">
+            <div class="w-14 h-14 rounded-xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center text-3xl transition-transform group-hover:scale-110">
+              <span class="material-symbols-outlined text-4xl">monitoring</span>
+            </div>
+            <div>
+              <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">Codeforces</p>
+              <p class="text-lg font-bold group-hover:text-primary transition-colors">baodat (Grandmaster Wannabe)</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Contact Form (Right) -->
+        <div class="lg:col-span-3">
+          <form class="space-y-6 bg-white/5 p-8 md:p-10 rounded-3xl border border-white/10 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-10 opacity-5 -me-10 -mt-10">
+                <span class="material-symbols-outlined text-[200px]">chat</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+              <div class="space-y-2">
+                <label class="text-xs font-bold uppercase tracking-widest text-slate-500">Tên của bạn</label>
+                <input type="text" placeholder="John Doe" class="w-full h-14 px-5 rounded-xl glass-input outline-none text-slate-100 placeholder:text-slate-600 focus:ring-0" />
+              </div>
+              <div class="space-y-2">
+                <label class="text-xs font-bold uppercase tracking-widest text-slate-500">Email liên hệ</label>
+                <input type="email" placeholder="email@example.com" class="w-full h-14 px-5 rounded-xl glass-input outline-none text-slate-100 placeholder:text-slate-600 focus:ring-0" />
+              </div>
+            </div>
+
+            <div class="space-y-2 relative">
+              <label class="text-xs font-bold uppercase tracking-widest text-slate-500">Tiêu đề</label>
+              <input type="text" placeholder="Lớp học thuật toán, Dự án web..." class="w-full h-14 px-5 rounded-xl glass-input outline-none text-slate-100 placeholder:text-slate-600 focus:ring-0" />
+            </div>
+
+            <div class="space-y-2 relative">
+              <label class="text-xs font-bold uppercase tracking-widest text-slate-500">Lời nhắn</label>
+              <textarea placeholder="Viết tin nhắn của bạn tại đây..." rows="5" class="w-full p-5 rounded-xl glass-input outline-none text-slate-100 placeholder:text-slate-600 focus:ring-0 resize-none"></textarea>
+            </div>
+
+            <button type="button" class="w-full h-16 bg-primary text-background-dark font-black text-lg rounded-xl flex items-center justify-center gap-3 transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-primary/20 relative group overflow-hidden">
+                <span class="relative z-10 flex items-center gap-2">
+                   Gửi lời nhắn <span class="material-symbols-outlined font-black">send</span>
+                </span>
+                <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="layout-footer"></div>
+
+  <script src="js/layout.js"></script>
+</body>
+
+</html>
