@@ -113,10 +113,24 @@
 <a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener">
 <span class="material-symbols-outlined text-xl leading-none">public</span>
 </a>
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all">
+            <span class="material-symbols-outlined text-xl leading-none" id="mobile-menu-icon" aria-label="Menu">menu</span>
+          </button>
 </div>
 </div>
 </div>
 </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bottom-0 z-40 bg-background-dark/95 backdrop-blur-xl flex-col items-center justify-start pt-10 gap-6 overflow-y-auto pb-10">
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../index.html">Trang chủ</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../index.html#about">Về tôi</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../index.html#stats">Thành tích</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../index.html#projects">Dự án</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../blog.html">Blog</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../documents.html">Tài liệu</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="../index.html#contact">Liên hệ</a>
+    </div>
 <main class="mx-auto flex max-w-[800px] w-full flex-1 flex-col px-4 md:px-8 py-10">
 
 <div class="post-hero mb-12 border-b border-primary/10 pb-8 reveal">
@@ -273,4 +287,6 @@
 </a>
 </div>
 
+
+  <script src="../js/mobileMenu.js"></script>
 </body></html>

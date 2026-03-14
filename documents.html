@@ -116,6 +116,17 @@
         </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bottom-0 z-40 bg-background-dark/95 backdrop-blur-xl flex-col items-center justify-start pt-10 gap-6 overflow-y-auto pb-10">
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="index.html">Trang chủ</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="index.html#about">Về tôi</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="index.html#stats">Thành tích</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="index.html#projects">Dự án</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="blog.html">Blog</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="documents.html">Tài liệu</a>
+      <a class="text-slate-300 hover:text-primary transition-colors text-lg font-medium tracking-wide" href="index.html#contact">Liên hệ</a>
+    </div>
+
     <main class="mx-auto flex max-w-[1200px] flex-col px-4 md:px-20 lg:px-40 py-16 gap-12">
         <!-- Hero Section -->
         <div class="text-center md:text-left">
@@ -131,8 +142,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Quyển 0-1 -->
             <div class="doc-card glass rounded-2xl p-6 flex flex-col gap-4">
-                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined">book</span>
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden border border-primary/20 shadow-inner">
+                    <img src="assets/icon_programming.png" alt="Icon Programming" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-2">Kỹ thuật lập trình — Quyển 0 & 1</h3>
@@ -146,8 +157,8 @@
 
             <!-- Quyển 7-9 -->
             <div class="doc-card glass rounded-2xl p-6 flex flex-col gap-4">
-                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined">calculate</span>
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden border border-primary/20 shadow-inner">
+                    <img src="assets/icon_math.png" alt="Icon Math" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-2">Toán học & Số học</h3>
@@ -162,8 +173,8 @@
 
             <!-- Quyển 10 (Hình học) -->
             <div class="doc-card glass rounded-2xl p-6 flex flex-col gap-4">
-                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined">architecture</span>
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden border border-primary/20 shadow-inner">
+                    <img src="assets/icon_geometry.png" alt="Icon Geometry" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-2">Hình học (Geometry)</h3>
@@ -174,8 +185,8 @@
 
             <!-- Quyển 11-13 (Đồ thị) -->
             <div class="doc-card glass rounded-2xl p-6 flex flex-col gap-4">
-                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined">account_tree</span>
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden border border-primary/20 shadow-inner">
+                    <img src="assets/icon_graph.png" alt="Icon Graph" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-2">Lý thuyết Đồ thị</h3>
@@ -190,8 +201,8 @@
 
             <!-- Quyển 14-15 -->
             <div class="doc-card glass rounded-2xl p-6 flex flex-col gap-4">
-                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined">schema</span>
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden border border-primary/20 shadow-inner">
+                    <img src="assets/icon_dp.png" alt="Icon DP" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-2">Quy hoạch động & Xử lý chuỗi</h3>
@@ -205,8 +216,8 @@
 
             <!-- Quyển 17 (Cây phân khúc) -->
             <div class="doc-card glass rounded-2xl p-6 flex flex-col gap-4 border-primary/40 shadow-lg shadow-primary/10">
-                <div class="w-12 h-12 bg-primary text-background-dark rounded-xl flex items-center justify-center">
-                    <span class="material-symbols-outlined">layers</span>
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden border-2 border-primary shadow-[0_0_15px_rgba(13,204,242,0.5)]">
+                    <img src="assets/icon_tree.png" alt="Icon Segment Tree" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <div class="flex items-center gap-2 mb-2">
@@ -242,5 +253,7 @@
             </div>
         </div>
     </footer>
+
+  <script src="js/mobileMenu.js"></script>
 </body>
 </html>
