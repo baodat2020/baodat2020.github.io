@@ -66,9 +66,9 @@ Một cái nhìn trực quan có thể khiến ta ái ngại: Việc "Tình hu�
 Câu trả lời là **KHÔNG**. Bằng **phép phân tích khấu hao (Amortized Analysis)** với Phương pháp Thế năng (Potential Method), chúng ta có thể chứng minh cận trên an toàn tuyệt đối.
 
 *Mô phỏng hình ảnh minh hoạ một thao tác đẩy Tag Condition cắt ngang qua các node:*
-![Segment Tree Beats Transformation](https://espresso.codeforces.com/1523fe71b9dbdf87a2027b165243adbf692fada5.png)
+![Segment Tree Beats Transformation](assets/st_beats.png)
 
-Hãy định nghĩa một khái niệm: **Tag class** của một nút (node) $u$ trên cây là tập hợp các số lớn nhất (max values) của tất cả các phần tử thuộc cây con gốc $u$. Ta thấy rằng chỉ có không quá $\log N$ nút dọc theo đường đi từ gốc xuống lá thay đổi. 
+Hãy định nghĩa một khái niệm: **Tag class** của một nút (node) $u$ trên cây là tập hợp các số lớn nhất (max values) của tất cả các phần tử thuộc cây con gốc $u$. Ta thấy rằng chỉ có không quá $\mathcal{O}(\log N)$ nút dọc theo đường đi từ gốc xuống lá thay đổi. 
 
 Cụ thể, định nghĩa thế năng $\Phi$ là tổng số các giá trị phân biệt trong một đoạn. 
 Mỗi lần thao tác `modify` rơi vào **Tình huống 3 (Explore Condition)** xảy ra ở một Node, thao tác tiếp theo chắc chắn sẽ gộp 2 giá trị $\max$ và á quân lại thành 1 (vì $x \le second\_max$). Điều này đồng nghĩa với việc số lượng các giá trị riêng biệt (distinct values) trên toàn bộ mảng bị **giảm đi ít nhất 1**.
@@ -90,4 +90,8 @@ Thuật toán mạnh mẽ này đã có vô số tài liệu luyện tập và b
 - **BZOJ 4695: Đỉnh cao nhất của ST Beats** kết hợp mọi thao tác.
 - [Codeforces 1290E - Cartesian Tree](https://codeforces.com/problemset/problem/1290/E): Một bài Hard Level 3000+ Div 1 áp dụng ST Beats để quản lý Parent trên Cartesian Tree. Nó cho thấy sức mạnh bá đạo của ji_driver.
 
-Chúc thạo kỹ thuật đáng sợ nhưng đầy ảo diệu này!
+## Nguồn tham khảo (References)
+- **Tác giả gốc:** Bài viết được tổng hợp, biên dịch và diễn giải lại từ hệ thống lý thuyết gốc của hai tác giả *jiry_2* và *jcvb* trên nền tảng Codeforces.
+- **Link thư viện gốc:** [Segment tree beats guide - Codeforces Blog Entry 57319](https://codeforces.com/blog/entry/57319)
+
+Chúc bạn thao tác mượt mà với kỹ thuật đáng sợ nhưng đầy ảo diệu này!
