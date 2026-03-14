@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Post — baodat | Portfolio</title>
+<meta name="description" content="Blog của Tôn Thất Bảo Đạt" />
+<!-- Include typography plugin for markdown parsing -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@11.2.0/marked.min.js" defer></script>
+<!-- MathJax for rendering math equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  /* Fix Tailwind CSS preflight breaking inline MathJax SVGs */
+  mjx-container svg {
+    display: inline !important;
+  }
+  mjx-container[display="true"] {
+    margin: 1em 0;
+  }
+</style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0dccf2",
+              "background-light": "#f5f8f8",
+              "background-dark": "#101f22",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            typography: (theme) => ({
+              DEFAULT: {
+                css: {
+                  '--tw-prose-body': theme('colors.slate[400]'),
+                  '--tw-prose-headings': theme('colors.slate[100]'),
+                  '--tw-prose-lead': theme('colors.slate[300]'),
+                  '--tw-prose-links': theme('colors.primary'),
+                  '--tw-prose-bold': theme('colors.slate[100]'),
+                  '--tw-prose-counters': theme('colors.slate[400]'),
+                  '--tw-prose-bullets': theme('colors.slate[400]'),
+                  '--tw-prose-hr': theme('colors.primary / 0.2'),
+                  '--tw-prose-quotes': theme('colors.slate[100]'),
+                  '--tw-prose-quote-borders': theme('colors.primary'),
+                  '--tw-prose-captions': theme('colors.slate[400]'),
+                  '--tw-prose-code': theme('colors.primary'),
+                  '--tw-prose-pre-code': theme('colors.slate[200]'),
+                  '--tw-prose-pre-bg': theme('colors.background-dark'),
+                  '--tw-prose-th-borders': theme('colors.primary / 0.2'),
+                  '--tw-prose-td-borders': theme('colors.primary / 0.1'),
+                  'code::before': { content: '""' },
+                  'code::after': { content: '""' },
+                  a: { textDecoration: 'none', '&:hover': { textDecoration: 'underline' } },
+                },
+              },
+            }),
+          },
+        },
+      }
+    </script>
+    <link rel="icon" type="image/jpeg" href="../assets/avatar.jpg" />
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
+<div class="mx-auto flex max-w-[1200px] items-center justify-between">
+<div class="flex items-center gap-8">
+<a href="../index.html" class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+<h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#about">Về tôi</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#stats">Thành tích</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="../blog.html">Blog</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#contact">Liên hệ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-primary/10 border border-primary/20 rounded-lg px-3 py-1.5">
+<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-sm text-slate-100 placeholder:text-slate-500 w-32 lg:w-48" placeholder="Tìm kiếm bài viết..."/>
+</div>
+<div class="flex gap-2">
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://github.com/baodat2020" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-xl leading-none">code</span>
+</a>
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-xl leading-none">public</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto flex max-w-[800px] w-full flex-1 flex-col px-4 md:px-8 py-10">
+
+<div class="post-hero mb-12 border-b border-primary/10 pb-8 reveal">
+    <a href="../blog.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-primary text-sm font-medium mb-8 transition-colors">
+        <i class="fa-solid fa-arrow-left"></i> Tất cả bài viết
+    </a>
+    
+    <div id="post-meta" class="mb-4 flex gap-2 text-[10px] font-bold text-primary px-2 py-0.5 uppercase">
+        <span class="bg-primary/20 rounded px-2 py-1">algo</span>
+    </div>
+    
+    <h1 id="post-title" class="text-3xl md:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight">Number Theoretic Transform (NTT)</h1>
+    
+    <div id="post-info" class="mt-6 flex items-center gap-4 text-slate-400 text-sm">
+        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_month</span> 2026-03-14</span>
+         <span>&middot;</span>
+         <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 18 phút</span>
+         <span>&middot;</span>
+         <span>Tôn Thất Bảo Đạt</span>
+    </div>
+</div>
+
+<article id="post-body" class="prose prose-invert prose-primary mx-auto max-w-none text-slate-300 reveal">
+    <h1>Number Theoretic Transform (NTT)</h1>
+<p>Phép biến đổi <strong>Number Theoretic Transform (NTT)</strong> chính là một &quot;người anh em song sinh&quot; của Fast Fourier Transform (FFT). Rất phổ biến trong các khối ngành Tính toán Tổ Hợp và các cuộc thi như ACM-ICPC, Codeforces, NTT cho phép bạn nhân hai đa thức với độ phức tạp $\mathcal{O}(N \log N)$ một cách <strong>chính xác tuyệt đối 100%</strong> trên vùng chia lấy dư mà không gặp vấn đề rủi ro sai số.</p>
+<h2>1. Vấn đề của FFT Cổ Điển (Float Precision)</h2>
+<p>Trong FFT chuẩn, chúng ta đánh giá và nội suy đa thức tại các <strong>căn đơn vị phức</strong> $n$ (complex $n$-th roots of unity): $W_n = e^{\frac{2\pi i}{n}}$.
+Nhân hai đa thức yêu cầu thao tác nhân ma trận phức DFT, việc này sử dụng số học dấu phẩy động (kiểu <code>double</code> hoặc <code>long double</code>). Nếu hệ số của đa thức đủ lớn hoặc mảng siêu dài (VD $10^5$), sai số Floating Point bị dồn qua từng bước của thuật toán dạng bướm (Butterfly). Đến bước cuối cùng gọi hàm <code>round()</code> ép kiểu nguyên, ta bù trừ lệch số dẫn đến Wrong Answer một cách cực kỳ cay đắng. </p>
+<p>Nếu bài toán vốn dĩ yêu cầu in ra kết quả đếm cách modulo sinh học cho số dư (ví dụ $10^9 + 7$ hay $998244353$), thuật toán FFT trở nên vô dụng do không thể duy trì độ chuẩn xác. </p>
+<h2>2. NTT &amp; Căn Nguyên Thủy (Primitive Root)</h2>
+<p>Để giải quyết triệt để, NTT rời bỏ hệ trục số phức, và thực hiện biến đổi ngay trên <strong>Trường Hữu Hạn</strong> $\mathbb{F}_p$ (hay modulo $\mathbb{Z}_p$, trong đó $p$ là số nguyên tố).</p>
+<p>Yêu cầu tiên quyết là trường $p$ đó phải có một <strong>căn nguyên thủy</strong> (Primitive Root) $g$.
+Tính chất kinh điển của $g$:
+$g^{p-1} \equiv 1 \pmod p$ 
+và $g^k \not\equiv 1 \pmod p$ với mọi $k &lt; p-1$.</p>
+<p>Nếu ta cần nhân đa thức cực lớn độ dài $N = 2^k$ (yêu cầu bộ FFT hoạt động trên lũy thừa 2), ta phải bảo đảm $p-1$ chia hết cho $2^k$. Do đó, để NTT thân thiện (NTT-friendly primes), người ta sẽ làm viếc với các $P$ có dạng:
+$p = c \cdot 2^k + 1$</p>
+<p>Khi đó, để tạo bộ số thay thế cho $W_n$ (số phức quanh đường tròn đơn vị), ta dùng:
+$ \omega_N = g^{(p-1)/N} \pmod p $
+Mọi phép tính trong ma trận Fourier giờ đây không còn căn âm $i$ sinh học mà toàn bộ đều là số nguyên, cộng trừ nhân bình thường rồi $\pmod p$. Sức mạnh của sự chính xác lên ngôi!</p>
+<h2>3. Các hằng số quen thuộc trên Codeforces</h2>
+<p>Các modulo được dùng phổ biến trên Codeforces và các hằng số liên quan rất tiện để thu gọn code của bạn mà không cần tìm Primitive Root từ con số 0:</p>
+<ul>
+<li>$P = 998244353$ ($119 \cdot 2^{23} + 1$), $g = 3$</li>
+<li>$P = 1004535809$ ($479 \cdot 2^{21} + 1$), $g = 3$</li>
+<li>$P = 469762049$ ($7 \cdot 2^{26} + 1$), $g = 3$</li>
+</ul>
+<p><em>(Ghi chú: $998244353$ được sử dụng nhiều nhất vì nó nằm sát $10^9$, và độ lớn đủ để cộng dồn không tràn 32-bit int trước khi Modulo.</em>)</p>
+<h2>4. Implement NTT (C++ In-place Cooley-Tukey)</h2>
+<p>Mã giả C++ phổ thông hỗ trợ cả Inverse Transform được dùng bởi các Competitive Programmers (Tham khảo <a href="https://youkn0wwho.academy/">youkn0wwho.academy</a>):</p>
+<pre><code class="language-cpp">const int MOD = 998244353;
+const int G = 3;
+
+long long binpow(long long a, long long b) {
+    long long res = 1; a %= MOD;
+    while (b &gt; 0) {
+        if (b &amp; 1) res = res * a % MOD;
+        a = a * a % MOD; b &gt;&gt;= 1;
+    }
+    return res;
+}
+
+// NTT: a - mảng, invert - false (DFT), true (IDFT)
+void ntt(vector&lt;long long&gt;&amp; a, bool invert) {
+    int n = a.size();
+    // Bit-reversal permutation
+    for (int i = 1, j = 0; i &lt; n; i++) {
+        int bit = n &gt;&gt; 1;
+        for (; j &amp; bit; bit &gt;&gt;= 1) j ^= bit;
+        j ^= bit;
+        if (i &lt; j) swap(a[i], a[j]);
+    }
+    // Cooley-Tukey 
+    for (int len = 2; len &lt;= n; len &lt;&lt;= 1) {
+        long long wlen = binpow(G, (MOD - 1) / len);
+        if (invert) wlen = binpow(wlen, MOD - 2);
+            
+        for (int i = 0; i &lt; n; i += len) {
+            long long w = 1;
+            for (int j = 0; j &lt; len / 2; j++) {
+                long long u = a[i + j];
+                long long v = a[i + j + len / 2] * w % MOD;
+                a[i + j] = (u + v &lt; MOD ? u + v : u + v - MOD);
+                a[i + j + len / 2] = (u - v &gt;= 0 ? u - v : u - v + MOD);
+                w = w * wlen % MOD;
+            }
+        }
+    }
+    
+    // Scale for IDFT
+    if (invert) {
+        long long n_inv = binpow(n, MOD - 2);
+        for (long long&amp; x : a) x = x * n_inv % MOD;
+    }
+}
+</code></pre>
+<h2>5. Bài tập rèn luyện (Practice Problems)</h2>
+<p>Kỹ thuật nhân đa thức (NTT) thực sự là vũ khí hạng siêu nặng mà các Grandmaster luôn thủ sẵn trong tay khi gặp bài tổ hợp, hàm sinh (Generating Functions).</p>
+<ul>
+<li><strong>CSES - Polynomial Multiplication</strong>: Bài tập kiểm tra Template đầu tay. Cực kỳ gọn. <a href="https://cses.fi/problemset/task/2111">Giải CSES 2111</a>.</li>
+<li><strong>Codeforces 1096G - Lucky Tickets</strong>: Một bài Toán cực rành rọt dùng NTT biểu diễn đa thức trạng thái. <a href="https://codeforces.com/problemset/problem/1096/G">View CF 1096G</a>.</li>
+<li><strong>Codeforces 1334F - Restoring the Permutation</strong>: DP chia để trị + NTT kinh điển. Bạn sẽ thấy đồ thị thời gian giảm từ $\mathcal{O}(N^2)$ xuống $\mathcal{O}(N \log^2 N)$ với NTT!</li>
+</ul>
+<h2>Nguồn tham khảo (References)</h2>
+<ul>
+<li><strong>Cơ sở lý thuyết:</strong> Viết dựa trên kiến thức từ CP-Algorithms và các bài giảng đội tuyển.</li>
+<li><strong>Tham khảo code mẫu:</strong> Cấu trúc hàm <code>ntt()</code> tham khảo từ tài liệu mở của <a href="https://youkn0wwho.academy/">youkn0wwho.academy</a> (chuyên trang Competitive Programming).</li>
+</ul>
+
+</article>
+
+<div class="mt-16 pt-8 border-t border-primary/10">
+    <a href="../blog.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border border-primary/30 rounded-lg hover:bg-primary/20 transition-all font-bold">
+        <i class="fa-solid fa-arrow-left"></i> Quay lại Blog
+    </a>
+</div>
+
+</main>
+<!-- Footer -->
+<footer id="contact" class="border-t border-primary/10 bg-background-dark px-4 md:px-20 lg:px-40 py-12 mt-auto">
+<div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-black text-xl tracking-tight">baodat</span>
+</div>
+<p class="text-slate-500 text-sm">© 2026 Tôn Thất Bảo Đạt. Designed for competitive programmers.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://github.com/baodat2020" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-lg">description</span>
+<span class="text-xs font-semibold">GitHub</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://www.facebook.com/greyparrotvn" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-lg">social_leaderboard</span>
+<span class="text-xs font-semibold">Facebook</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg">mail</span>
+<span class="text-xs font-semibold">Email</span>
+</a>
+</div>
+</div>
+</footer>
+<!-- Back to Top -->
+<a href="#" class="fixed bottom-6 right-6 p-3 rounded-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition-all opacity-0 translate-y-4 z-50 pointer-events-none" id="backToTop" aria-label="Back to top">
+<span class="material-symbols-outlined">expand_less</span>
+</a>
+</div>
+
+</body></html>

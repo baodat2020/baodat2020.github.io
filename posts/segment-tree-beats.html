@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Post — baodat | Portfolio</title>
+<meta name="description" content="Blog của Tôn Thất Bảo Đạt" />
+<!-- Include typography plugin for markdown parsing -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@11.2.0/marked.min.js" defer></script>
+<!-- MathJax for rendering math equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  /* Fix Tailwind CSS preflight breaking inline MathJax SVGs */
+  mjx-container svg {
+    display: inline !important;
+  }
+  mjx-container[display="true"] {
+    margin: 1em 0;
+  }
+</style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0dccf2",
+              "background-light": "#f5f8f8",
+              "background-dark": "#101f22",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            typography: (theme) => ({
+              DEFAULT: {
+                css: {
+                  '--tw-prose-body': theme('colors.slate[400]'),
+                  '--tw-prose-headings': theme('colors.slate[100]'),
+                  '--tw-prose-lead': theme('colors.slate[300]'),
+                  '--tw-prose-links': theme('colors.primary'),
+                  '--tw-prose-bold': theme('colors.slate[100]'),
+                  '--tw-prose-counters': theme('colors.slate[400]'),
+                  '--tw-prose-bullets': theme('colors.slate[400]'),
+                  '--tw-prose-hr': theme('colors.primary / 0.2'),
+                  '--tw-prose-quotes': theme('colors.slate[100]'),
+                  '--tw-prose-quote-borders': theme('colors.primary'),
+                  '--tw-prose-captions': theme('colors.slate[400]'),
+                  '--tw-prose-code': theme('colors.primary'),
+                  '--tw-prose-pre-code': theme('colors.slate[200]'),
+                  '--tw-prose-pre-bg': theme('colors.background-dark'),
+                  '--tw-prose-th-borders': theme('colors.primary / 0.2'),
+                  '--tw-prose-td-borders': theme('colors.primary / 0.1'),
+                  'code::before': { content: '""' },
+                  'code::after': { content: '""' },
+                  a: { textDecoration: 'none', '&:hover': { textDecoration: 'underline' } },
+                },
+              },
+            }),
+          },
+        },
+      }
+    </script>
+    <link rel="icon" type="image/jpeg" href="../assets/avatar.jpg" />
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
+<div class="mx-auto flex max-w-[1200px] items-center justify-between">
+<div class="flex items-center gap-8">
+<a href="../index.html" class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+<h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#about">Về tôi</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#stats">Thành tích</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="../blog.html">Blog</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#contact">Liên hệ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-primary/10 border border-primary/20 rounded-lg px-3 py-1.5">
+<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-sm text-slate-100 placeholder:text-slate-500 w-32 lg:w-48" placeholder="Tìm kiếm bài viết..."/>
+</div>
+<div class="flex gap-2">
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://github.com/baodat2020" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-xl leading-none">code</span>
+</a>
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-xl leading-none">public</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto flex max-w-[800px] w-full flex-1 flex-col px-4 md:px-8 py-10">
+
+<div class="post-hero mb-12 border-b border-primary/10 pb-8 reveal">
+    <a href="../blog.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-primary text-sm font-medium mb-8 transition-colors">
+        <i class="fa-solid fa-arrow-left"></i> Tất cả bài viết
+    </a>
+    
+    <div id="post-meta" class="mb-4 flex gap-2 text-[10px] font-bold text-primary px-2 py-0.5 uppercase">
+        <span class="bg-primary/20 rounded px-2 py-1">algo</span>
+    </div>
+    
+    <h1 id="post-title" class="text-3xl md:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight">Kỹ thuật Segment Tree Beats</h1>
+    
+    <div id="post-info" class="mt-6 flex items-center gap-4 text-slate-400 text-sm">
+        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_month</span> 2026-03-14</span>
+         <span>&middot;</span>
+         <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 25 phút</span>
+         <span>&middot;</span>
+         <span>Tôn Thất Bảo Đạt</span>
+    </div>
+</div>
+
+<article id="post-body" class="prose prose-invert prose-primary mx-auto max-w-none text-slate-300 reveal">
+    <h1>Kỹ thuật Segment Tree Beats</h1>
+<p><strong>Segment Tree Beats</strong> (được thế giới CP biết đến qua <em>jiry_2</em>, đôi khi được gọi là <strong>Ji-Driver Tree</strong>) là một sự mở rộng kinh ngạc của Cây phân đoạn (Segment Tree). Nó được thiết kế để xử lý các truy vấn biến đổi đặc biệt khó nhằn mà một Segment Tree thông thường với Lazy Propagation có thể phải &quot;bó tay&quot;, cụ thể là truy vấn thay đổi kiểu <strong>Range <code>chmin</code></strong> và <strong>Range <code>chmax</code></strong>.</p>
+<p><em>Nội dung bài viết này được biên dịch và tổng hợp từ bài viết huyền thoại <a href="https://codeforces.com/blog/entry/57319">Codeforces Blog 57319</a> của tác giả <code>jiry_2</code> và <code>jcvb</code>.</em></p>
+<h2>1. Bài toán mở đầu: Cập nhật Range Min &amp; Truy vấn Range Sum</h2>
+<p>Cho một mảng $A$ gồm $N$ phần tử. Cần hỗ trợ 2 loại truy vấn:</p>
+<ol>
+<li><code>Update(L, R, x)</code>: Với mọi $i \in [L, R]$, gán $A_i = \min(A_i, x)$ (gọi tắt là <strong>chmin</strong>).</li>
+<li><code>Query(L, R)</code>: Tính $\sum_{i=L}^{R} A_i$ (tổng các phần tử trong đoạn).</li>
+</ol>
+<p>Để giải quyết bài toán này, mỗi nút trên Segment Tree không chỉ lưu trạng thái <code>sum</code> mà còn cần lưu trữ thêm các thông tin sau để &quot;đón đầu&quot; thao tác <code>chmin</code>:</p>
+<ul>
+<li><code>sum</code>: Tổng các phần tử.</li>
+<li><code>max_val</code>: Giá trị LỚN NHẤT trong đoạn $\max_{i=l}^{r} A_i$.</li>
+<li><code>max_cnt</code>: Số phần tử nhận giá trị <code>max_val</code> trong đoạn.</li>
+<li><code>second_max</code>: Giá trị LỚN THỨ HAI trong đoạn (lớn nhất nghiêm ngặt tiếp theo, tức là $\max { A_i \mid A_i &lt; \text{max_val} }$ ).</li>
+</ul>
+<h3>Phân tích thuật toán: 3 Điều kiện Dừng</h3>
+<p>Khi xử lý truy vấn $A_i \gets \min(A_i, x)$ trên một node, hàm đệ quy của ta sẽ điều phối qua 3 tình huống (điều kiện) cốt lõi sau:</p>
+<ol>
+<li><p><strong>Break Condition (Dừng Khám Phá):</strong> Nếu $max_val \le x$.
+Trong trường hợp này, việc gán $\min(A_i, x)$ không làm thay đổi bất kỳ phần tử nào trong đoạn quản lý hiện tại. Ta <code>return</code> ngay lập tức.</p>
+</li>
+<li><p><strong>Tag Condition (Đánh Dấu Lười Biếng):</strong> Nếu $second_max &lt; x &lt; max_val$.
+Lúc này, <strong>chỉ có duy nhất</strong> nhóm các phần tử đang giữ vị trí quán quân <code>max_val</code> mới bị ép xuống $x$. Còn những phần tử có giá trị nhỏ hơn hoặc bằng <code>second_max</code> thì vẫn an toàn $A_i \le second_max &lt; x$. 
+Vì đã biết có đúng <code>max_cnt</code> phần tử đang có giá trị <code>max_val</code>, ta hoàn toàn tính ra được sự thay đổi của tổng:
+$ sum = sum - (max_val - x) \cdot max_cnt $
+Ta cập nhật lại <code>max_val = x</code>, gán một nhãn <code>lazy</code> xuống và <code>return</code> (không cần đi sâu thêm vào cây con).</p>
+</li>
+<li><p><strong>Explore Condition (Đệ quy tiếp tục):</strong> Nếu $x \le second_max$.
+Tình huống này có nghĩa là ngoài những phần tử lớn nhất <code>max_val</code>, cả những phần tử <code>second_max</code> (và có thể nhỏ hơn nữa) cũng bị ảnh hưởng bởi phép ép $\min$. Ta không thể đoán được có bao nhiêu phần tử bị biến đổi. Khắc phục duy nhất là: <strong>Đẩy đệ quy (Exploration) xuống 2 cây con</strong>!</p>
+</li>
+</ol>
+<h3>Cài đặt (C++ Code)</h3>
+<pre><code class="language-cpp">void modify(int node, int l, int r, int ql, int qr, int x) {
+    if (l &gt; qr || r &lt; ql || tree[node].max_val &lt;= x) return; // Break Condition
+    if (ql &lt;= l &amp;&amp; r &lt;= qr &amp;&amp; tree[node].second_max &lt; x) {    // Tag Condition
+        apply(node, x); // Cập nhật sum và max_val
+        return;
+    }
+    // Explore Condition
+    push_down(node);
+    int mid = (l + r) / 2;
+    modify(node * 2, l, mid, ql, qr, x);
+    modify(node * 2 + 1, mid + 1, r, ql, qr, x);
+    pull_up(node);
+}
+</code></pre>
+<h2>2. Chứng minh độ phức tạp $\mathcal{O}(N \log N)$</h2>
+<p>Một cái nhìn trực quan có thể khiến ta ái ngại: Việc &quot;Tình huống 3&quot; đẩy đệ quy đâm thẳng xuống các lá trông như có thể thoái hóa về độ phức tạp $\mathcal{O}(N)$ cho mỗi truy vấn, liệu thuật toán này có bị Time Limit Exceeded (TLE)?</p>
+<p>Câu trả lời là <strong>KHÔNG</strong>. Bằng <strong>phép phân tích khấu hao (Amortized Analysis)</strong> với Phương pháp Thế năng (Potential Method), chúng ta có thể chứng minh cận trên an toàn tuyệt đối.</p>
+<p><em>Mô phỏng hình ảnh minh hoạ một thao tác đẩy Tag Condition cắt ngang qua các node:</em>
+<img src="../assets/st_beats.png" alt="Segment Tree Beats Transformation"></p>
+<p>Hãy định nghĩa một khái niệm: <strong>Tag class</strong> của một nút (node) $u$ trên cây là tập hợp các số lớn nhất (max values) của tất cả các phần tử thuộc cây con gốc $u$. Ta thấy rằng chỉ có không quá $\mathcal{O}(\log N)$ nút dọc theo đường đi từ gốc xuống lá thay đổi. </p>
+<p>Cụ thể, định nghĩa thế năng $\Phi$ là tổng số các giá trị phân biệt trong một đoạn. 
+Mỗi lần thao tác <code>modify</code> rơi vào <strong>Tình huống 3 (Explore Condition)</strong> xảy ra ở một Node, thao tác tiếp theo chắc chắn sẽ gộp 2 giá trị $\max$ và á quân lại thành 1 (vì $x \le second_max$). Điều này đồng nghĩa với việc số lượng các giá trị riêng biệt (distinct values) trên toàn bộ mảng bị <strong>giảm đi ít nhất 1</strong>.
+Mỗi thao tác Interval Query ban đầu trên Segment tree làm tăng số distinct value lên tối đa $\mathcal{O}(\log N)$. </p>
+<p>Do đó, tổng số lần rơi vào trường hợp đệ quy Explore bị chặn bởi sự tăng của &quot;lượng distinct values&quot; tạo ra từ mỗi Query. Vậy tổng thời gian khám phá trên toàn bảng trong $Q$ truy vấn bị chặn chặt ở mốc <strong>$\mathcal{O}((N + Q) \log N)$</strong>.</p>
+<h2>3. Mở rộng: Nâng cấp với Query Add $A_i \gets A_i + x$</h2>
+<p>Thuật toán càng trở nên thú vị hơn nếu bài toán của chúng ta cho phép thêm loại truy vấn <strong>cộng bù</strong> vào mảng.
+<code>Update_Add(L, R, x)</code>: Với mọi $i \in [L, R]$, gán $A_i = A_i + x$.</p>
+<p>Bài toán này nổi tiếng với tên gọi <a href="https://acm.hdu.edu.cn/showproblem.php?pid=5306">HDU 5306 - Gorge&#39;s Array</a>. Khi có thêm Query <code>Add</code>, cây cần thêm nhãn <code>lazy_add</code> quản lý phép cộng, đồng thời cập nhật cả <code>max_val</code>, <code>second_max</code> và <code>sum</code> tương ứng khi đẩy <code>lazy</code> xuống. Dù phức tạp hơn đôi chút nhưng cấu trúc 3 Break/Tag/Explore Rules vẫn đứng vững, và độ phức tạp khấu hao lúc này được chứng minh là <strong>$\mathcal{O}((N + Q) \log^2 N)$</strong>.</p>
+<h2>4. Tài nguyên luyện tập</h2>
+<p>Thuật toán mạnh mẽ này đã có vô số tài liệu luyện tập và bài toán tuyệt hay trên mạng. Sau khi nắm vững lý thuyết, hãy vác code đến ngay những sới đấu sau:</p>
+<ul>
+<li><a href="https://codeforces.com/problemset/problem/438/D">Codeforces 438D - The Child and Sequence</a>: Dùng kỹ thuật Range Modulo (biến thể rất giống ST Beats, dùng break point là số chia Modulo). </li>
+<li><strong>BZOJ 4695: Đỉnh cao nhất của ST Beats</strong> kết hợp mọi thao tác.</li>
+<li><a href="https://codeforces.com/problemset/problem/1290/E">Codeforces 1290E - Cartesian Tree</a>: Một bài Hard Level 3000+ Div 1 áp dụng ST Beats để quản lý Parent trên Cartesian Tree. Nó cho thấy sức mạnh bá đạo của ji_driver.</li>
+</ul>
+<h2>Nguồn tham khảo (References)</h2>
+<ul>
+<li><strong>Tác giả gốc:</strong> Bài viết được tổng hợp, biên dịch và diễn giải lại từ hệ thống lý thuyết gốc của hai tác giả <em>jiry_2</em> và <em>jcvb</em> trên nền tảng Codeforces.</li>
+<li><strong>Link thư viện gốc:</strong> <a href="https://codeforces.com/blog/entry/57319">Segment tree beats guide - Codeforces Blog Entry 57319</a></li>
+</ul>
+<p>Chúc bạn thao tác mượt mà với kỹ thuật đáng sợ nhưng đầy ảo diệu này!</p>
+
+</article>
+
+<div class="mt-16 pt-8 border-t border-primary/10">
+    <a href="../blog.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border border-primary/30 rounded-lg hover:bg-primary/20 transition-all font-bold">
+        <i class="fa-solid fa-arrow-left"></i> Quay lại Blog
+    </a>
+</div>
+
+</main>
+<!-- Footer -->
+<footer id="contact" class="border-t border-primary/10 bg-background-dark px-4 md:px-20 lg:px-40 py-12 mt-auto">
+<div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-black text-xl tracking-tight">baodat</span>
+</div>
+<p class="text-slate-500 text-sm">© 2026 Tôn Thất Bảo Đạt. Designed for competitive programmers.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://github.com/baodat2020" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-lg">description</span>
+<span class="text-xs font-semibold">GitHub</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://www.facebook.com/greyparrotvn" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-lg">social_leaderboard</span>
+<span class="text-xs font-semibold">Facebook</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg">mail</span>
+<span class="text-xs font-semibold">Email</span>
+</a>
+</div>
+</div>
+</footer>
+<!-- Back to Top -->
+<a href="#" class="fixed bottom-6 right-6 p-3 rounded-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition-all opacity-0 translate-y-4 z-50 pointer-events-none" id="backToTop" aria-label="Back to top">
+<span class="material-symbols-outlined">expand_less</span>
+</a>
+</div>
+
+</body></html>

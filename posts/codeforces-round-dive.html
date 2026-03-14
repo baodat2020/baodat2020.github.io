@@ -76,7 +76,7 @@
         },
       }
     </script>
-    <link rel="icon" type="image/jpeg" href="assets/avatar.jpg" />
+    <link rel="icon" type="image/jpeg" href="../assets/avatar.jpg" />
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
 <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
@@ -84,14 +84,14 @@
 <header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
 <div class="mx-auto flex max-w-[1200px] items-center justify-between">
 <div class="flex items-center gap-8">
-<a href="index.html" class="flex items-center gap-3 text-primary">
+<a href="../index.html" class="flex items-center gap-3 text-primary">
 <span class="material-symbols-outlined text-3xl">terminal</span>
 <h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
 </a>
 <nav class="hidden md:flex items-center gap-6">
 <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#about">Về tôi</a>
 <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#stats">Thành tích</a>
-<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="blog.html">Blog</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="../blog.html">Blog</a>
 <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#contact">Liên hệ</a>
 </nav>
 </div>
@@ -114,27 +114,119 @@
 <main class="mx-auto flex max-w-[800px] w-full flex-1 flex-col px-4 md:px-8 py-10">
 
 <div class="post-hero mb-12 border-b border-primary/10 pb-8 reveal">
-    <a href="blog.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-primary text-sm font-medium mb-8 transition-colors">
+    <a href="../blog.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-primary text-sm font-medium mb-8 transition-colors">
         <i class="fa-solid fa-arrow-left"></i> Tất cả bài viết
     </a>
     
     <div id="post-meta" class="mb-4 flex gap-2 text-[10px] font-bold text-primary px-2 py-0.5 uppercase">
-        <!-- JS fills tag span here -->
+        <span class="bg-primary/20 rounded px-2 py-1">Blog</span>
     </div>
     
-    <h1 id="post-title" class="text-3xl md:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight"></h1>
+    <h1 id="post-title" class="text-3xl md:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight">codeforces-round-dive</h1>
     
     <div id="post-info" class="mt-6 flex items-center gap-4 text-slate-400 text-sm">
-        <!-- JS fills info here -->
+        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_month</span> </span>
+         <span>&middot;</span>
+         <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> </span>
+         <span>&middot;</span>
+         <span>Tôn Thất Bảo Đạt</span>
     </div>
 </div>
 
 <article id="post-body" class="prose prose-invert prose-primary mx-auto max-w-none text-slate-300 reveal">
-    <!-- Markdown content rendered here -->
+    <h1>Phân tích Div.2 — Tư duy giải toán từng bước</h1>
+<p>Trong bài viết này, mình sẽ walk-through cách mình tiếp cận một contest Codeforces Div.2 điển hình — từ lúc đọc đề đến lúc submit AC.</p>
+<h2>Chiến lược chung của mình</h2>
+<p>Khi bắt đầu một contest Div.2:</p>
+<ol>
+<li><strong>Đọc lướt tất cả đề</strong> trong 5 phút đầu — nắm sơ constraint</li>
+<li><strong>Bắt tay từ A → B → C</strong> theo thứ tự</li>
+<li><strong>Bài D/E</strong>: suy nghĩ kỹ trước khi code, tránh code sai nhiều lần</li>
+</ol>
+<blockquote>
+<p>&quot;Think twice, code once.&quot;</p>
+</blockquote>
+<h2>Bài A — Implementation / Greedy đơn giản</h2>
+<p>Bài A thường là implement thẳng theo đề, hoặc greedy đơn giản. Điều quan trọng:</p>
+<ul>
+<li>Đọc kỹ edge case</li>
+<li>Test ngay trên example</li>
+<li>Submit sớm, không overthink</li>
+</ul>
+<p><strong>Tip</strong>: Nếu đề có n ≤ 1000, cứ dùng O(n²) thoải mái.</p>
+<h2>Bài B — Observation</h2>
+<p>Bài B thường cần một <strong>observation</strong> — nhận ra tính chất toán học hoặc cấu trúc bài.</p>
+<pre><code class="language-cpp">// Ví dụ: Bài toán tìm phần tử ≠ XOR của cả mảng
+int solve() {
+    int n; cin &gt;&gt; n;
+    vector&lt;int&gt; a(n);
+    int xorAll = 0;
+    for (auto&amp; x : a) { cin &gt;&gt; x; xorAll ^= x; }
+    
+    // Nếu xorAll == 0, mọi phần tử đều &quot;match&quot;
+    // Tìm phần tử đặc biệt...
+    return 0;
+}
+</code></pre>
+<h2>Bài C — DP / Graph / Binary Search</h2>
+<p>Bài C là ranh giới giữa &quot;dễ&quot; và &quot;khó&quot; trong Div.2. Thường gặp:</p>
+<ul>
+<li><strong>DP đơn giản</strong> — dp[i] = trạng thái tốt nhất với i phần tử đầu</li>
+<li><strong>Binary Search on Answer</strong> — kiểm tra xem mid có thỏa mãn không</li>
+<li><strong>Graph BFS/DFS</strong> — tìm shortest path hoặc connectivity</li>
+</ul>
+<h3>Template Binary Search</h3>
+<pre><code class="language-cpp">auto check = [&amp;](long long mid) -&gt; bool {
+    // return true nếu mid thỏa mãn điều kiện
+    return /* ... */;
+};
+
+long long lo = 0, hi = 1e18;
+while (lo &lt; hi) {
+    long long mid = lo + (hi - lo) / 2;
+    if (check(mid)) hi = mid;
+    else lo = mid + 1;
+}
+// lo là đáp án nhỏ nhất thỏa mãn
+</code></pre>
+<h2>Những lỗi thường gặp</h2>
+<table>
+<thead>
+<tr>
+<th>Lỗi</th>
+<th>Nguyên nhân</th>
+<th>Phòng tránh</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Wrong Answer</td>
+<td>Sai edge case</td>
+<td>Test thủ công</td>
+</tr>
+<tr>
+<td>Time Limit</td>
+<td>Complexity sai</td>
+<td>Estimate trước</td>
+</tr>
+<tr>
+<td>Runtime Error</td>
+<td>Out of bounds</td>
+<td>Kiểm tra index</td>
+</tr>
+<tr>
+<td>Overflow</td>
+<td>int × int → long long</td>
+<td>Dùng <code>1LL *</code></td>
+</tr>
+</tbody></table>
+<h2>Kết luận</h2>
+<p>CP không phải là ghi nhớ nhiều thuật toán — mà là <strong>rèn luyện tư duy</strong>. Mỗi contest là một cơ hội để nhìn nhận xem mình đang yếu ở đâu và cải thiện.</p>
+<p>Keep grinding! 💪</p>
+
 </article>
 
 <div class="mt-16 pt-8 border-t border-primary/10">
-    <a href="blog.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border border-primary/30 rounded-lg hover:bg-primary/20 transition-all font-bold">
+    <a href="../blog.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border border-primary/30 rounded-lg hover:bg-primary/20 transition-all font-bold">
         <i class="fa-solid fa-arrow-left"></i> Quay lại Blog
     </a>
 </div>
@@ -171,5 +263,5 @@
 <span class="material-symbols-outlined">expand_less</span>
 </a>
 </div>
-<script src="js/blog.js"></script>
+
 </body></html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Post — baodat | Portfolio</title>
+<meta name="description" content="Blog của Tôn Thất Bảo Đạt" />
+<!-- Include typography plugin for markdown parsing -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@11.2.0/marked.min.js" defer></script>
+<!-- MathJax for rendering math equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  /* Fix Tailwind CSS preflight breaking inline MathJax SVGs */
+  mjx-container svg {
+    display: inline !important;
+  }
+  mjx-container[display="true"] {
+    margin: 1em 0;
+  }
+</style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0dccf2",
+              "background-light": "#f5f8f8",
+              "background-dark": "#101f22",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            typography: (theme) => ({
+              DEFAULT: {
+                css: {
+                  '--tw-prose-body': theme('colors.slate[400]'),
+                  '--tw-prose-headings': theme('colors.slate[100]'),
+                  '--tw-prose-lead': theme('colors.slate[300]'),
+                  '--tw-prose-links': theme('colors.primary'),
+                  '--tw-prose-bold': theme('colors.slate[100]'),
+                  '--tw-prose-counters': theme('colors.slate[400]'),
+                  '--tw-prose-bullets': theme('colors.slate[400]'),
+                  '--tw-prose-hr': theme('colors.primary / 0.2'),
+                  '--tw-prose-quotes': theme('colors.slate[100]'),
+                  '--tw-prose-quote-borders': theme('colors.primary'),
+                  '--tw-prose-captions': theme('colors.slate[400]'),
+                  '--tw-prose-code': theme('colors.primary'),
+                  '--tw-prose-pre-code': theme('colors.slate[200]'),
+                  '--tw-prose-pre-bg': theme('colors.background-dark'),
+                  '--tw-prose-th-borders': theme('colors.primary / 0.2'),
+                  '--tw-prose-td-borders': theme('colors.primary / 0.1'),
+                  'code::before': { content: '""' },
+                  'code::after': { content: '""' },
+                  a: { textDecoration: 'none', '&:hover': { textDecoration: 'underline' } },
+                },
+              },
+            }),
+          },
+        },
+      }
+    </script>
+    <link rel="icon" type="image/jpeg" href="../assets/avatar.jpg" />
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
+<div class="mx-auto flex max-w-[1200px] items-center justify-between">
+<div class="flex items-center gap-8">
+<a href="../index.html" class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+<h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#about">Về tôi</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#stats">Thành tích</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="../blog.html">Blog</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#contact">Liên hệ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-primary/10 border border-primary/20 rounded-lg px-3 py-1.5">
+<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-sm text-slate-100 placeholder:text-slate-500 w-32 lg:w-48" placeholder="Tìm kiếm bài viết..."/>
+</div>
+<div class="flex gap-2">
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://github.com/baodat2020" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-xl leading-none">code</span>
+</a>
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-xl leading-none">public</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto flex max-w-[800px] w-full flex-1 flex-col px-4 md:px-8 py-10">
+
+<div class="post-hero mb-12 border-b border-primary/10 pb-8 reveal">
+    <a href="../blog.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-primary text-sm font-medium mb-8 transition-colors">
+        <i class="fa-solid fa-arrow-left"></i> Tất cả bài viết
+    </a>
+    
+    <div id="post-meta" class="mb-4 flex gap-2 text-[10px] font-bold text-primary px-2 py-0.5 uppercase">
+        <span class="bg-primary/20 rounded px-2 py-1">Blog</span>
+    </div>
+    
+    <h1 id="post-title" class="text-3xl md:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight">segment-tree-guide</h1>
+    
+    <div id="post-info" class="mt-6 flex items-center gap-4 text-slate-400 text-sm">
+        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_month</span> </span>
+         <span>&middot;</span>
+         <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> </span>
+         <span>&middot;</span>
+         <span>Tôn Thất Bảo Đạt</span>
+    </div>
+</div>
+
+<article id="post-body" class="prose prose-invert prose-primary mx-auto max-w-none text-slate-300 reveal">
+    <h1>Segment Tree từ cơ bản đến nâng cao</h1>
+<p>Segment Tree là một trong những <strong>cấu trúc dữ liệu</strong> quan trọng nhất trong Competitive Programming. Bài viết này sẽ đưa bạn từ khái niệm cơ bản đến các ứng dụng nâng cao.</p>
+<h2>Segment Tree là gì?</h2>
+<p>Segment Tree là một cây nhị phân hoàn chỉnh được xây dựng trên một mảng, cho phép:</p>
+<ul>
+<li><strong>Range Query</strong> — truy vấn trên đoạn [l, r] trong O(log n)</li>
+<li><strong>Point Update</strong> — cập nhật phần tử tại vị trí i trong O(log n)</li>
+</ul>
+<h3>Xây dựng cơ bản</h3>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+const int MAXN = 1e5 + 5;
+int tree[4 * MAXN], a[MAXN];
+int n;
+
+void build(int node, int l, int r) {
+    if (l == r) {
+        tree[node] = a[l];
+        return;
+    }
+    int mid = (l + r) / 2;
+    build(2 * node, l, mid);
+    build(2 * node + 1, mid + 1, r);
+    tree[node] = tree[2 * node] + tree[2 * node + 1]; // sum segment tree
+}
+
+int query(int node, int l, int r, int ql, int qr) {
+    if (qr &lt; l || r &lt; ql) return 0;
+    if (ql &lt;= l &amp;&amp; r &lt;= qr) return tree[node];
+    int mid = (l + r) / 2;
+    return query(2 * node, l, mid, ql, qr)
+         + query(2 * node + 1, mid + 1, r, ql, qr);
+}
+
+void update(int node, int l, int r, int pos, int val) {
+    if (l == r) {
+        tree[node] = val;
+        return;
+    }
+    int mid = (l + r) / 2;
+    if (pos &lt;= mid) update(2 * node, l, mid, pos, val);
+    else update(2 * node + 1, mid + 1, r, pos, val);
+    tree[node] = tree[2 * node] + tree[2 * node + 1];
+}
+</code></pre>
+<h2>Lazy Propagation</h2>
+<p>Khi bạn cần <strong>Range Update</strong> (cập nhật cả đoạn [l, r]), thì Point Update sẽ không đủ. Đây là lúc ta cần <strong>Lazy Propagation</strong>.</p>
+<p>Ý tưởng: &quot;trì hoãn&quot; việc cập nhật — chỉ cập nhật node khi cần thiết, đánh dấu <code>lazy</code> để nhớ phải cập nhật sau.</p>
+<pre><code class="language-cpp">int lazy[4 * MAXN];
+
+void pushDown(int node, int l, int r) {
+    if (lazy[node] == 0) return;
+    int mid = (l + r) / 2;
+    tree[2 * node] += lazy[node] * (mid - l + 1);
+    lazy[2 * node] += lazy[node];
+    tree[2 * node + 1] += lazy[node] * (r - mid);
+    lazy[2 * node + 1] += lazy[node];
+    lazy[node] = 0;
+}
+
+void updateRange(int node, int l, int r, int ql, int qr, int val) {
+    if (qr &lt; l || r &lt; ql) return;
+    if (ql &lt;= l &amp;&amp; r &lt;= qr) {
+        tree[node] += val * (r - l + 1);
+        lazy[node] += val;
+        return;
+    }
+    pushDown(node, l, r);
+    int mid = (l + r) / 2;
+    updateRange(2 * node, l, mid, ql, qr, val);
+    updateRange(2 * node + 1, mid + 1, r, ql, qr, val);
+    tree[node] = tree[2 * node] + tree[2 * node + 1];
+}
+</code></pre>
+<h2>Khi nào dùng Segment Tree?</h2>
+<table>
+<thead>
+<tr>
+<th>Bài toán</th>
+<th>Cấu trúc phù hợp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Range Sum, Range Min/Max</td>
+<td>Segment Tree</td>
+</tr>
+<tr>
+<td>Range Update + Range Query</td>
+<td>Segment Tree + Lazy</td>
+</tr>
+<tr>
+<td>Dynamic Range</td>
+<td>Segment Tree động</td>
+</tr>
+<tr>
+<td>2D range queries</td>
+<td>2D Segment Tree / BIT 2D</td>
+</tr>
+</tbody></table>
+<h2>Kết luận</h2>
+<p>Segment Tree là nền tảng cho rất nhiều bài toán nâng cao hơn như <strong>Persistent Segment Tree</strong>, <strong>Merge Sort Tree</strong>, hay <strong>Segment Tree Beats</strong>. Hãy nắm vững phần cơ bản trước!</p>
+<p>Happy coding! 🎯</p>
+
+</article>
+
+<div class="mt-16 pt-8 border-t border-primary/10">
+    <a href="../blog.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border border-primary/30 rounded-lg hover:bg-primary/20 transition-all font-bold">
+        <i class="fa-solid fa-arrow-left"></i> Quay lại Blog
+    </a>
+</div>
+
+</main>
+<!-- Footer -->
+<footer id="contact" class="border-t border-primary/10 bg-background-dark px-4 md:px-20 lg:px-40 py-12 mt-auto">
+<div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-black text-xl tracking-tight">baodat</span>
+</div>
+<p class="text-slate-500 text-sm">© 2026 Tôn Thất Bảo Đạt. Designed for competitive programmers.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://github.com/baodat2020" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-lg">description</span>
+<span class="text-xs font-semibold">GitHub</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="https://www.facebook.com/greyparrotvn" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-lg">social_leaderboard</span>
+<span class="text-xs font-semibold">Facebook</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg">mail</span>
+<span class="text-xs font-semibold">Email</span>
+</a>
+</div>
+</div>
+</footer>
+<!-- Back to Top -->
+<a href="#" class="fixed bottom-6 right-6 p-3 rounded-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition-all opacity-0 translate-y-4 z-50 pointer-events-none" id="backToTop" aria-label="Back to top">
+<span class="material-symbols-outlined">expand_less</span>
+</a>
+</div>
+
+</body></html>

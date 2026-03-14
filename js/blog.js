@@ -59,7 +59,7 @@ function buildBlogCard(post) {
   const tag = tagLabels[post.tag] || post.tag;
   const imageSrc = post.image || "https://lh3.googleusercontent.com/aida-public/AB6AXuBgoOw05aHhyUPbWwErgZqov6E0Jj24fMZ9FSmlYgku1kDc3uV1l488zLRdIU1pSEsi9CCcZ0F60_2gpgPMM61kMXd1XX0Oi5sNSTnjflli8eJ3bLu1MpIQB7pbFk5yR3YDMRfhUNaF1NCh10ePGkLkKFot0zE2Ba8T2vorkZOEoWpfgnsQRcdQNHXjsG3xIO5OI-mDCeZU2BMfmMVoff4NBzXMF22Kvi8wD1Unuyym5df-2WRNXm9MPTy_EiWvb6_AmzpKB5ndaw";
   return `
-    <a href="post.html?slug=${post.slug}" class="flex flex-col rounded-xl border border-primary/10 bg-background-dark/50 hover:border-primary/30 transition-all overflow-hidden group reveal opacity-0 translate-y-8 duration-700 ease-out">
+    <a href=`posts/${post.slug}.html` class="flex flex-col rounded-xl border border-primary/10 bg-background-dark/50 hover:border-primary/30 transition-all overflow-hidden group reveal opacity-0 translate-y-8 duration-700 ease-out">
       <div class="h-40 overflow-hidden relative">
         <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${imageSrc}" alt=""/>
         <div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent opacity-60"></div>
