@@ -5,7 +5,8 @@
     "date": "2024-03-10",
     "tag": "algo",
     "excerpt": "Phép biến đổi Fourier nhanh phiên bản Số học. Một nâng cấp thiết yếu để thực hiện tích chập chính xác tuyệt đối trên một vành modul...",
-    "readTime": "10 phút"
+    "readTime": "10 phút",
+    "image": "assets/thumbnail_ntt.png"
   },
   {
     "slug": "segment-tree-beats",
@@ -13,7 +14,8 @@
     "date": "2024-03-12",
     "tag": "algo",
     "excerpt": "Segment Tree Beats (Nhịp đập Cây Phân Đoạn) là kỹ thuật giải quyết các phép biến đổi range chmin/chmax...",
-    "readTime": "12 phút"
+    "readTime": "12 phút",
+    "image": "assets/thumbnail_segment.png"
   },
   {
     "slug": "dsu-rollback",
@@ -21,7 +23,8 @@
     "date": "2024-03-14",
     "tag": "algo",
     "excerpt": "Kỹ thuật Rollback giúp DSU giải quyết các bài toán có truy vấn xóa hoặc quản lý các trạng thái trên cây...",
-    "readTime": "8 phút"
+    "readTime": "8 phút",
+    "image": "assets/thumbnail_dsu.png"
   },
   {
     "slug": "hello-world",
