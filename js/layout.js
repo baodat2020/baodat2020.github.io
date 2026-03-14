@@ -30,6 +30,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadComponent('layout-footer', 'footer.html')
     ]);
 
+    // Handle fixed header height compensation
+    const headerEl = document.querySelector('#layout-header header');
+    if (headerEl) {
+        document.getElementById('layout-header').style.height = headerEl.offsetHeight + 'px';
+    }
+
     // Highlight current nav item
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('header nav a');
