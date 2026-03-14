@@ -38,21 +38,36 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Load search functionality
     const searchScript = document.createElement('script');
-    searchScript.src = `${root}js/search.js`;
+    searchScript.src = `${rootPath}js/search.js`;
     document.body.appendChild(searchScript);
 
     // Dispatch event for other components
     document.dispatchEvent(new CustomEvent('componentsLoaded'));
 
     // Highlight current nav item
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('header nav a');
+    const currentUrl = new URL(window.location.href);
+    const currentPath = currentUrl.pathname.replace(/\/index\.html$/, '/') || '/';
+    
+    // Select both desktop and mobile links
+    const navLinks = document.querySelectorAll('header nav a, #mobile-menu a');
+    
     navLinks.forEach(link => {
-        // basic matching for active link
-        const linkPath = new URL(link.href, window.location.origin).pathname;
-        if (currentPath.endsWith(linkPath) || (currentPath.endsWith('/') && linkPath.endsWith('index.html'))) {
-            link.classList.remove('text-slate-400');
-            link.classList.add('text-primary');
+        try {
+            const linkUrl = new URL(link.href, window.location.origin);
+            const linkPath = linkUrl.pathname.replace(/\/index\.html$/, '/') || '/';
+            
+            // Check if paths match exactly (handling index.html vs /)
+            const isPathMatch = (currentPath === linkPath);
+            
+            // For anchor links on the same page
+            const isAnchorMatch = (currentPath === linkPath && currentUrl.hash === linkUrl.hash);
+
+            if (isPathMatch) {
+                link.classList.remove('text-slate-400', 'text-slate-300');
+                link.classList.add('text-primary', 'font-bold');
+            }
+        } catch (err) {
+            // Ignore invalid URLs
         }
     });
 
