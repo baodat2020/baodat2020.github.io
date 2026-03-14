@@ -38,7 +38,6 @@
 
 <body
   class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
-  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
     <!-- Navigation Bar -->
     <header
       class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
@@ -48,11 +47,48 @@
             <span class="material-symbols-outlined text-3xl">terminal</span>
             <h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
           <nav class="hidden md:flex items-center gap-6">
-            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html#about">Về tôi</a>
-            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html#stats">Thành tích</a>
-            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/blog.html">Blog</a>
-            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/documents.html">Tài liệu</a>
-            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="https://baodat2020.github.io/index.html#contact">Liên hệ</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#about">Về tôi</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#stats">Thành tích</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#projects">Dự án</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="blog.html">Blog</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="documents.html">Tài liệu</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#contact">Liên hệ</a>
+          </nav>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="hidden sm:flex items-center bg-primary/10 border border-primary/20 rounded-lg px-3 py-1.5">
+            <span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+            <input
+              class="bg-transparent border-none focus:ring-0 p-0 text-sm text-slate-100 placeholder:text-slate-500 w-32 lg:w-48"
+              placeholder="Tìm kiếm bài viết..." />
+          </div>
+          <div class="flex gap-2">
+            <a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all"
+              href="https://github.com/baodat2020" target="_blank" rel="noopener">
+              <span class="material-symbols-outlined text-xl leading-none">code</span>
+            </a>
+            <a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all"
+              href="https://codeforces.com/profile/baodat" target="_blank" rel="noopener">
+              <span class="material-symbols-outlined text-xl leading-none">public</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+      <div class="mx-auto flex max-w-[1200px] items-center justify-between">
+        <div class="flex items-center gap-8">
+          <a href="index.html" class="flex items-center gap-3 text-primary">
+            <span class="material-symbols-outlined text-3xl">terminal</span>
+            <h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
+          <nav class="hidden md:flex items-center gap-6">
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#about">Về tôi</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#stats">Thành tích</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#projects">Dự án</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="blog.html">Blog</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="documents.html">Tài liệu</a>
+            <a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="index.html#contact">Liên hệ</a>
           </nav>
         </div>
         <div class="flex items-center gap-4">
@@ -213,18 +249,29 @@
           </div>
         </div>
       </section>
-      <!-- Chart Section -->
-      <section class="reveal">
-        <div class="p-8 rounded-xl border border-primary/20 bg-primary/5">
-          <div class="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
-            <h4 class="font-bold text-slate-100">Lịch sử Rating</h4>
-            <div class="flex bg-background-dark/50 p-1 rounded-lg border border-primary/10">
-              <button id="tab-cf" onclick="switchChart('cf')" class="chart-tab active px-4 py-1.5 text-xs font-bold rounded-md transition-all">Codeforces</button>
-              <button id="tab-ac" onclick="switchChart('ac')" class="chart-tab px-4 py-1.5 text-xs font-bold rounded-md transition-all text-slate-500 hover:text-slate-300">AtCoder</button>
+      <!-- Projects Section -->
+      <section id="projects" class="reveal mt-16">
+        <h3 class="text-2xl font-bold text-slate-100 mb-8 flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary">code_blocks</span>
+          Dự án tiêu biểu
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="group p-6 rounded-xl border border-primary/20 bg-background-dark hover:border-primary/50 transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <span class="material-symbols-outlined text-3xl text-primary">star</span>
+              <a href="https://github.com/baodat2020/DSA-Documents" target="_blank" class="text-slate-400 hover:text-primary transition-colors">
+                <i class="fa-brands fa-github text-xl"></i>
+              </a>
+            </div>
+            <h4 class="text-xl font-bold text-slate-100 mb-2">DSA Documents</h4>
+            <p class="text-slate-500 text-sm mb-4 leading-relaxed">Tổng hợp tài liệu Cấu trúc dữ liệu & Giải thuật Tiếng Việt nâng cao.</p>
+            <div class="flex gap-2">
+              <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Markdown</span>
+              <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Sharing</span>
             </div>
           </div>
-          <div class="relative w-full h-64 flex items-end justify-between gap-1 px-2" style="position: relative;">
-            <canvas id="ratingChart"></canvas>
+          <div class="group p-6 rounded-xl border border-primary/20 bg-background-dark hover:border-primary/50 transition-all text-slate-500 flex items-center justify-center italic">
+            Đang cập nhật thêm các dự án mới...
           </div>
         </div>
       </section>
