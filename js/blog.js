@@ -130,18 +130,25 @@ async function renderPost() {
         }
         const md = await mdRes.text();
 
-        // Wait for marked.js to be available
-        const waitForMarked = () => new Promise((resolve) => {
-            if (window.marked) resolve();
+        // Wait for marked.js and MathJax to be available
+        const waitForLib = () => new Promise((resolve) => {
+            if (window.marked && window.MathJax) resolve();
             else {
                 const check = setInterval(() => {
-                    if (window.marked) { clearInterval(check); resolve(); }
+                    if (window.marked && window.MathJax) { clearInterval(check); resolve(); }
                 }, 50);
             }
         });
-        await waitForMarked();
+        await waitForLib();
 
-        postBody.innerHTML = window.marked.parse(md);
+        // Strip YAML frontmatter before parsing
+        const cleanedMd = md.replace(/^---\n[\s\S]*?\n---\n/, '');
+        postBody.innerHTML = window.marked.parse(cleanedMd);
+
+        // Typeset MathJax
+        if (window.MathJax && window.MathJax.typesetPromise) {
+             window.MathJax.typesetPromise([postBody]).catch(e => console.error('MathJax error', e));
+        }
     } catch (e) {
         postBody.innerHTML = '<p style="color:var(--text-muted);">Đã xảy ra lỗi khi tải bài viết.</p>';
         console.warn('Post load error:', e);
