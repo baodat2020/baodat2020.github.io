@@ -1,12 +1,30 @@
 [
   {
-    "slug": "dsu-rollback-tutorial",
-    "title": "Disjoint Set Union (DSU) với Rollback — Kỹ thuật quay lui thời gian",
-    "date": "2026-03-11",
+    "slug": "ntt",
+    "title": "Number Theoretic Transform (NTT)",
+    "date": "2024-03-10",
     "tag": "algo",
-    "excerpt": "Cùng tìm hiểu cách nâng cấp DSU cơ bản bằng kỹ thuật Rollback để giải quyết quyết các bài toán Dynamic Connectivity (Thêm/Xóa cạnh offline).",
-    "readTime": "15 phút đọc"
+    "excerpt": "Phép biến đổi Fourier nhanh phiên bản Số học. Một nâng cấp thiết yếu để thực hiện tích chập chính xác tuyệt đối trên một vành modul...",
+    "readTime": "10 phút"
   },
+  {
+    "slug": "segment-tree-beats",
+    "title": "Kỹ thuật Segment Tree Beats",
+    "date": "2024-03-12",
+    "tag": "algo",
+    "excerpt": "Segment Tree Beats (Nhịp đập Cây Phân Đoạn) là kỹ thuật giải quyết các phép biến đổi range chmin/chmax...",
+    "readTime": "12 phút"
+  },
+  {
+    "slug": "dsu-rollback",
+    "title": "Disjoint Set Union (DSU) với Rollback",
+    "date": "2024-03-14",
+    "tag": "algo",
+    "excerpt": "Kỹ thuật Rollback giúp DSU giải quyết các bài toán có truy vấn xóa hoặc quản lý các trạng thái trên cây...",
+    "readTime": "8 phút"
+  },
+  {
+    "slug": "dsu-rollback-tutorial",
   {
     "slug": "hello-world",
     "title": "Hello, World — khởi đầu hành trình CP của mình",
