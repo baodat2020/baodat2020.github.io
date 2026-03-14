@@ -24,6 +24,49 @@
         .doc-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(13, 204, 242, 0.1); }
         .doc-card:hover { transform: translateY(-4px); border-color: rgba(13, 204, 242, 0.4); box-shadow: 0 20px 40px -20px rgba(13, 204, 242, 0.3); }
         .gradient-text { background: linear-gradient(135deg, var(--primary) 0%, #0891b2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        
+        /* Tooltip Style */
+        [data-tooltip] { position: relative; cursor: pointer; }
+        [data-tooltip]::before {
+            content: attr(data-tooltip);
+            position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%);
+            padding: 6px 10px; background: rgba(16, 31, 34, 0.95);
+            color: var(--primary); font-size: 11px; font-weight: 700;
+            border-radius: 6px; border: 1px solid rgba(13, 204, 242, 0.2);
+            white-space: nowrap; opacity: 0; visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+        [data-tooltip]:hover::before { opacity: 1; visibility: visible; bottom: 140%; }
+        
+        /* Highlight Button */
+        .btn-download {
+            background: rgba(13, 204, 242, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(13, 204, 242, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 rgba(13, 204, 242, 0);
+        }
+        .btn-download:hover {
+            background: var(--primary);
+            color: var(--background-dark);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(13, 204, 242, 0.4);
+            transform: scale(1.02);
+        }
+        .btn-download-primary {
+            background: var(--primary);
+            color: var(--background-dark);
+            border: 1px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(13, 204, 242, 0.2);
+            transition: all 0.3s ease;
+        }
+        .btn-download-primary:hover {
+            opacity: 0.9;
+            box-shadow: 0 6px 20px rgba(13, 204, 242, 0.4);
+            transform: translateY(-2px);
+        }
     </style>
     <script id="tailwind-config">
         tailwind.config = {
@@ -95,8 +138,8 @@
                     <p class="text-sm text-slate-400 mb-4">Nhập môn kỹ thuật lập trình nâng cao và các tư duy thuật toán cơ bản.</p>
                 </div>
                 <div class="flex gap-2 mt-auto">
-                    <a href="https://drive.google.com/file/d/1-VV1HJRXMaigvpC8NjcUmWE6oWw4dfbE/view?usp=sharing" target="_blank" class="flex-1 bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary py-2 rounded-lg text-center text-xs font-bold transition-all">Quyển 0</a>
-                    <a href="https://drive.google.com/file/d/1pej3HV2EhXog9EvZu1F8SPtPHOEJCT4I/view?usp=sharing" target="_blank" class="flex-1 bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary py-2 rounded-lg text-center text-xs font-bold transition-all">Quyển 1</a>
+                    <a href="https://drive.google.com/file/d/1-VV1HJRXMaigvpC8NjcUmWE6oWw4dfbE/view?usp=sharing" target="_blank" data-tooltip="Nhấn để tải Quyển 0" class="flex-1 btn-download py-2 rounded-lg text-center text-xs font-bold">Quyển 0</a>
+                    <a href="https://drive.google.com/file/d/1pej3HV2EhXog9EvZu1F8SPtPHOEJCT4I/view?usp=sharing" target="_blank" data-tooltip="Nhấn để tải Quyển 1" class="flex-1 btn-download py-2 rounded-lg text-center text-xs font-bold">Quyển 1</a>
                 </div>
             </div>
 
@@ -110,9 +153,9 @@
                     <p class="text-sm text-slate-400 mb-4">Lý thuyết số nâng cao, các bài toán tổ hợp và hình học trong CP.</p>
                 </div>
                 <div class="grid grid-cols-3 gap-2 mt-auto">
-                    <a href="https://drive.google.com/file/d/14TBRY_eXOdhKnHU_V4a89M3lXf-Za85q/view?usp=sharing" target="_blank" class="bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary py-2 rounded-lg text-center text-[10px] font-bold">Quyển 7</a>
-                    <a href="https://drive.google.com/file/d/1yJ_dZl2VLVebaBhxx0v1OWJB6U4Y5TVZ/view?usp=sharing" target="_blank" class="bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary py-2 rounded-lg text-center text-[10px] font-bold">Quyển 8</a>
-                    <a href="https://drive.google.com/file/d/1z3iDfaSUXimq1vgf4QNwG-k7zfumQFuN/view?usp=sharing" target="_blank" class="bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary py-2 rounded-lg text-center text-[10px] font-bold">Quyển 9</a>
+                    <a href="https://drive.google.com/file/d/14TBRY_eXOdhKnHU_V4a89M3lXf-Za85q/view?usp=sharing" target="_blank" data-tooltip="Tải xuống Quyển 7" class="btn-download py-2 rounded-lg text-center text-[10px] font-bold">Quyển 7</a>
+                    <a href="https://drive.google.com/file/d/1yJ_dZl2VLVebaBhxx0v1OWJB6U4Y5TVZ/view?usp=sharing" target="_blank" data-tooltip="Tải xuống Quyển 8" class="btn-download py-2 rounded-lg text-center text-[10px] font-bold">Quyển 8</a>
+                    <a href="https://drive.google.com/file/d/1z3iDfaSUXimq1vgf4QNwG-k7zfumQFuN/view?usp=sharing" target="_blank" data-tooltip="Tải xuống Quyển 9" class="btn-download py-2 rounded-lg text-center text-[10px] font-bold">Quyển 9</a>
                 </div>
             </div>
 
@@ -125,7 +168,7 @@
                     <h3 class="text-xl font-bold mb-2">Hình học (Geometry)</h3>
                     <p class="text-sm text-slate-400 mb-4">Các thuật toán hình học cơ bản và nâng cao, bao quanh, giao điểm...</p>
                 </div>
-                <a href="https://drive.google.com/file/d/1EvXgeP_GTGOj-wCw2dyUwy45tNljHSzp/view?usp=sharing" target="_blank" class="mt-auto w-full bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary py-2 rounded-lg text-center text-xs font-bold transition-all">Tải xuống Quyển 10</a>
+                <a href="https://drive.google.com/file/d/1EvXgeP_GTGOj-wCw2dyUwy45tNljHSzp/view?usp=sharing" target="_blank" data-tooltip="Nhấn để tải tài liệu Hình học" class="mt-auto w-full btn-download-primary py-2 rounded-lg text-center text-xs font-bold">Tải xuống Quyển 10</a>
             </div>
 
             <!-- Quyển 11-13 (Đồ thị) -->
@@ -138,9 +181,9 @@
                     <p class="text-sm text-slate-400 mb-4">Duyệt đồ thị, đường đi ngắn nhất, luồng cực đại và các bài toán cây.</p>
                 </div>
                 <div class="grid grid-cols-3 gap-2 mt-auto">
-                    <a href="https://drive.google.com/file/d/1zureARl0pp931T6-LX6oYmaci162aPSS/view?usp=sharing" target="_blank" class="bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary py-2 rounded-lg text-center text-[10px] font-bold">Quyển 11</a>
-                    <a href="https://drive.google.com/file/d/1YX4_lU97TBNy_sLc3MutQETRP6R49GZZ/view?usp=sharing" target="_blank" class="bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary py-2 rounded-lg text-center text-[10px] font-bold">Quyển 12</a>
-                    <a href="https://drive.google.com/file/d/1be8z8R5lm4z7zqNRuDNKyNBRXwiHWp1a/view?usp=sharing" target="_blank" class="bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary py-2 rounded-lg text-center text-[10px] font-bold">Quyển 13</a>
+                    <a href="https://drive.google.com/file/d/1zureARl0pp931T6-LX6oYmaci162aPSS/view?usp=sharing" target="_blank" data-tooltip="Tải xuống Quyển 11" class="btn-download py-2 rounded-lg text-center text-[10px] font-bold">Quyển 11</a>
+                    <a href="https://drive.google.com/file/d/1YX4_lU97TBNy_sLc3MutQETRP6R49GZZ/view?usp=sharing" target="_blank" data-tooltip="Tải xuống Quyển 12" class="btn-download py-2 rounded-lg text-center text-[10px] font-bold">Quyển 12</a>
+                    <a href="https://drive.google.com/file/d/1be8z8R5lm4z7zqNRuDNKyNBRXwiHWp1a/view?usp=sharing" target="_blank" data-tooltip="Tải xuống Quyển 13" class="btn-download py-2 rounded-lg text-center text-[10px] font-bold">Quyển 13</a>
                 </div>
             </div>
 
@@ -154,8 +197,8 @@
                     <p class="text-sm text-slate-400 mb-4">Các bài toán DP kinh điển, DP trên cây và thuật toán KMP, Z-Algorithm.</p>
                 </div>
                 <div class="flex gap-2 mt-auto">
-                    <a href="https://drive.google.com/file/d/1CB3XbOPItk2sCEZFko4QQPYPXu2mHf2Q/view?usp=sharing" target="_blank" class="flex-1 bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary py-2 rounded-lg text-center text-xs font-bold transition-all">Quyển 14</a>
-                    <a href="https://drive.google.com/file/d/1v0wWJ5W15JGNe29V47kHGxWsRruWoZKG/view?usp=sharing" target="_blank" class="flex-1 bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary py-2 rounded-lg text-center text-xs font-bold transition-all">Quyển 15</a>
+                    <a href="https://drive.google.com/file/d/1CB3XbOPItk2sCEZFko4QQPYPXu2mHf2Q/view?usp=sharing" target="_blank" data-tooltip="Tải Quyển 14" class="flex-1 btn-download py-2 rounded-lg text-center text-xs font-bold">Quyển 14</a>
+                    <a href="https://drive.google.com/file/d/1v0wWJ5W15JGNe29V47kHGxWsRruWoZKG/view?usp=sharing" target="_blank" data-tooltip="Tải Quyển 15" class="flex-1 btn-download py-2 rounded-lg text-center text-xs font-bold">Quyển 15</a>
                 </div>
             </div>
 
@@ -171,7 +214,7 @@
                     </div>
                     <p class="text-sm text-slate-400 mb-4">Segment Tree nâng cao, Segment Tree Beats và các kỹ thuật truy vấn khoảng.</p>
                 </div>
-                <a href="https://drive.google.com/file/d/1m_q9rtvXG9SDnLVO-ycUJJd_5edaBBQy/view?usp=sharing" target="_blank" class="mt-auto w-full bg-primary text-background-dark hover:opacity-90 py-2.5 rounded-lg text-center text-xs font-black transition-all">Tải xuống Quyển 17</a>
+                <a href="https://drive.google.com/file/d/1m_q9rtvXG9SDnLVO-ycUJJd_5edaBBQy/view?usp=sharing" target="_blank" data-tooltip="Tải xuống Quyển 17 (Premium)" class="mt-auto w-full btn-download-primary py-2.5 rounded-lg text-center text-xs font-black">Tải xuống Quyển 17</a>
             </div>
         </div>
 
