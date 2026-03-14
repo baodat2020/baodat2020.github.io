@@ -119,50 +119,78 @@ async function fetchCF() {
   }
 }
 
-// ── AtCoder — via kenkoooo.com
+// ── AtCoder — via kenkoooo.com & CORS Proxy for official stats
 async function fetchAC() {
   try {
-    // Note: kenkoooo.com API often returns 403 due to Cloudflare protection on direct fetch.
-    // If it fails, we will gracefully degrade to some default/mocked stats so the UI doesn't look broken.
     const headers = { 'Accept': 'application/json' };
-
-    // We try to fetch the history first to see if the API is reachable.
-    const historyRes = await fetch(`https://atcoder.jp/users/${AC_HANDLE}/history/json`);
-
+    
+    // Instead of failing due to direct fetch CORS/Cloudflare, use allOrigins proxy
+    // to fetch the user history directly from AtCoder
+    const historyRes = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://atcoder.jp/users/${AC_HANDLE}/history/json`)}`);
+    
     if (historyRes.ok) {
-      const history = await historyRes.json();
+      const data = await historyRes.json();
+      const history = JSON.parse(data.contents);
       if (Array.isArray(history) && history.length > 0) {
         setText('ac-contests', history.length.toString());
-        // Use latest rating from history
         const latest = history[history.length - 1].NewRating || 0;
+        
+        // Find max rating
+        let maxRating = 0;
+        for (const contest of history) {
+            maxRating = Math.max(maxRating, contest.NewRating);
+        }
+        
         setText('ac-rating', latest.toLocaleString());
+        
+        // Update span displaying max rating in the DOM (assuming HTML structure follows cf card)
+        const acCard = document.getElementById('ac-card');
+        if (acCard) {
+            const spans = acCard.querySelectorAll('span');
+            spans.forEach(span => {
+                if (span.textContent.includes('max.')) {
+                    span.innerHTML = `max. ${maxRating}`;
+                }
+            });
+        }
+      } else {
+        setText('ac-contests', '0');
+        setText('ac-rating', '0');
       }
     } else {
       throw new Error("AtCoder history unreachable");
     }
 
-    const [acRankRes, streakRes] = await Promise.all([
+    // Try Kenkoooo API for streak and AC count
+    // Note: If Kenkoooo API fails, we just show N/A instead of hardcoding
+    Promise.all([
       fetch(`https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user=${AC_HANDLE}`, { headers }),
       fetch(`https://kenkoooo.com/atcoder/atcoder-api/v3/user/streak_rank?user=${AC_HANDLE}`, { headers })
-    ]);
-
-    if (acRankRes.ok) {
-      const d = await acRankRes.json();
-      setText('ac-ac-count', d.count ? d.count.toLocaleString() : '1,142');
-    } else throw new Error("API 403");
-
-    if (streakRes.ok) {
-      const d = await streakRes.json();
-      setText('ac-streak', d.streak ? `${d.streak} ngày` : '12 ngày');
-    } else throw new Error("API 403");
+    ]).then(async ([acRankRes, streakRes]) => {
+      if (acRankRes.ok) {
+        const d = await acRankRes.json();
+        setText('ac-ac-count', d.count ? d.count.toLocaleString() : 'N/A');
+      } else {
+        setError('ac-ac-count', 'N/A');
+      }
+      
+      if (streakRes.ok) {
+        const d = await streakRes.json();
+        setText('ac-streak', d.streak ? `${d.streak} ngày` : 'N/A');
+      } else {
+        setError('ac-streak', 'N/A');
+      }
+    }).catch(e => {
+      setError('ac-ac-count', 'N/A');
+      setError('ac-streak', 'N/A');
+    });
 
   } catch (err) {
-    console.warn('AtCoder API returned 403/Error. Using fallback data for aesthetics:', err);
-    // Graceful degradation / Mock data for portfolio aesthetics (Handle: baodat)
-    setText('ac-ac-count', '1,142');
-    setText('ac-rating', '1,884');
-    setText('ac-contests', '15');
-    setText('ac-streak', '25 ngày');
+    console.warn('AtCoder API returned Error. No fallback used:', err);
+    setError('ac-ac-count', 'Error');
+    setError('ac-rating', 'Error');
+    setError('ac-contests', 'Error');
+    setError('ac-streak', 'Error');
   }
 }
 
