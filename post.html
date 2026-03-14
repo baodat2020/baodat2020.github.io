@@ -24,6 +24,15 @@
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  /* Fix Tailwind CSS preflight breaking inline MathJax SVGs */
+  mjx-container svg {
+    display: inline !important;
+  }
+  mjx-container[display="true"] {
+    margin: 1em 0;
+  }
+</style>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",

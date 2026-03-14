@@ -100,3 +100,7 @@ Kỹ thuật nhân đa thức (NTT) thực sự là vũ khí hạng siêu nặng
 - **CSES - Polynomial Multiplication**: Bài tập kiểm tra Template đầu tay. Cực kỳ gọn. [Giải CSES 2111](https://cses.fi/problemset/task/2111).
 - **Codeforces 1096G - Lucky Tickets**: Một bài Toán cực rành rọt dùng NTT biểu diễn đa thức trạng thái. [View CF 1096G](https://codeforces.com/problemset/problem/1096/G).
 - **Codeforces 1334F - Restoring the Permutation**: DP chia để trị + NTT kinh điển. Bạn sẽ thấy đồ thị thời gian giảm từ $\mathcal{O}(N^2)$ xuống $\mathcal{O}(N \log^2 N)$ với NTT!
+
+## Nguồn tham khảo (References)
+- **Cơ sở lý thuyết:** Viết dựa trên kiến thức từ CP-Algorithms và các bài giảng đội tuyển.
+- **Tham khảo code mẫu:** Cấu trúc hàm `ntt()` tham khảo từ tài liệu mở của [youkn0wwho.academy](https://youkn0wwho.academy/) (chuyên trang Competitive Programming).

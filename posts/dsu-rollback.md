@@ -100,3 +100,7 @@ Dưới đây là một số bài tập kinh điển trên hệ thống để b�
 *   **USACO Gold - Closing the Farm:** Biến thể của việc thêm/xóa đỉnh có thể qui về làm DSU offline đảo ngược thời gian. [USACO Guide](https://usaco.guide/adv/dsu-rb?lang=cpp)
 
 Hiểu và cài đặt thành thục hệ thống DSU Rollback sẽ là vũ khí quan trọng để bạn tackle các bài cấu trúc dữ liệu hạng nặng!
+
+## Nguồn tham khảo (References)
+- **Cơ sở thuật toán:** CP-Algorithms (Disjoint Set Union) và USACO Guide (Platinum Level - DSU with Rollback).
+- **Phương pháp Cây đệ quy:** Nhấn mạnh trên nền tảng của bài giảng cấu trúc dữ liệu nâng cao (Advanced Data Structures) từ Codeforces blogs.
