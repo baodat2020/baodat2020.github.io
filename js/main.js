@@ -154,6 +154,8 @@ async function fetchCF() {
 }
 
 // ── AtCoder — via kenkoooo.com & CORS Proxy for official stats
+let acRatingHistory = [];
+
 async function fetchAC() {
   try {
     const headers = { 'Accept': 'application/json' };
@@ -165,6 +167,7 @@ async function fetchAC() {
     if (historyRes.ok) {
       const history = await historyRes.json();
       if (Array.isArray(history) && history.length > 0) {
+        acRatingHistory = history;
         setText('ac-contests', history.length.toString());
         const latest = history[history.length - 1].NewRating || 0;
         
@@ -341,12 +344,103 @@ function renderCFChart(history) {
 }
 
 window.switchChart = function (platform) {
-  document.querySelectorAll('.chart-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + platform)?.classList.add('active');
+  const tabs = document.querySelectorAll('.chart-tab');
+  tabs.forEach(t => {
+    t.classList.remove('active', 'bg-primary/20', 'text-primary');
+    t.classList.add('text-slate-500');
+  });
+
+  const activeTab = document.getElementById('tab-' + platform);
+  if (activeTab) {
+    activeTab.classList.add('active', 'bg-primary/20', 'text-primary');
+    activeTab.classList.remove('text-slate-500');
+  }
+
   if (platform === 'cf' && cfRatingHistory.length > 0) {
     renderCFChart(cfRatingHistory);
+  } else if (platform === 'ac' && acRatingHistory.length > 0) {
+    renderACChart(acRatingHistory);
   }
 };
+
+function renderACChart(history) {
+  const canvas = document.getElementById('ratingChart');
+  if (!canvas) return;
+
+  const labels = history.map(r => {
+    const d = new Date(r.EndTime);
+    return d.toLocaleDateString('vi-VN', { month: 'short', year: '2-digit' });
+  });
+  const ratings = history.map(r => r.NewRating);
+
+  const gradient = canvas.getContext('2d').createLinearGradient(0, 0, 0, 300);
+  gradient.addColorStop(0, 'rgba(13, 204, 242, 0.3)');
+  gradient.addColorStop(1, 'rgba(13, 204, 242, 0)');
+
+  const pointColors = ratings.map(r => getAtCoderRankColor(r).color);
+
+  if (ratingChart) ratingChart.destroy();
+
+  ratingChart = new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Rating',
+        data: ratings,
+        borderColor: '#0dccf2',
+        backgroundColor: gradient,
+        borderWidth: 2.5,
+        fill: true,
+        tension: 0.35,
+        pointBackgroundColor: pointColors,
+        pointBorderColor: '#050810',
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(16, 31, 34, 0.95)',
+          borderColor: 'rgba(13, 204, 242, 0.3)',
+          borderWidth: 1,
+          titleColor: '#f1f5f9',
+          bodyColor: '#94a3b8',
+          padding: 12,
+          callbacks: {
+            title: (items) => {
+              const i = items[0].dataIndex;
+              return history[i].ContestName;
+            },
+            label: (item) => {
+              const i = item.dataIndex;
+              const r = history[i];
+              const delta = r.NewRating - r.OldRating;
+              const sign = delta >= 0 ? '+' : '';
+              return [`Rating: ${r.NewRating}`, `Change: ${sign}${delta}`];
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { color: '#64748b', font: { size: 11, family: "'Fira Code', monospace" }, maxTicksLimit: 10 },
+        },
+        y: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { color: '#64748b', font: { size: 11 } },
+        }
+      }
+    }
+  });
+}
 
 // ── Blog Preview (latest 3 posts)
 async function renderBlogPreview() {
