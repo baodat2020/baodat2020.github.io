@@ -16,13 +16,14 @@
             --background-dark: #101f22;
             --background-light: #f5f8f8;
         }
-        body { font-family: 'Inter', sans-serif; background-color: var(--background-dark); color: #f1f5f9; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+        }
         .font-display { font-family: 'Inter', sans-serif; }
-        .glass { background: rgba(16, 31, 34, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(13, 204, 242, 0.1); }
+        .glass { background: rgba(16, 31, 34, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(13, 204, 242, 0.1); }
         .doc-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(13, 204, 242, 0.1); }
         .doc-card:hover { transform: translateY(-4px); border-color: rgba(13, 204, 242, 0.4); box-shadow: 0 20px 40px -20px rgba(13, 204, 242, 0.3); }
-        .bg-grid { background-image: radial-gradient(rgba(13, 204, 242, 0.1) 1px, transparent 1px); background-size: 30px 30px; }
-        .gradient-text { background: linear-gradient(135deg, #0dccf2 0%, #0891b2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-text { background: linear-gradient(135deg, var(--primary) 0%, #0891b2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     </style>
     <script id="tailwind-config">
         tailwind.config = {
@@ -43,7 +44,8 @@
         }
       </script>
 </head>
-<body class="bg-grid antialiased">
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
     <!-- Header -->
     <header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
         <div class="mx-auto flex max-w-[1200px] items-center justify-between">
