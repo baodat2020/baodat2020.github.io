@@ -36,6 +36,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('layout-header').style.height = headerEl.offsetHeight + 'px';
     }
 
+    // Load search functionality
+    const searchScript = document.createElement('script');
+    searchScript.src = `${root}js/search.js`;
+    document.body.appendChild(searchScript);
+
+    // Dispatch event for other components
+    document.dispatchEvent(new CustomEvent('componentsLoaded'));
+
     // Highlight current nav item
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('header nav a');
