@@ -1,6 +1,6 @@
 ---
 title: "Disjoint Set Union (DSU) với Rollback"
-date: "2024-03-14"
+date: "2026-03-14"
 excerpt: "Kỹ thuật Rollback giúp DSU giải quyết các bài toán có truy vấn xóa hoặc quản lý các trạng thái trên cây qua Offline Dynamic Connectivity..."
 readTime: "15 phút"
 tag: "algo"

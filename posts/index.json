@@ -2,7 +2,7 @@
   {
     "slug": "ntt",
     "title": "Number Theoretic Transform (NTT)",
-    "date": "2024-03-10",
+    "date": "2026-03-14",
     "tag": "algo",
     "excerpt": "Phép biến đổi Fourier nhanh phiên bản Số học. Một nâng cấp thiết yếu để thực hiện tích chập chính xác tuyệt đối trên một vành modul...",
     "readTime": "10 phút",
@@ -11,7 +11,7 @@
   {
     "slug": "segment-tree-beats",
     "title": "Kỹ thuật Segment Tree Beats",
-    "date": "2024-03-12",
+    "date": "2026-03-14",
     "tag": "algo",
     "excerpt": "Segment Tree Beats (Nhịp đập Cây Phân Đoạn) là kỹ thuật giải quyết các phép biến đổi range chmin/chmax...",
     "readTime": "12 phút",
@@ -20,7 +20,7 @@
   {
     "slug": "dsu-rollback",
     "title": "Disjoint Set Union (DSU) với Rollback",
-    "date": "2024-03-14",
+    "date": "2026-03-14",
     "tag": "algo",
     "excerpt": "Kỹ thuật Rollback giúp DSU giải quyết các bài toán có truy vấn xóa hoặc quản lý các trạng thái trên cây...",
     "readTime": "8 phút",
@@ -29,7 +29,7 @@
   {
     "slug": "hello-world",
     "title": "Hello, World — khởi đầu hành trình CP của mình",
-    "date": "2026-03-11",
+    "date": "2026-03-14",
     "tag": "life",
     "excerpt": "Một bài mở đầu về hành trình Competitive Programming của mình — tại sao bắt đầu, con đường nào đã đi, và trải nghiệm ở PTNK.",
     "readTime": "4 phút đọc",
@@ -38,7 +38,7 @@
   {
     "slug": "codeforces-round-dive",
     "title": "Phân tích Div.2 — Tư duy giải toán từng bước",
-    "date": "2026-03-10",
+    "date": "2026-03-14",
     "tag": "cp",
     "excerpt": "Mình sẽ walk-through một số bài toán Codeforces Div.2 điển hình: cách tiếp cận, những lần sai và bài học rút ra.",
     "readTime": "8 phút đọc",
@@ -47,7 +47,7 @@
   {
     "slug": "segment-tree-guide",
     "title": "Segment Tree từ cơ bản đến nâng cao",
-    "date": "2026-03-08",
+    "date": "2026-03-14",
     "tag": "algo",
     "excerpt": "Hướng dẫn chi tiết về Segment Tree — cấu trúc dữ liệu nền tảng cho rất nhiều bài toán range query trong CP.",
     "readTime": "12 phút đọc",

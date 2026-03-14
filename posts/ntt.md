@@ -1,6 +1,6 @@
 ---
 title: "Number Theoretic Transform (NTT)"
-date: "2024-03-10"
+date: "2026-03-14"
 excerpt: "Phép biến đổi Fourier nhanh phiên bản Số học. Một nâng cấp thiết yếu để thực hiện tích chập chính xác tuyệt đối trên một vành modul..."
 readTime: "18 phút"
 tag: "algo"

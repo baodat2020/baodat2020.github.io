@@ -1,6 +1,6 @@
 ---
 title: "Kỹ thuật Segment Tree Beats"
-date: "2024-03-12"
+date: "2026-03-14"
 excerpt: "Segment Tree Beats (Nhịp đập Cây Phân Đoạn) là kỹ thuật giải quyết các phép biến đổi range chmin/chmax..."
 readTime: "25 phút"
 tag: "algo"
