@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0dccf2",
+              "background-light": "#f5f8f8",
+              "background-dark": "#101f22",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<title>baodat | Portfolio</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
+<div class="mx-auto flex max-w-[1200px] items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+<h2 class="text-xl font-extrabold tracking-tight">baodat</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Về tôi</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Thành tích</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Blog</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Liên hệ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-primary/10 border border-primary/20 rounded-lg px-3 py-1.5">
+<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-sm text-slate-100 placeholder:text-slate-500 w-32 lg:w-48" placeholder="Tìm kiếm bài viết..."/>
+</div>
+<div class="flex gap-2">
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="#">
+<span class="material-symbols-outlined text-xl leading-none">code</span>
+</a>
+<a class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all" href="#">
+<span class="material-symbols-outlined text-xl leading-none">public</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto flex max-w-[1200px] flex-1 flex-col px-4 md:px-20 lg:px-40 py-10 gap-16">
+<!-- Hero Section -->
+<section class="relative overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-8 md:p-12">
+<div class="absolute top-0 right-0 -z-10 h-64 w-64 translate-x-1/4 -translate-y-1/4 rounded-full bg-primary/10 blur-3xl"></div>
+<div class="flex flex-col md:flex-row items-center gap-8">
+<div class="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-primary/30 p-1">
+<img class="w-full h-full rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Chân dung Tôn Thất Bảo Đạt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcwOOOjaXlishsyOhNkrvUxraUD7Mxo3r15jLbrABQZEoCuC86UJqEDnhxnzkT-EFxiNRw9jtQ0X2uBAQXiGcc9lqaSp9IqhKOxEMNL1het03nzb5U_7d04sbyYdmjRrKciKf7wt-kwFUCp-49DI2cqGW2awnM6Pk5dwnIlyGMFMpWQ1d5CpY8wtpOobJfKeA6Sac_ti5eW5ftNlpTx3bRN29krlDNIn-oEWdOqEee0acjUgW4ZU81z6h2WDC-S6lohr97ocpvZg"/>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="mb-2 flex flex-col md:flex-row md:items-baseline gap-2 justify-center md:justify-start">
+<h1 class="text-4xl md:text-5xl font-black text-slate-100 tracking-tighter">Tôn Thất Bảo Đạt</h1>
+<span class="text-primary font-mono text-lg">@baodat</span>
+</div>
+<p class="text-slate-400 text-lg leading-relaxed max-w-2xl mb-8">
+                            Đam mê Lập trình thi đấu, Đồ thị, Quy hoạch động và Cấu trúc dữ liệu. Hiện đang là học sinh tại PTNK - ĐHQG HCM. Luôn tìm kiếm những bài toán hóc búa để thử thách bản thân.
+                        </p>
+<div class="flex flex-wrap gap-4 justify-center md:justify-start">
+<button class="bg-primary text-background-dark font-bold px-6 py-3 rounded-lg flex items-center gap-2 hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">analytics</span>
+                                Codeforces
+                            </button>
+<button class="bg-primary/10 text-primary border border-primary/30 font-bold px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">data_object</span>
+                                AtCoder
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+<div class="lg:col-span-2">
+<h3 class="text-2xl font-bold text-slate-100 mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">person</span>
+                        Về tôi
+                    </h3>
+<div class="space-y-4 text-slate-400 text-base leading-relaxed">
+<p>Xin chào! Mình là Đạt. Hành trình đến với lập trình của mình bắt đầu từ những năm cấp 2, và nó nhanh chóng trở thành niềm đam mê lớn nhất. Mình đặc biệt yêu thích mảng thuật toán và cấu trúc dữ liệu vì sự logic và tính tối ưu tuyệt đối của nó.</p>
+<p>Tại PTNK, mình dành phần lớn thời gian để luyện tập trên các nền tảng OJ, tham gia các kỳ thi học sinh giỏi và chia sẻ kiến thức với cộng đồng thông qua blog cá nhân. Mục tiêu của mình là trở thành một Grandmaster trên Codeforces và góp mặt trong các kỳ thi quốc tế.</p>
+</div>
+</div>
+<div class="bg-primary/5 border border-primary/10 p-6 rounded-xl">
+<h4 class="font-bold text-slate-100 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">school</span>
+                        Học vấn
+                    </h4>
+<ul class="space-y-4">
+<li class="border-l-2 border-primary/30 pl-4 py-1">
+<div class="text-sm text-primary font-semibold">2022 - Hiện tại</div>
+<div class="text-slate-200 font-medium">Lớp chuyên Tin</div>
+<div class="text-xs text-slate-500">Trường Phổ thông Năng khiếu - ĐHQG TP.HCM</div>
+</li>
+</ul>
+</div>
+</section>
+<!-- Stats Section -->
+<section>
+<h3 class="text-2xl font-bold text-slate-100 mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+                    Chỉ số Lập trình thi đấu
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Codeforces Card -->
+<div class="group relative p-6 rounded-xl border border-primary/20 bg-background-dark overflow-hidden hover:border-primary/50 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="text-xl font-bold text-slate-100">Codeforces</h4>
+<p class="text-primary text-sm font-mono">baodat</p>
+</div>
+<span class="px-3 py-1 bg-orange-500/10 text-orange-500 text-xs font-bold rounded-full uppercase tracking-wider border border-orange-500/20">Master</span>
+</div>
+<div class="flex items-end gap-1 mb-6">
+<span class="text-4xl font-black text-slate-100">2180</span>
+<span class="text-slate-500 text-sm mb-1 pb-1">max. 2245</span>
+</div>
+<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 w-[72%] shadow-[0_0_10px_rgba(249,115,22,0.5)]"></div>
+</div>
+</div>
+<!-- AtCoder Card -->
+<div class="group relative p-6 rounded-xl border border-primary/20 bg-background-dark overflow-hidden hover:border-primary/50 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="text-xl font-bold text-slate-100">AtCoder</h4>
+<p class="text-primary text-sm font-mono">baodat</p>
+</div>
+<span class="px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full uppercase tracking-wider border border-blue-500/20">Blue</span>
+</div>
+<div class="flex items-end gap-1 mb-6">
+<span class="text-4xl font-black text-slate-100">1884</span>
+<span class="text-slate-500 text-sm mb-1 pb-1">max. 1912</span>
+</div>
+<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-blue-500 w-[65%] shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Chart Section -->
+<section>
+<div class="p-8 rounded-xl border border-primary/20 bg-primary/5">
+<div class="flex items-center justify-between mb-8">
+<h4 class="font-bold text-slate-100">Lịch sử Rating</h4>
+<div class="flex gap-4">
+<span class="flex items-center gap-2 text-xs text-slate-400">
+<span class="w-3 h-3 rounded-full bg-primary"></span> Codeforces
+                            </span>
+</div>
+</div>
+<div class="relative w-full h-64 flex items-end justify-between gap-1 px-2">
+<!-- Abstract Chart Representation -->
+<div class="h-1/4 w-full bg-primary/20 rounded-t-sm"></div>
+<div class="h-1/3 w-full bg-primary/20 rounded-t-sm"></div>
+<div class="h-1/2 w-full bg-primary/20 rounded-t-sm"></div>
+<div class="h-2/5 w-full bg-primary/20 rounded-t-sm"></div>
+<div class="h-3/5 w-full bg-primary/30 rounded-t-sm"></div>
+<div class="h-4/5 w-full bg-primary/40 rounded-t-sm border-t-2 border-primary"></div>
+<div class="h-2/3 w-full bg-primary/30 rounded-t-sm"></div>
+<div class="h-5/6 w-full bg-primary/50 rounded-t-sm border-t-2 border-primary shadow-[0_0_15px_rgba(13,204,242,0.3)]"></div>
+<div class="h-3/4 w-full bg-primary/30 rounded-t-sm"></div>
+<div class="h-full w-full bg-primary shadow-[0_0_20px_rgba(13,204,242,0.4)] rounded-t-sm border-t-2 border-primary"></div>
+</div>
+<div class="flex justify-between mt-4 px-2 text-[10px] text-slate-500 font-mono uppercase">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span>
+</div>
+</div>
+</section>
+<!-- Blog Section -->
+<section>
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold text-slate-100 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">article</span>
+                        Bài viết mới nhất
+                    </h3>
+<a class="text-primary hover:underline text-sm font-medium" href="#">Tất cả bài viết</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Post 1 -->
+<div class="flex flex-col rounded-xl border border-primary/10 bg-background-dark/50 hover:border-primary/30 transition-all overflow-hidden group">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Hình minh họa cấu trúc dữ liệu DSU" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgoOw05aHhyUPbWwErgZqov6E0Jj24fMZ9FSmlYgku1kDc3uV1l488zLRdIU1pSEsi9CCcZ0F60_2gpgPMM61kMXd1XX0Oi5sNSTnjflli8eJ3bLu1MpIQB7pbFk5yR3YDMRfhUNaF1NCh10ePGkLkKFot0zE2Ba8T2vorkZOEoWpfgnsQRcdQNHXjsG3xIO5OI-mDCeZU2BMfmMVoff4NBzXMF22Kvi8wD1Unuyym5df-2WRNXm9MPTy_EiWvb6_AmzpKB5ndaw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent opacity-60"></div>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex gap-2 mb-3">
+<span class="text-[10px] font-bold text-primary px-2 py-0.5 rounded bg-primary/10 border border-primary/20 uppercase">DSU</span>
+<span class="text-[10px] font-bold text-primary px-2 py-0.5 rounded bg-primary/10 border border-primary/20 uppercase">Data Structure</span>
+</div>
+<h5 class="text-slate-100 font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors">Disjoint Set Union (DSU) với Rollback</h5>
+<p class="text-slate-400 text-sm mb-6 flex-1 line-clamp-3">Kỹ thuật Rollback giúp DSU giải quyết các bài toán có truy vấn xóa hoặc quản lý các trạng thái trên cây...</p>
+<div class="flex items-center justify-between text-[11px] text-slate-500 border-t border-primary/10 pt-4">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">calendar_today</span>
+                                    15/10/2023
+                                </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                                    8 phút đọc
+                                </span>
+</div>
+</div>
+</div>
+<!-- Post 2 -->
+<div class="flex flex-col rounded-xl border border-primary/10 bg-background-dark/50 hover:border-primary/30 transition-all overflow-hidden group">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Hình minh họa Hello World code" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDABDVVCg7uMTTmEVx_L4xnpeYYBCIePFY0tC75EOFiWwAttQL67xFI9DtzUIKCafcUUEI9LJbwq1zVq9_5a6uOPOWs14sJ72XfsxfPAaZaQqkENPBleVm3x2dN4bRaMz49U1_PPdACgMJyW6PI5R26pwKk_4GvSOezdgvvuQdQZTblY5WeU5BG-1FnxG7anRoFNAL31vwGALwtOFmm-Jn2Dr-lU3_pc-0gedE_tvvYDOfeG2iQFkcVPnOpyT8u9q9YWNmNvjDyrQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent opacity-60"></div>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex gap-2 mb-3">
+<span class="text-[10px] font-bold text-primary px-2 py-0.5 rounded bg-primary/10 border border-primary/20 uppercase">Personal</span>
+</div>
+<h5 class="text-slate-100 font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors">Hello, World</h5>
+<p class="text-slate-400 text-sm mb-6 flex-1 line-clamp-3">Lời chào đầu tiên từ blog cá nhân của mình. Nơi mình sẽ lưu trữ và chia sẻ những kinh nghiệm thi đấu...</p>
+<div class="flex items-center justify-between text-[11px] text-slate-500 border-t border-primary/10 pt-4">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">calendar_today</span>
+                                    01/10/2023
+                                </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                                    2 phút đọc
+                                </span>
+</div>
+</div>
+</div>
+<!-- Post 3 -->
+<div class="flex flex-col rounded-xl border border-primary/10 bg-background-dark/50 hover:border-primary/30 transition-all overflow-hidden group">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Hình minh họa Codeforces Contest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIe2KHY59PsxZIJqhc2_S7BKp61VCAVuRzL7FC3Kutwd_7dLfFvoi8m_VgwsW1Kppwpgo2P-44pA2a8FY_YlTb98m59m9bVnvvuIgcGLoHZtvUEadNWAOU3nsQW7OKKH6zhiTC8rsUcH4iofcggrvPPVO42qUaeZHOz9XxJlvWu7Rs9LS4ggzIuzkcKEJjgL_h0tqVxIf7JUfqBXsJ0E9i2-cPnmtdrQVpkX5yeZL0HBccupVZoPK9jtNBCWHFHrco50namA-l9w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent opacity-60"></div>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex gap-2 mb-3">
+<span class="text-[10px] font-bold text-primary px-2 py-0.5 rounded bg-primary/10 border border-primary/20 uppercase">Contest</span>
+<span class="text-[10px] font-bold text-primary px-2 py-0.5 rounded bg-primary/10 border border-primary/20 uppercase">Review</span>
+</div>
+<h5 class="text-slate-100 font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors">Phân tích Div.2 #900</h5>
+<p class="text-slate-400 text-sm mb-6 flex-1 line-clamp-3">Cùng nhìn lại cách giải các bài toán trong kỳ thi Div.2 mới nhất, đặc biệt là bài E về Binary Search trên Prefix Sum...</p>
+<div class="flex items-center justify-between text-[11px] text-slate-500 border-t border-primary/10 pt-4">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">calendar_today</span>
+                                    28/09/2023
+                                </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                                    12 phút đọc
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-primary/10 bg-background-dark px-4 md:px-20 lg:px-40 py-12">
+<div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-black text-xl tracking-tight">baodat</span>
+</div>
+<p class="text-slate-500 text-sm">© 2023 Tôn Thất Bảo Đạt. Designed for competitive programmers.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span class="text-xs font-semibold">GitHub</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg">social_leaderboard</span>
+<span class="text-xs font-semibold">Facebook</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg">mail</span>
+<span class="text-xs font-semibold">Email</span>
+</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

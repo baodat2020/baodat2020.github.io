@@ -9,17 +9,36 @@ const AC_HANDLE = 'baodat';
 
 // ── Codeforces rank color map
 const CF_RANK_COLORS = {
-  'newbie': '#808080',
-  'pupil': '#008000',
+  'newbie': '#a8a8a8',
+  'pupil': '#00ff00',
   'specialist': '#03a89e',
-  'expert': '#0000ff',
-  'candidate master': '#aa00aa',
-  'master': '#ff8c00',
-  'international master': '#ff8c00',
-  'grandmaster': '#ff0000',
-  'international grandmaster': '#ff0000',
-  'legendary grandmaster': '#ff0000',
+  'expert': '#aaaaff',
+  'candidate master': '#ff88ff',
+  'master': '#ffcc88',
+  'international master': '#ffbb55',
+  'grandmaster': '#ff7777',
+  'international grandmaster': '#ff3333',
+  'legendary grandmaster': '#aa0000',
 };
+
+function getAtCoderRankColor(rating) {
+    if (rating < 400) return { rank: 'Grey', color: '#808080' };
+    if (rating < 800) return { rank: 'Brown', color: '#804000' };
+    if (rating < 1200) return { rank: 'Green', color: '#008000' };
+    if (rating < 1600) return { rank: 'Cyan', color: '#00C0C0' };
+    if (rating < 2000) return { rank: 'Blue', color: '#0000FF' };
+    if (rating < 2400) return { rank: 'Yellow', color: '#C0C000' };
+    if (rating < 2800) return { rank: 'Orange', color: '#FF8000' };
+    return { rank: 'Red', color: '#FF0000' };
+}
+
+function hexToRgba(hex, alpha) {
+    if(!hex) return `rgba(13,204,242,${alpha})`;
+    let c = hex.substring(1).split('');
+    if(c.length == 3) c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+    c = '0x' + c.join('');
+    return `rgba(${(c>>16)&255}, ${(c>>8)&255}, ${c&255}, ${alpha})`;
+}
 
 // ── Back to Top
 const backToTop = document.getElementById('backToTop');
@@ -91,12 +110,27 @@ async function fetchCF() {
         const rankEl = document.getElementById('cf-rank');
         if (rankEl) {
           rankEl.textContent = rank;
-          rankEl.classList.remove('loading');
           const rankKey = rank.toLowerCase();
-          const color = CF_RANK_COLORS[rankKey] || 'var(--text-primary)';
-          rankEl.style.color = color;
-          rankEl.style.fontSize = '0.9rem';
-          rankEl.style.fontWeight = '600';
+          const hexColor = CF_RANK_COLORS[rankKey] || '#0dccf2';
+          rankEl.style.color = hexColor;
+          rankEl.style.backgroundColor = hexToRgba(hexColor, 0.1);
+          rankEl.style.borderColor = hexToRgba(hexColor, 0.2);
+          // Remove default hardcoded tailwind classes that conflict
+          rankEl.className = rankEl.className.replace(/text-\w+-\d+/g, '').replace(/bg-\w+-\d+\/\d+/g, '').replace(/border-\w+-\d+\/\d+/g, '');
+        }
+
+        // Update Progress bar (max 3500 roughly for 100%)
+        const ratingPct = Math.min(100, Math.max(0, (rating / 3500) * 100));
+        const color = CF_RANK_COLORS[rank.toLowerCase()] || '#0dccf2';
+        const cfCard = document.getElementById('cf-card') || document.querySelector('.group:has(#cf-rating)');
+        if (cfCard) {
+            const bar = cfCard.querySelector('.h-full.bg-orange-500');
+            if (bar) {
+                bar.style.width = `${ratingPct}%`;
+                bar.style.backgroundColor = color;
+                bar.style.boxShadow = `0 0 10px ${hexToRgba(color, 0.5)}`;
+                bar.className = bar.className.replace('bg-orange-500', ''); // clear original hardcode
+            }
         }
       } else {
         ['cf-rating', 'cf-max-rating', 'cf-rank'].forEach(id => setError(id));
@@ -143,8 +177,8 @@ async function fetchAC() {
         
         setText('ac-rating', latest.toLocaleString());
         
-        // Update span displaying max rating in the DOM (assuming HTML structure follows cf card)
-        const acCard = document.getElementById('ac-card');
+        // Update Max Rating
+        const acCard = document.getElementById('ac-card') || document.querySelector('.group:has(#ac-rating)');
         if (acCard) {
             const spans = acCard.querySelectorAll('span');
             spans.forEach(span => {
@@ -152,6 +186,27 @@ async function fetchAC() {
                     span.innerHTML = `max. ${maxRating}`;
                 }
             });
+            
+            // Update Rank Badge
+            let rankBadge = acCard.querySelector('.px-3.py-1.rounded-full');
+            const rankData = getAtCoderRankColor(latest);
+            if (rankBadge) {
+                rankBadge.textContent = rankData.rank;
+                rankBadge.style.color = rankData.color;
+                rankBadge.style.backgroundColor = hexToRgba(rankData.color, 0.1);
+                rankBadge.style.borderColor = hexToRgba(rankData.color, 0.2);
+                rankBadge.className = rankBadge.className.replace(/text-\w+-\d+/g, '').replace(/bg-\w+-\d+\/\d+/g, '').replace(/border-\w+-\d+\/\d+/g, '');
+            }
+
+            // Update Progress bar (max 3200 roughly for 100%)
+            const ratingPct = Math.min(100, Math.max(0, (latest / 3200) * 100));
+            const bar = acCard.querySelector('.h-full.bg-blue-500');
+            if (bar) {
+                bar.style.width = `${ratingPct}%`;
+                bar.style.backgroundColor = rankData.color;
+                bar.style.boxShadow = `0 0 10px ${hexToRgba(rankData.color, 0.5)}`;
+                bar.className = bar.className.replace('bg-blue-500', ''); // clear original
+            }
         }
       } else {
         setText('ac-contests', '0');
