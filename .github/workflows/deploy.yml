@@ -20,7 +20,8 @@ jobs:
         run: |
           echo "{" > config.json
           echo "  \"supabaseUrl\": \"${{ secrets.SUPABASE_URL }}\"," >> config.json
-          echo "  \"supabaseKey\": \"${{ secrets.SUPABASE_KEY }}\"" >> config.json
+          echo "  \"supabaseKey\": \"${{ secrets.SUPABASE_KEY }}\"," >> config.json
+          echo "  \"monitorPassword\": \"${{ secrets.MONITOR_PASSWORD }}\"" >> config.json
           echo "}" >> config.json
 
       - name: Setup Pages
