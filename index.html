@@ -375,46 +375,6 @@
         <div id="blog-preview-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- JS will render posts here -->
         </div>
-      </section>
-
-      <!-- Guestbook Section -->
-      <section id="guestbook" class="reveal mt-20 mb-10">
-        <h3 class="text-2xl font-bold text-slate-100 mb-8 flex items-center gap-3">
-          <span class="material-symbols-outlined text-primary">forum</span>
-          Lưu bút (Guestbook)
-        </h3>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <!-- Form -->
-          <div>
-            <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-              <h4 class="text-lg font-bold text-slate-200 mb-4">Để lại lời nhắn ✨</h4>
-              <form id="guestbook-form" class="space-y-4">
-                <div>
-                  <label for="gb-name" class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Tên của bạn</label>
-                  <input type="text" id="gb-name" required placeholder="Nhập tên..." 
-                    class="w-full px-4 py-3 rounded-xl bg-background-dark border border-white/10 text-slate-100 focus:outline-none focus:border-primary/50 transition-all">
-                </div>
-                <div>
-                  <label for="gb-message" class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Lời nhắn</label>
-                  <textarea id="gb-message" required rows="4" placeholder="Viết gì đó..." 
-                    class="w-full px-4 py-3 rounded-xl bg-background-dark border border-white/10 text-slate-100 focus:outline-none focus:border-primary/50 transition-all resize-none"></textarea>
-                </div>
-                <button type="submit" class="w-full py-4 rounded-xl bg-primary/20 text-primary font-bold border border-primary/30 hover:bg-primary transition-all hover:text-background-dark flex items-center justify-center gap-2">
-                  Gửi lời nhắn <span class="material-symbols-outlined text-sm">send</span>
-                </button>
-              </form>
-            </div>
-          </div>
-          <!-- List -->
-          <div id="guestbook-container">
-            <div id="guestbook-list" class="max-h-[500px] overflow-y-auto pr-4 custom-scrollbar">
-              <div class="flex items-center justify-center py-10">
-                <i class="fa-solid fa-circle-notch fa-spin text-primary text-2xl"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
     <!-- Footer -->
     <div id="layout-footer"></div>
@@ -428,7 +388,6 @@
   <script src="js/main.js"></script>
   <script src="js/layout.js"></script>
   <script src="js/tracker.js"></script>
-  <script src="js/guestbook.js"></script>
 </body>
 
 </html>

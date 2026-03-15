@@ -10,5 +10,9 @@ node_modules/
 Thumbs.db
 
 # Editor
-.vscode/
 *.swp
+.vscode/
+
+# Secrets & Config
+config.json
+.env
