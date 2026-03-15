@@ -1,6 +1,6 @@
 /**
- * monitor.js - Administrator Dashboard Logic
- * Handles authentication, fetching data from Supabase, and rendering stats.
+ * monitor.js - Administrator Dashboard Logic (Supabase Auth Edition)
+ * Handles secure authentication via Supabase Auth and restricted data fetching.
  */
 
 (async function() {
@@ -12,27 +12,37 @@
     const refreshBtn = document.getElementById('refresh-btn');
 
     let config = null;
+    let supabase = null;
 
-    async function loadConfig() {
-        if (config) return config;
+    async function initSupabase() {
         const res = await fetch('config.json');
         config = await res.json();
-        return config;
+        // Initialize Supabase Client
+        supabase = window.supabase.createClient(config.supabaseUrl, config.supabaseKey);
     }
+
+    await initSupabase();
 
     // --- Authentication ---
     authForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const email = document.getElementById('monitor-email').value;
         const pass = document.getElementById('monitor-pass').value;
-        const cfg = await loadConfig();
+        const submitBtn = authForm.querySelector('button[type="submit"]');
 
-        // Simple check: In reality, we'd use Supabase Auth, 
-        // but for a quick personal monitor, we use a secret injected via config.json
-        if (pass === cfg.monitorPassword || pass === 'admin123') { // admin123 is fallback for initial setup
-            unlockDashboard();
-        } else {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Authenticating...';
+
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass });
+
+        if (error) {
+            authError.textContent = `Access Denied: ${error.message}`;
             authError.classList.remove('hidden');
-            setTimeout(() => authError.classList.add('hidden'), 3000);
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Unlock Dashboard';
+            setTimeout(() => authError.classList.add('hidden'), 5000);
+        } else {
+            unlockDashboard();
         }
     });
 
@@ -43,7 +53,8 @@
         initDashboard();
     }
 
-    logoutBtn.addEventListener('click', () => {
+    logoutBtn.addEventListener('click', async () => {
+        await supabase.auth.signOut();
         window.location.reload();
     });
 
@@ -57,29 +68,30 @@
 
     async function fetchLogs() {
         try {
-            const cfg = await loadConfig();
-            const res = await fetch(`${cfg.supabaseUrl}/rest/v1/visit_logs?select=*&order=created_at.desc`, {
-                headers: {
-                    'apikey': cfg.supabaseKey,
-                    'Authorization': `Bearer ${cfg.supabaseKey}`
-                }
-            });
-            if (!res.ok) throw new Error('Failed to fetch logs');
-            return await res.json();
+            // RLS will ensure we only see logs if authenticated
+            const { data, error } = await supabase
+                .from('visit_logs')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            if (error) throw error;
+            return data || [];
         } catch (err) {
             console.error('Fetch error:', err);
+            authError.textContent = "Data access restricted. Check your RLS policies.";
+            authError.classList.remove('hidden');
             return [];
         }
     }
 
-    function renderStats(data) {
-        document.getElementById('stat-total').textContent = data.length;
+    function renderStats(logs) {
+        document.getElementById('stat-total').textContent = logs.length;
         
-        const uniqueIps = new Set(data.map(d => d.ip_address)).size;
+        const uniqueIps = new Set(logs.map(d => d.ip_address)).size;
         document.getElementById('stat-unique').textContent = uniqueIps;
 
         // Top Page
-        const pages = data.reduce((acc, curr) => {
+        const pages = logs.reduce((acc, curr) => {
             acc[curr.page_path] = (acc[curr.page_path] || 0) + 1;
             return acc;
         }, {});
@@ -87,14 +99,14 @@
         document.getElementById('stat-page').textContent = topPage;
     }
 
-    function renderTable(data) {
+    function renderTable(logs) {
         const tbody = document.getElementById('visit-table-body');
-        if (data.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="4" class="py-10 text-center text-slate-600 italic">No data found.</td></tr>';
+        if (logs.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" class="py-10 text-center text-slate-600 italic">No data found or access denied.</td></tr>';
             return;
         }
 
-        tbody.innerHTML = data.slice(0, 50).map(row => `
+        tbody.innerHTML = logs.slice(0, 50).map(row => `
             <tr class="hover:bg-white/[0.02] transition-colors">
                 <td class="py-4 pr-4 pl-0 text-xs text-slate-400 font-mono tracking-tighter">
                     ${new Date(row.created_at).toLocaleString('vi-VN', { 
@@ -112,23 +124,33 @@
         `).join('');
     }
 
-    function parseUA(ua) {
-        if (ua.includes('Windows')) return 'Windows';
-        if (ua.includes('iPhone') || ua.includes('iPad')) return 'iOS';
-        if (ua.includes('Android')) return 'Android';
-        if (ua.includes('Macintosh')) return 'MacOS';
-        if (ua.includes('Linux')) return 'Linux';
-        return 'Unknown';
+    function parseUA(uaString) {
+        const ua = uaString.toLowerCase();
+        if (ua.includes('windows')) return 'Windows';
+        if (ua.includes('iphone') || ua.includes('ipad')) return 'iOS';
+        if (ua.includes('android')) return 'Android';
+        if (ua.includes('macintosh')) return 'MacOS';
+        if (ua.includes('linux')) return 'Linux';
+        return 'Other';
     }
 
-    function renderChart(data) {
-        const devices = data.reduce((acc, curr) => {
+    function renderChart(logs) {
+        // Clear existing chart if any
+        const chartWrapper = document.getElementById('deviceChart').parentElement;
+        const oldCanvas = document.getElementById('deviceChart');
+        oldCanvas.remove();
+        const newCanvas = document.createElement('canvas');
+        newCanvas.id = 'deviceChart';
+        newCanvas.height = 300;
+        chartWrapper.appendChild(newCanvas);
+
+        const devices = logs.reduce((acc, curr) => {
             const dev = parseUA(curr.user_agent);
             acc[dev] = (acc[dev] || 0) + 1;
             return acc;
         }, {});
 
-        const ctx = document.getElementById('deviceChart').getContext('2d');
+        const ctx = newCanvas.getContext('2d');
         new Chart(ctx, {
             type: 'doughnut',
             data: {
@@ -149,11 +171,22 @@
                         labels: { color: '#64748b', font: { weight: 'bold', size: 10 }, padding: 20 }
                     }
                 },
-                cutout: '70%'
+                cutout: '70%',
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
             }
         });
     }
 
     refreshBtn.addEventListener('click', initDashboard);
+
+    // Auto-login check
+    supabase.auth.getSession().then(({ data: { session } }) => {
+        if (session) {
+            unlockDashboard();
+        }
+    });
 
 })();
