@@ -75,7 +75,7 @@
     <!-- Reading Progress Bar -->
     <div id="progress-bar"></div>
 
-    <div class="relative flex min-h-screen w-full flex-col">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden px-4 md:px-20 lg:px-40">
         <!-- Navigation Bar -->
         <div id="layout-header" class="sticky top-0 z-50 glass w-full"></div>
 
@@ -83,14 +83,14 @@
         <div id="layout-mobile-menu"></div>
 
         <!-- Article Hero Section -->
-        <header class="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+        <header class="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden -mx-4 md:-mx-20 lg:-mx-40">
             <div class="absolute inset-0 z-0">
                 <img src="../assets/vibe_coding_hero_v2.png" alt="Vibe Coding Hero" class="w-full h-full object-cover scale-105 opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-b from-background-dark/50 via-background-dark/80 to-background-dark"></div>
             </div>
             
-            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-                <div class="flex items-center justify-center gap-3 mb-6 text-primary font-bold uppercase tracking-[0.3em] text-xs">
+            <div class="relative z-10 max-w-[1200px] w-full mx-auto px-0 md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-6 text-primary font-bold uppercase tracking-[0.3em] text-xs">
                     <span class="px-3 py-1 bg-primary/10 border border-primary/20 rounded-full">Evolution</span>
                     <span class="opacity-50">•</span>
                     <span>March 15, 2026</span>
@@ -99,7 +99,7 @@
                     Vibe Coding Đang Thay Đổi Tất Cả <br/>
                     <span class="gradient-text">— Và Mình Chưa Biết Mình Đứng Ở Đâu</span>
                 </h1>
-                <div class="flex items-center justify-center gap-4 text-slate-400 font-medium">
+                <div class="flex items-center justify-center md:justify-start gap-4 text-slate-400 font-medium">
                     <img src="../assets/ptnk.jpg" alt="Author" class="w-10 h-10 rounded-full border border-primary/30 p-0.5 object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Dat&background=0a1112&color=0dccf2'">
                     <span class="text-slate-200">Tôn Thất Bảo Đạt</span>
                     <span class="opacity-30">|</span>
@@ -108,7 +108,7 @@
             </div>
         </header>
 
-        <main class="relative z-10 mx-auto max-w-[1400px] w-full px-6 py-20">
+        <main class="relative z-10 mx-auto max-w-[1200px] w-full py-20">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
                 
                 <!-- Main Content -->
