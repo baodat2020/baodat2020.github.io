@@ -15,23 +15,39 @@
     let supabase = null;
 
     async function initSupabase() {
-        const res = await fetch('config.json');
-        config = await res.json();
-        // Initialize Supabase Client
-        supabase = window.supabase.createClient(config.supabaseUrl, config.supabaseKey);
+        try {
+            const res = await fetch('config.json');
+            if (!res.ok) throw new Error('File config.json không tồn tại trên server.');
+            config = await res.json();
+            if (!config.supabaseUrl || !config.supabaseKey) throw new Error('Thiếu URL hoặc Key trong config.json');
+            
+            // Initialize Supabase Client
+            supabase = window.supabase.createClient(config.supabaseUrl, config.supabaseKey);
+            return true;
+        } catch (err) {
+            console.error('Lỗi khởi tạo:', err);
+            authError.textContent = `Lỗi cấu hình: ${err.message}. Hãy đảm bảo bạn đã thiết lập GitHub Secrets.`;
+            authError.classList.remove('hidden');
+            return false;
+        }
     }
 
-    await initSupabase();
+    const isInitialized = await initSupabase();
 
     // --- Authentication ---
     authForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        if (!isInitialized) {
+            alert("Hệ thống chưa được cấu hình. Hãy kiểm tra GitHub Secrets và file config.json.");
+            return;
+        }
+        
         const email = document.getElementById('monitor-email').value;
         const pass = document.getElementById('monitor-pass').value;
         const submitBtn = authForm.querySelector('button[type="submit"]');
 
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Authenticating...';
+        submitBtn.innerHTML = '<span class="animate-spin mr-2">⏳</span> Đang xác thực...';
 
         const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass });
 
