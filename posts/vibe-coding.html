@@ -3,11 +3,10 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Vibe Coding with Antigravity | baodat</title>
+    <title>Vibe Coding Đang Thay Đổi Tất Cả | baodat</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -16,189 +15,300 @@
               colors: {
                 "primary": "#0dccf2",
                 "background-light": "#f5f8f8",
-                "background-dark": "#101f22",
+                "background-dark": "#0a1112",
+                "slate-850": "#1a2a2d",
               },
               fontFamily: {
-                "display": ["Inter", "sans-serif"]
+                "display": ["Outfit", "Inter", "sans-serif"],
+                "sans": ["Inter", "sans-serif"]
               },
-              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
             },
           },
         }
     </script>
     <style>
         .glass {
-            background: rgba(16, 31, 34, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(13, 204, 242, 0.1);
+            background: rgba(10, 17, 18, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(13, 204, 242, 0.1);
         }
         .gradient-text {
             background: linear-gradient(135deg, #0dccf2 0%, #ffffff 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .prose p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #94a3b8;
+        }
+        .prose h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: #f1f5f9;
+        }
+        .prose strong {
+            color: #f1f5f9;
+        }
+        ::selection {
+            background: rgba(13, 204, 242, 0.3);
+            color: white;
+        }
+        #progress-bar {
+            height: 3px;
+            background: linear-gradient(to right, #0dccf2, #ffffff);
+            width: 0%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            transition: width 0.1s ease-out;
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
-    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<body class="bg-background-dark font-sans text-slate-300 antialiased overflow-x-hidden">
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <div class="relative flex min-h-screen w-full flex-col">
         <!-- Navigation Bar -->
-        <div id="layout-header"></div>
+        <div id="layout-header" class="sticky top-0 z-50 glass w-full"></div>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="layout-mobile-menu"></div>
+        <!-- Mobile Menu Overlay -->
+        <div id="layout-mobile-menu"></div>
 
-        <main class="mx-auto max-w-[1200px] w-full px-4 md:px-20 lg:px-40 py-16">
-            <!-- Project Hero -->
-            <div class="mb-16">
-                <div class="flex items-center gap-2 text-primary font-mono text-sm mb-4">
-                    <span class="px-2 py-0.5 rounded bg-primary/10 border border-primary/20 uppercase tracking-widest">Featured Project</span>
-                    <span class="opacity-50">/</span>
-                    <span>March 2026</span>
+        <!-- Article Hero Section -->
+        <header class="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="../assets/vibe_coding_hero_v2.png" alt="Vibe Coding Hero" class="w-full h-full object-cover scale-105 opacity-60">
+                <div class="absolute inset-0 bg-gradient-to-b from-background-dark/50 via-background-dark/80 to-background-dark"></div>
+            </div>
+            
+            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+                <div class="flex items-center justify-center gap-3 mb-6 text-primary font-bold uppercase tracking-[0.3em] text-xs">
+                    <span class="px-3 py-1 bg-primary/10 border border-primary/20 rounded-full">Evolution</span>
+                    <span class="opacity-50">•</span>
+                    <span>March 15, 2026</span>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-black text-slate-100 tracking-tighter mb-8 leading-tight">
-                    Mình Đã Dùng Vibe Coding <br/>
-                    <span class="gradient-text">Anti Gravity</span> Để Có Trang Web Đầu Tiên Như Thế Nào
+                <h1 class="text-4xl md:text-7xl font-black font-display text-slate-100 tracking-tight leading-[1.1] mb-8">
+                    Vibe Coding Đang Thay Đổi Tất Cả <br/>
+                    <span class="gradient-text">— Và Mình Chưa Biết Mình Đứng Ở Đâu</span>
                 </h1>
-                <p class="text-slate-400 text-xl italic leading-relaxed max-w-3xl mb-8 border-l-4 border-primary/50 pl-4 py-1 bg-primary/5">
-                    Chia sẻ từ một học sinh lớp 10 đang học competitive programming.
-                </p>
-                
-                <div class="relative rounded-2xl overflow-hidden border border-primary/20 shadow-2xl">
-                    <img src="../assets/vibe-coding.png" alt="Vibe Coding Visualization" class="w-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent opacity-80"></div>
+                <div class="flex items-center justify-center gap-4 text-slate-400 font-medium">
+                    <img src="../assets/ptnk.jpg" alt="Author" class="w-10 h-10 rounded-full border border-primary/30 p-0.5 object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Dat&background=0a1112&color=0dccf2'">
+                    <span class="text-slate-200">Tôn Thất Bảo Đạt</span>
+                    <span class="opacity-30">|</span>
+                    <span>6 phút đọc</span>
                 </div>
             </div>
+        </header>
 
-            <!-- Content Grid -->
+        <main class="relative z-10 mx-auto max-w-[1400px] w-full px-6 py-20">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-                <!-- Sidebar -->
-                <div class="lg:col-span-4 space-y-12 order-2 lg:order-1">
-                    <div>
-                        <h4 class="text-slate-100 font-bold mb-4 uppercase tracking-widest text-xs">Về Tác Giả</h4>
-                        <div class="space-y-4">
-                            <div class="p-4 rounded-xl border border-primary/10 bg-primary/5">
-                                <span class="block text-primary font-bold text-sm mb-1 uppercase">Author</span>
-                                <span class="block text-slate-100 font-medium">baodat2020</span>
-                                <span class="block text-slate-400 text-xs mt-1">Học sinh lớp 10, 15 tuổi</span>
-                            </div>
+                
+                <!-- Main Content -->
+                <article class="lg:col-span-8 lg:col-start-1 prose prose-invert prose-lg max-w-none">
+                    <p class="text-2xl font-medium text-slate-200 leading-relaxed italic border-l-4 border-primary/40 pl-8 mb-12 py-2">
+                        Chia sẻ từ một học sinh lớp 10 chuyên Tin, <br/>
+                        PTNK – ĐHQG TP.HCM · Tháng 3, 2026
+                    </p>
+
+                    <p>
+                        Mình 15 tuổi, học lớp chuyên Tin, luyện Codeforces mỗi ngày. Và vừa rồi, mình tự xây xong một trang web hoàn chỉnh — chỉ trong vài buổi, không cần học web một ngày nào.
+                    </p>
+                    <p>
+                        Thay vì vui, mình thấy... bắt đầu đặt câu hỏi.
+                    </p>
+
+                    <div class="my-16 flex items-center gap-4 py-8 border-y border-white/5 uppercase tracking-[0.2em] text-xs font-black text-primary/50">
+                        <span class="h-px bg-primary/20 flex-1"></span>
+                        Vibe Coding Era
+                        <span class="h-px bg-primary/20 flex-1"></span>
+                    </div>
+
+                    <h2 id="what-is-vibe-coding" class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+                        Vibe Coding Là Gì — Và Tại Sao Cả Ngành Đang Nói Về Nó
+                    </h2>
+                    <p>
+                        Nếu bạn theo dõi cộng đồng công nghệ quốc tế trong năm 2025–2026, bạn sẽ thấy một cụm từ xuất hiện ở khắp nơi: **Vibe Coding.**
+                    </p>
+                    <p>
+                        Thuật ngữ này được nhắc đến lần đầu bởi **Andrej Karpathy** — cựu AI Director của Tesla, đồng sáng lập OpenAI — để mô tả một cách làm phần mềm hoàn toàn mới: <strong class="text-primary italic">bạn không viết code. Bạn mô tả ý tưởng. AI viết code. Bạn tinh chỉnh bằng ngôn ngữ tự nhiên.</strong>
+                    </p>
+                    
+                    <blockquote class="bg-slate-800/20 border-l-4 border-primary p-8 rounded-r-2xl my-12">
+                        <p class="text-xl italic text-slate-200 font-serif leading-relaxed mb-0">
+                            "The hottest new programming language is English."
+                        </p>
+                        <cite class="block mt-4 text-sm text-primary font-bold uppercase tracking-widest">— Andrej Karpathy</cite>
+                    </blockquote>
+
+                    <p>
+                        Đây không còn là thí nghiệm. Các startup tại Silicon Valley đang dùng Vibe Coding để xây sản phẩm thật, phục vụ người dùng thật, với đội ngũ nhỏ hơn bao giờ hết. Những công việc từng cần cả một team frontend giờ có thể được một người xử lý trong một ngày — nếu người đó biết cách làm việc với AI.
+                    </p>
+                    <p>
+                        Mình — một học sinh lớp 10 — vừa trở thành bằng chứng sống cho điều đó.
+                    </p>
+
+                    <h2 id="efficiency" class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-3xl">bolt</span>
+                        1 Ngày Thay Vì 1 Tháng — Không Phải Phóng Đại
+                    </h2>
+                    <p>
+                        Mình xây dựng <strong class="text-slate-100">baodat2020.github.io</strong> bằng <strong class="text-primary">Vibe Coding với Antigravity</strong> — công cụ AI cho phép mô tả từng thành phần bằng tiếng Việt và nhận lại code hoàn chỉnh, kèm giải thích.
+                    </p>
+                    <p>
+                        Trước đó mình đã thử học web theo cách truyền thống. Không phải vì nó quá khó — mà vì **khoảng cách từ lúc bắt đầu đến lúc có thứ gì đó ra hồn là quá dài.** Với người đang dồn phần lớn thời gian cho competitive programming, đó là rào cản thực sự.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                        <div class="p-8 rounded-3xl bg-slate-800/30 border border-white/5 flex flex-col items-center text-center">
+                            <span class="text-slate-500 font-black text-xs uppercase mb-4 tracking-widest">Cách truyền thống</span>
+                            <span class="text-4xl font-black text-slate-100 mb-2">1 Tháng</span>
+                            <p class="text-sm text-slate-500">Học HTML/CSS, JS, Tooling, Debugging...</p>
+                        </div>
+                        <div class="p-8 rounded-3xl bg-primary/5 border border-primary/20 flex flex-col items-center text-center">
+                            <span class="text-primary font-black text-xs uppercase mb-4 tracking-widest">Vibe Coding</span>
+                            <span class="text-4xl font-black text-primary mb-2">Vài Buổi</span>
+                            <p class="text-sm text-slate-400">Tư duy, Mô tả, Tinh chỉnh & Deploy</p>
                         </div>
                     </div>
 
-                    <div>
-                        <h4 class="text-slate-100 font-bold mb-4 uppercase tracking-widest text-xs">Công nghệ sử dụng</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 rounded bg-slate-800 text-slate-300 text-xs font-semibold">Vibe Coding</span>
-                            <span class="px-3 py-1 rounded bg-slate-800 text-slate-300 text-xs font-semibold">Anti Gravity</span>
-                            <span class="px-3 py-1 rounded bg-slate-800 text-slate-300 text-xs font-semibold">GitHub Pages</span>
+                    <p>
+                        Phần duy nhất AI không thể làm thay: **nội dung**. Câu chuyện của mình, thành tích của mình, con người của mình — cái đó không có công cụ nào viết được.
+                    </p>
+
+                    <h2 id="prompting" class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+                        Mình Đã Prompt Antigravity Như Thế Nào
+                    </h2>
+                    <p>
+                        Đây là phần mình nghĩ nhiều người sẽ tò mò nhất — vì nó cho thấy Vibe Coding thực sự hoạt động ra sao, không phải trên lý thuyết mà trong thực tế tay mình gõ. Mình prompt <strong class="text-slate-100">hoàn toàn bằng tiếng Việt</strong>. 
+                    </p>
+                    
+                    <div class="bg-black/40 border border-white/10 p-10 rounded-3xl font-mono text-primary/80 my-10 relative">
+                        <span class="absolute top-4 left-6 text-[10px] text-white/20 uppercase tracking-[0.3em]">Initial Prompt</span>
+                        "Hãy build giúp tôi một portfolio mà có thể chia sẻ lên GitHub. Tôi là một lập trình thi đấu trên nền tảng Codeforces..."
+                    </div>
+
+                    <p>
+                        Kết quả đầu tiên ra khá nhanh. Có cấu trúc, có nội dung mẫu, deploy được lên GitHub Pages. Nhưng nhìn vào giao diện — **chưa phải thứ mình muốn.** Đây là lúc quy trình thật sự bắt đầu.
+                    </p>
+
+                    <h3 class="text-xl font-bold text-slate-200 mt-8 mb-4">Refinement — Vòng Lặp Quan Trọng Nhất</h3>
+                    <p>
+                        Mình không dừng lại ở bản đầu tiên. Mình dùng **Stitch** để phác thảo lại giao diện theo đúng ý mình — bố cục, màu sắc, cách sắp xếp các phần. Sau khi có hình dung rõ ràng hơn, mình quay lại Antigravity để refinement từng phần: điều chỉnh layout, thêm section, thay đổi cách hiển thị thông tin.
+                    </p>
+                    <p>
+                        Quy trình thực tế của mình trông như thế này:
+                    </p>
+                    <div class="bg-primary/5 border border-primary/20 p-6 rounded-2xl text-center font-bold text-slate-200 my-8">
+                        Mô tả tổng quát <span class="text-primary mx-2">→</span> Antigravity tạo ra bản đầu <span class="text-primary mx-2">→</span> Stitch phác thảo UI mới <span class="text-primary mx-2">→</span> Quay lại Antigravity refinement từng chi tiết <span class="text-primary mx-2">→</span> Lặp lại đến khi ưng ý.
+                    </div>
+                    
+                    <p>
+                        Không có bước nào mình phải tự viết một dòng HTML hay CSS. Nhưng **mình phải biết mình muốn gì** — đó là thứ không công cụ nào làm thay được. Antigravity làm theo mô tả của mình, không phải thay mình suy nghĩ.
+                    </p>
+                    <p>
+                        Đây cũng là điểm mình thấy rõ nhất sự khác biệt giữa Vibe Coding và việc "nhờ AI làm hộ": **người dùng vẫn phải là người có tầm nhìn. AI chỉ là người thực thi.**
+                    </p>
+
+                    <h2 id="questions" class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-3xl">help</span>
+                        Câu Hỏi Mà Mình Không Thể Không Đặt Ra
+                    </h2>
+                    <p>
+                        Thực tế đang diễn ra rất rõ: những công việc lập trình lặp đi lặp lại — viết UI, build API đơn giản, tạo landing page, xử lý các tính năng cơ bản — <strong class="text-slate-100 italic">AI đang làm được tất cả.</strong> 
+                    </p>
+                    <p>
+                        Mình không nghĩ đây là chuyện của tương lai xa. Mình nghĩ đây đang xảy ra ngay bây giờ. Và xu hướng này sẽ không đảo chiều.
+                    </p>
+                    <p class="text-xl font-bold text-red-500/80">
+                        Phần lớn lập trình viên làm công việc phổ thông sẽ bị thay thế.
+                    </p>
+
+                    <h2 id="human-value" class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-3xl">diversity_3</span>
+                        Vậy Thứ Gì Còn Lại?
+                    </h2>
+                    <p>
+                        Nếu AI viết được code — thứ gì là thứ con người vẫn cần làm? Mình nghĩ câu trả lời nằm ở: <strong class="text-slate-100">khả năng xác định vấn đề đúng, tư duy hệ thống, và hiểu sâu đủ để biết khi nào AI đang sai.</strong>
+                    </p>
+                    <p>
+                        Và đây là lý do mình vẫn luyện thuật toán mỗi ngày. Không phải vì mình chắc chắn mình sẽ trở thành kỹ sư phần mềm. Mà vì <strong class="text-primary decoration-primary/30 underline underline-offset-8">tư duy giải quyết vấn đề — thứ competitive programming rèn giũa — là thứ khó bị thay thế nhất.</strong>
+                    </p>
+
+                    <h2 id="conclusion" class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-3xl">rocket_launch</span>
+                        Lời Kết
+                    </h2>
+                    <p>
+                        Vibe Coding không xấu. Antigravity không xấu. Chúng là công cụ — và mình rất vui vì đã dùng chúng. 
+                        Nhưng câu hỏi lớn hơn: **Nếu bất kỳ ai cũng có thể làm ra phần mềm chỉ bằng cách mô tả — thì lập trình viên của tương lai là ai, và học gì?**
+                    </p>
+                    
+                    <div class="mt-20 pt-12 border-t border-white/10 space-y-6">
+                        <div class="flex items-center gap-6">
+                            <img src="../assets/ptnk.jpg" alt="Author Large" class="w-24 h-24 rounded-3xl border border-primary/20 object-cover p-1 bg-slate-900" onerror="this.src='https://ui-avatars.com/api/?name=Dat&background=0a1112&color=0dccf2'">
+                            <div>
+                                <h4 class="text-2xl font-black text-slate-100 font-display">Tôn Thất Bảo Đạt</h4>
+                                <p class="text-primary font-bold">Học sinh lớp 10, PTNK – ĐHQG TP.HCM</p>
+                                <div class="flex gap-4 mt-3">
+                                    <span class="text-xs text-slate-500 font-mono">Codeforces: 1989</span>
+                                    <span class="text-xs text-slate-500 font-mono">AtCoder: Blue</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Main Narrative -->
-                <div class="lg:col-span-8 space-y-12 order-1 lg:order-2">
-                    <div class="prose prose-invert prose-slate prose-a:text-primary max-w-none text-slate-400 space-y-6">
-                        <p class="text-lg">
-                            Mình 15 tuổi, học THPT, và vừa có một trang web cá nhân tại địa chỉ <a href="https://baodat2020.github.io" target="_blank">baodat2020.github.io</a>.
-                        </p>
-                        <p class="text-lg">
-                            Mình không học web theo cách truyền thống. Mình dùng <strong class="text-slate-200">Vibe Coding Anti Gravity</strong> — và đây là câu chuyện của mình.
-                        </p>
-                        
-                        <h2 class="text-3xl font-display font-bold text-slate-100 mt-12 mb-6">Anti Gravity là gì?</h2>
-                        <p>
-                            <strong class="text-slate-200">Vibe Coding Anti Gravity</strong> là một công cụ hỗ trợ lập trình bằng AI. Thay vì phải tự ngồi viết từng dòng code từ đầu, bạn mô tả ý tưởng của mình bằng tiếng Việt hoặc tiếng Anh, và công cụ sẽ tạo ra code tương ứng cho bạn.
-                        </p>
-                        <p>
-                            Điều làm mình ấn tượng là Anti Gravity không chỉ "viết code hộ" — nó còn giải thích những gì nó tạo ra, giúp mình hiểu chứ không chỉ copy mù quáng.
-                        </p>
-                        <p>
-                            Với mình, đây là lần đầu tiên mình cảm thấy việc làm web không còn quá xa vời.
-                        </p>
-
-                        <h2 class="text-3xl font-display font-bold text-slate-100 mt-12 mb-6">Tại Sao Mình Chọn Anti Gravity?</h2>
-                        <p>
-                            Trước đó mình đã thử tìm hiểu web theo cách thông thường — xem tutorial trên YouTube, đọc tài liệu. Nhưng thật lòng mà nói, mình thấy nó khá mất thời gian và dễ nản khi chưa thấy thành quả cụ thể nào.
-                        </p>
-                        <p>
-                            Anti Gravity khác ở chỗ: <strong class="text-slate-200">mình thấy kết quả ngay từ những buổi đầu tiên.</strong>
-                        </p>
-                        <p>
-                            Mình mô tả trang mình muốn, công cụ tạo ra bản thử, mình xem và góp ý tiếp. Cứ như vậy, trang web dần dần hình thành. Cảm giác đó rất khác so với việc ngồi học lý thuyết mà chưa thấy mình đang tiến về đâu.
-                        </p>
-
-                        <h2 class="text-3xl font-display font-bold text-slate-100 mt-12 mb-6">Quá Trình Mình Làm Trang baodat2020.github.io</h2>
-                        <p>Mình không cần biết quá nhiều kỹ thuật để bắt đầu. Quy trình của mình khá đơn giản:</p>
-                        
-                        <div class="space-y-6 mt-8">
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 shrink-0 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">1</div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-slate-200 mb-2">Hình dung trang mình muốn</h4>
-                                    <p>Mình nghĩ đơn giản thôi: cần giới thiệu bản thân, hiển thị một số dự án CP mình đã làm, và có liên kết đến GitHub. Không cần phức tạp hơn.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 shrink-0 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">2</div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-slate-200 mb-2">Dùng Anti Gravity để xây dựng từng phần</h4>
-                                    <p>Mình mô tả từng phần một cho công cụ. Ví dụ: <em class="text-slate-300">"Mình muốn phần đầu trang có tên mình, một câu giới thiệu ngắn, và ảnh đại diện."</em> Anti Gravity sẽ tạo ra phần đó và mình xem kết quả trực tiếp.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 shrink-0 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">3</div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-slate-200 mb-2">Điều chỉnh theo ý mình</h4>
-                                    <p>Nếu chưa ưng, mình tiếp tục mô tả điều mình muốn thay đổi. Công cụ sẽ cập nhật lại. Quá trình này lặp đi lặp lại cho đến khi mình hài lòng.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 shrink-0 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">4</div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-slate-200 mb-2">Tự viết nội dung</h4>
-                                    <p>Phần thông tin cá nhân, mô tả các dự án — cái này mình phải tự viết. AI không thể biết mình là ai. Đây cũng là phần quan trọng nhất vì nó thể hiện con người thật của mình.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 shrink-0 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">5</div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-slate-200 mb-2">Đưa lên GitHub Pages</h4>
-                                    <p>GitHub Pages là dịch vụ miễn phí giúp mình có địa chỉ web thật sự. Anti Gravity cũng hỗ trợ mình hiểu cách deploy bước này.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h2 class="text-3xl font-display font-bold text-slate-100 mt-12 mb-6">Điều Mình Học Được Từ Trải Nghiệm Này</h2>
-                        <p>
-                            Dùng Anti Gravity không có nghĩa là mình không học gì. Ngược lại, mình học được khá nhiều — chỉ là theo một cách khác.
-                        </p>
-                        <p>
-                            Mỗi lần công cụ tạo ra thứ gì đó, mình đều cố đọc và hiểu tại sao nó lại như vậy. Dần dần mình bắt đầu nhận ra các quy luật, bắt đầu hiểu cấu trúc của một trang web mà không cần ai giải thích từ đầu đến cuối.
-                        </p>
-                        <p class="text-lg border-l-4 border-primary/50 pl-4 py-2 bg-primary/5 rounded-r mt-6">
-                            Đó là thứ mình nghĩ Anti Gravity làm tốt nhất: <strong class="text-primary font-bold">nó giúp bạn học bằng cách làm thật, không phải bằng cách nghe giảng.</strong>
-                        </p>
-
-                        <h2 class="text-3xl font-display font-bold text-slate-100 mt-12 mb-6">Lời Kết</h2>
-                        <p>
-                            Nếu bạn cũng đang ở độ tuổi như mình, đang học CP hoặc chỉ đơn giản là muốn có một trang web để giới thiệu bản thân — mình nghĩ Vibe Coding Anti Gravity là một điểm khởi đầu rất đáng thử.
-                        </p>
-                        <p>
-                            Bạn không cần phải biết mọi thứ trước khi bắt đầu. Mình cũng không biết. Nhưng mình bắt đầu, và giờ mình có trang web của mình rồi.
-                        </p>
-
-                        <div class="mt-12 pt-6 border-t border-primary/20 text-slate-400 italic">
-                            <p>Baodat2020 — Học sinh lớp 10, 15 tuổi, đang học competitive programming.</p>
-                        </div>
+                <!-- Sidebar Desktop -->
+                <aside class="hidden lg:block lg:col-span-4 space-y-8 sticky top-32 h-fit">
+                    <div class="p-8 rounded-[2rem] bg-slate-850 border border-white/5 shadow-2xl">
+                        <h4 class="text-slate-100 font-black uppercase tracking-widest text-[10px] mb-6 opacity-40">Mục lục</h4>
+                        <nav>
+                            <ul class="space-y-4">
+                                <li><a href="#what-is-vibe-coding" class="text-sm font-bold text-slate-400 hover:text-primary transition-all flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-primary/20"></span> Vibe Coding là gì?</a></li>
+                                <li><a href="#efficiency" class="text-sm font-bold text-slate-400 hover:text-primary transition-all flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-primary/20"></span> 1 Ngày vs 1 Tháng</a></li>
+                                <li><a href="#prompting" class="text-sm font-bold text-slate-400 hover:text-primary transition-all flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-primary/20"></span> Cách Prompting</a></li>
+                                <li><a href="#questions" class="text-sm font-bold text-slate-400 hover:text-primary transition-all flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-primary/20"></span> Những Câu Hỏi</a></li>
+                                <li><a href="#human-value" class="text-sm font-bold text-slate-400 hover:text-primary transition-all flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-primary/20"></span> Giá Trị Của Chúng Ta</a></li>
+                            </ul>
+                        </nav>
                     </div>
-                </div>
+
+                    <div class="p-8 rounded-[2rem] bg-primary/5 border border-primary/10 relative overflow-hidden group">
+                        <div class="absolute -right-8 -bottom-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                            <span class="material-symbols-outlined text-[120px]">auto_awesome</span>
+                        </div>
+                        <h4 class="text-primary font-black uppercase tracking-widest text-[10px] mb-4">Xây dựng bởi</h4>
+                        <p class="text-slate-200 font-black text-xl mb-2">Anti Gravity</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">Agent AI giúp biến Vibe Coding thành sự thật tại baodat2020.</p>
+                    </div>
+                </aside>
             </div>
         </main>
 
         <!-- Footer -->
-        <div id="layout-footer"></div>
+        <div id="layout-footer" class="w-full"></div>
     </div>
 
-  
-  <script src="../js/layout.js"></script>
+    <script src="../js/layout.js"></script>
+    <script>
+        // Reading Progress Bar
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+    </script>
 </body>
 </html>
+
