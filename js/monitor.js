@@ -16,8 +16,8 @@
 
     async function initSupabase() {
         try {
-            const res = await fetch('config.json');
-            if (!res.ok) throw new Error('File config.json không tồn tại trên server.');
+            const res = await fetch('env-config.json');
+            if (!res.ok) throw new Error('File env-config.json không tồn tại trên server.');
             config = await res.json();
             if (!config.supabaseUrl || !config.supabaseKey) throw new Error('Thiếu URL hoặc Key trong config.json');
             
@@ -199,10 +199,12 @@
     refreshBtn.addEventListener('click', initDashboard);
 
     // Auto-login check
-    supabase.auth.getSession().then(({ data: { session } }) => {
-        if (session) {
-            unlockDashboard();
-        }
-    });
+    if (supabase) {
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            if (session) {
+                unlockDashboard();
+            }
+        });
+    }
 
 })();
