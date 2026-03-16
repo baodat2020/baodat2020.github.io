@@ -24,14 +24,13 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: |
-          python3 -c "import os; p='monitor.html'; c=open(p).read(); m='<!-- CONFIG_INJECTION_MARKER -->'; r='<script>window.ENV_CONFIG = { \"supabaseUrl\": \"' + os.environ.get('SUPABASE_URL','') + '\", \"supabaseKey\": \"' + os.environ.get('SUPABASE_KEY','') + '\" };</script>'; open(p,'w').write(c.replace(m,r))"
-
-      - name: Verify Injection (Safe Log)
-        run: |
-          echo "Checking if marker still exists..."
-          grep "CONFIG_INJECTION_MARKER" monitor.html || echo "Marker successfully removed/replaced."
-          echo "Confirming window.ENV_CONFIG exists..."
-          grep "window.ENV_CONFIG" monitor.html && echo "Logic found in file."
+          echo "=== BEFORE INJECTION ==="
+          grep -C 2 "MARKER" monitor.html || echo "Marker not found in first 100 lines."
+          
+          python3 -c "import os, re; p='monitor.html'; c=open(p).read(); m=r'<!--\s*CONFIG_INJECTION_MARKER\s*-->'; r='<script>window.ENV_CONFIG = { \"supabaseUrl\": \"' + os.environ.get('SUPABASE_URL','') + '\", \"supabaseKey\": \"' + os.environ.get('SUPABASE_KEY','') + '\" };</script>'; open(p,'w').write(re.sub(m,r,c))"
+          
+          echo "=== AFTER INJECTION ==="
+          grep -C 2 "window.ENV_CONFIG" monitor.html || echo "Injection failed to manifest in file."
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
