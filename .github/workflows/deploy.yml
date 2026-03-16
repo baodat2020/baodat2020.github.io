@@ -19,15 +19,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create Config File
+      - name: Inject Config into HTML
         run: |
-          echo "window.ENV_CONFIG = {" > env-config.js
-          echo "  \"supabaseUrl\": \"${{ secrets.SUPABASE_URL }}\"," >> env-config.js
-          echo "  \"supabaseKey\": \"${{ secrets.SUPABASE_KEY }}\"" >> env-config.js
-          echo "};" >> env-config.js
+          CONFIG_SCRIPT="<script>window.ENV_CONFIG = { \"supabaseUrl\": \"${{ secrets.SUPABASE_URL }}\", \"supabaseKey\": \"${{ secrets.SUPABASE_KEY }}\" };</script>"
+          sed -i "s|<!-- CONFIG_INJECTION_MARKER -->|$CONFIG_SCRIPT|g" monitor.html
 
-      - name: Verify File Existence
-        run: ls -la env-config.js
+      - name: Verify Injection
+        run: grep "window.ENV_CONFIG" monitor.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
