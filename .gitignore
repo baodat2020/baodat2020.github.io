@@ -15,4 +15,5 @@ Thumbs.db
 
 # Secrets & Config
 config.json
+env-config.js
 .env

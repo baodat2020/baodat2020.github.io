@@ -16,10 +16,11 @@
 
     async function initSupabase() {
         try {
-            const res = await fetch('env-config.json');
-            if (!res.ok) throw new Error('File env-config.json không tồn tại trên server.');
-            config = await res.json();
-            if (!config.supabaseUrl || !config.supabaseKey) throw new Error('Thiếu URL hoặc Key trong config.json');
+            // Using global config from env-config.js
+            config = window.ENV_CONFIG;
+            if (!config || !config.supabaseUrl || !config.supabaseKey) {
+                throw new Error('Cấu hình (ENV_CONFIG) bị thiếu hoặc không hợp lệ.');
+            }
             
             // Initialize Supabase Client
             supabase = window.supabase.createClient(config.supabaseUrl, config.supabaseKey);

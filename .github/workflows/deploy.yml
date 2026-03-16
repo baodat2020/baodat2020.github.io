@@ -21,14 +21,13 @@ jobs:
 
       - name: Create Config File
         run: |
-          echo "{" > env-config.json
-          echo "  \"supabaseUrl\": \"${{ secrets.SUPABASE_URL }}\"," >> env-config.json
-          echo "  \"supabaseKey\": \"${{ secrets.SUPABASE_KEY }}\"," >> env-config.json
-          echo "  \"monitorPassword\": \"${{ secrets.MONITOR_PASSWORD }}\"" >> env-config.json
-          echo "}" >> env-config.json
+          echo "window.ENV_CONFIG = {" > env-config.js
+          echo "  \"supabaseUrl\": \"${{ secrets.SUPABASE_URL }}\"," >> env-config.js
+          echo "  \"supabaseKey\": \"${{ secrets.SUPABASE_KEY }}\"" >> env-config.js
+          echo "};" >> env-config.js
 
       - name: Verify File Existence
-        run: ls -la env-config.json
+        run: ls -la env-config.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
