@@ -4,6 +4,7 @@
  */
 
 (async function() {
+    console.log('Monitor System v3.3 - Debugging Injection');
     const authOverlay = document.getElementById('auth-overlay');
     const dashboard = document.getElementById('dashboard');
     const authForm = document.getElementById('auth-form');
