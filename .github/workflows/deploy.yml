@@ -20,12 +20,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Inject Config into HTML
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: |
-          CONFIG_SCRIPT="<script>window.ENV_CONFIG = { \"supabaseUrl\": \"${{ secrets.SUPABASE_URL }}\", \"supabaseKey\": \"${{ secrets.SUPABASE_KEY }}\" };</script>"
-          sed -i "s|<!-- CONFIG_INJECTION_MARKER -->|$CONFIG_SCRIPT|g" monitor.html
+          python3 -c "import os; p='monitor.html'; c=open(p).read(); m='<!-- CONFIG_INJECTION_MARKER -->'; r='<script>window.ENV_CONFIG = { \"supabaseUrl\": \"' + os.environ.get('SUPABASE_URL','') + '\", \"supabaseKey\": \"' + os.environ.get('SUPABASE_KEY','') + '\" };</script>'; open(p,'w').write(c.replace(m,r))"
 
-      - name: Verify Injection
-        run: grep "window.ENV_CONFIG" monitor.html
+      - name: Verify Injection (Safe Log)
+        run: |
+          echo "Checking if marker still exists..."
+          grep "CONFIG_INJECTION_MARKER" monitor.html || echo "Marker successfully removed/replaced."
+          echo "Confirming window.ENV_CONFIG exists..."
+          grep "window.ENV_CONFIG" monitor.html && echo "Logic found in file."
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
